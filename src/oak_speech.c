@@ -458,7 +458,7 @@ const u8 *const gFemalePresetNames[] = {
     gNameChoice_Suzi
 };
 
-static const u8 *const sRivalNameChoices[] = {
+const u8 *const gRivalNameChoices[] = {
 #if defined(FIRERED)
     gNameChoice_Green,
     gNameChoice_Gary,
@@ -1075,7 +1075,7 @@ static void Task_OakSpeech17(u8 taskId)
         CreateFadeInTask(taskId, 2);
         data[3] = 48;
         gSaveBlock2Ptr->playerGender = FEMALE;
-        StringCopy7(gSaveBlock1Ptr->rivalName, sRivalNameChoices[Random() % NELEMS(sRivalNameChoices)]);
+        //StringCopy7(gSaveBlock1Ptr->rivalName, gRivalNameChoices[Random() % NELEMS(gRivalNameChoices)]);
         SeedRngAndSetTrainerId();
         gTasks[taskId].func = Task_OakSpeech33;
     }
@@ -1907,7 +1907,7 @@ static void PrintNameChoiceOptions(u8 taskId, u8 state)
     if (state == 0)
         textPtrs = gSaveBlock2Ptr->playerGender == MALE ? gMalePresetNames : gFemalePresetNames;
     else
-        textPtrs = sRivalNameChoices;
+        textPtrs = gRivalNameChoices;
     for (i = 0; i < 4; i++)
     {
         AddTextPrinterParameterized(data[13], 2, textPtrs[i], 8, 16 * (i + 1) + 1, 0, NULL);
@@ -1932,7 +1932,7 @@ static void GetDefaultName(u8 playerOrRival, u8 namePick)
     }
     else
     {
-        src = sRivalNameChoices[namePick];
+        src = gRivalNameChoices[namePick];
         dest = gSaveBlock1Ptr->rivalName;
     }
     for (i = 0; i < PLAYER_NAME_LENGTH && src[i] != EOS; i++)

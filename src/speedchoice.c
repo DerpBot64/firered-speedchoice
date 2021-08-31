@@ -193,29 +193,37 @@ const u8 gSpeedchoiceTextE4R2[]   = _("E4R2");
 // PAGE 1
 const u8 gSpeedchoiceOptionPreset[] = _("PRESET");
 const u8 gSpeedchoiceOptionName[] = _("NAME");
+const u8 gSpeedchoiceOptionRivalName[] = _("RIVAL NAME");
 const u8 gSpeedchoiceOptionEXP[] = _("EXP");
 const u8 gSpeedchoiceOptionPlotless[] = _("PLOTLESS");
-const u8 gSpeedchoiceOptionEarlySaffron[] = _("EARLY SAFFRON");
 
 // PAGE 2
+const u8 gSpeedchoiceOptionEarlySaffron[] = _("EARLY SAFFRON");
 const u8 gSpeedchoiceOptionRaceGoal[] = _("RACE GOAL");
 const u8 gSpeedchoiceOptionSpinners[] = _("SPINNERS");
 const u8 gSpeedchoiceOptionEarlySurf[] = _("EARLY SURF");
 const u8 gSpeedchoiceOptionMaxVision[] = _("MAX VISION");
-const u8 gSpeedchoiceOptionGoodEarlyWilds[] = _("GOOD EARLY WILDS");
 
 // PAGE 3
+const u8 gSpeedchoiceOptionGoodEarlyWilds[] = _("GOOD EARLY WILDS");
 const u8 gSpeedchoiceOptionEasyFalseSwipe[] = _("EASY FALSE SWIPE");
 const u8 gSpeedchocieOptionEasyDexRewards[] = _("EASY DEX REWARDS");
 const u8 gSpeedchoiceOptionFastCatch[] = _("FAST CATCH");
 const u8 gSpeedchoiceOptionEarlyBike[] = _("EARLY BIKE");
-const u8 gSpeedchoiceOptionGen7XItems[] = _("GEN 7 X ITEMS");
 
 // PAGE 4
+const u8 gSpeedchoiceOptionGen7XItems[] = _("GEN 7 X ITEMS");
 const u8 gSpeedchoiceOptionEvoEveryLv[] = _("EVO EVERY LV");
 const u8 gSpeedchoiceOptionHmBadgeChk[] = _("HM BADGE CHK");
 const u8 gSpeedchoiceOptionEasySurgeCans[] = _("EASY SURGE");
 const u8 gSpeedchoiceOptionNerfBrock[] = _("NERF BROCK");
+
+// PAGE 5
+const u8 gSpeedchoiceOptionEarlyDaycare[] = _("EARLY DAYCARE");
+const u8 gSpeedchoiceOptionFastEggBreeding[] = _("FAST EGG BREEDING");
+const u8 gSpeedchoiceOptionFastEggHatching[] = _("FAST EGG HATCHING");
+const u8 gSpeedchoiceOptionMemeFishing[] = _("MEME FISHING");
+const u8 gSpeedchoiceOptionForceDitto[] = _("FORCE DITTO");
 
 // CONSTANT OPTIONS
 const u8 gSpeedchoiceOptionPage[] = _("PAGE");
@@ -235,6 +243,7 @@ const u8 gSpeedchoiceTooltipExplanation[] = _("This is the Speedchoice menu wher
 // TOOLTIPS
 const u8 gSpeedchoiceTooltipPreset[] = _("Sets of predetermined options that\nhelp speedrunners quickly select\pa set of options for a type of\nspeedrunning category.");
 const u8 gSpeedchoiceTooltipName[] = _("Set your trainer name here.");
+const u8 gSpeedchoiceTooltipRivalName[] = _("Set your rival name here.");
 const u8 gSpeedchoiceTooltipEXP[] = _("Modifies the experience system\nto the desired input.\pCan be Gen 5, or\nno exp at all.");
 const u8 gSpeedchoiceTooltipRaceGoal[] = _("Sets the endpoint of the race.\pMANUAL: Puts a DONE BUTTON\nin your bag.\pHOF: Elite Four Round 1\nE4R2: Elite Four Round 2");
 const u8 gSpeedchoiceTooltipEarlySaffron[] = _("Affects whether the guards have\ntheir thirst quenched after\lCERULEAN RIVAL.");
@@ -252,6 +261,11 @@ const u8 gSpeedchoiceTooltipHmBadgeChk[] = _("PURGE: There are no badge checks\n
 const u8 gSpeedchoiceTooltipEasyDexRewards[] = _("Removes Pokédex caught conditions\nfor receiving certain items.");
 const u8 gSpeedchoiceTooltipEasySurgeCans[] = _("PURGE: The bottom left can will\nalways contain the first switch,\land the can to the right of it\lwill always contain the second.\pKEEP: Vanilla randomization\nHELL: Anything-goes randomization\lWHY: HELL + no save-scumming");
 const u8 gSpeedchoiceTooltipNerfBrock[] = _("Nerfs LEADER BROCK by\nreducing his party levels by 2.");
+const u8 gSpeedchoiceTooltipEarlyDaycare[] = _("Clones Four Island Daycare couple\nto Route 5.\pAlso removes the lowest ledge.");
+const u8 gSpeedchoiceTooltipFastEggBreeding[] = _("Eggs generate every cycle\nin the daycare.");
+const u8 gSpeedchoiceTooltipFastEggHatching[] = _("Eggs immediately hatch every cycle.");
+const u8 gSpeedchoiceTooltipMemeFishing[] = _("Old and Good Rod can catch high\nlevel pokemon.");
+const u8 gSpeedchoiceTooltipForceDitto[] = _("Eevee gift is always Ditto");
 
 // START GAME
 const u8 gSpeedchoiceStartGameText[] = _("CV: {STR_VAR_1}\nStart the game?");
@@ -291,6 +305,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
     [PRESET_VANILLA] = {
         [PRESET]           = PRESET_VANILLA,
         [PLAYER_NAME_SET]  = 0xFF,
+		[RIVAL_NAME_SET]   = 0xFF,
         [EXPMATH]          = EXP_KEEP,
         [PLOTLESS]         = PLOT_KEEP,
         [EARLY_SAFFRON]    = SAFFRON_NO,
@@ -308,10 +323,16 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [HM_BADGE_CHECKS]  = BADGE_KEEP,
         [EASY_SURGE_CANS]  = SURGE_KEEP,
         [NERF_BROCK]       = NERF_NO,
+		[EARLY_DAYCARE]    = DAYCARE_NO,
+		[FAST_BREED]       = BREED_NO,
+		[FAST_HATCH]       = HATCH_NO,
+		[MEME_FISH]        = FISH_NO,
+		[FORCE_DITTO]      = DITTO_NO,
     },
     [PRESET_BINGO]   = {
         [PRESET]           = PRESET_BINGO,
         [PLAYER_NAME_SET]  = 0xFF,
+		[RIVAL_NAME_SET]   = 0xFF,
         [EXPMATH]          = EXP_BW,
         [PLOTLESS]         = PLOT_FULL,
         [EARLY_SAFFRON]    = SAFFRON_YES,
@@ -319,7 +340,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [SPINNERS]         = SPIN_NERF,
         [EARLYSURF]        = EARLY_SURF_YES,
         [MAXVISION]        = MAX_OFF,
-        [GOOD_EARLY_WILDS] = GOOD_STATIC,
+        [GOOD_EARLY_WILDS] = GOOD_OFF,
         [EASY_FALSE_SWIPE] = EASY_FALSE_SWIPE_TUTOR,
         [EASY_DEX_REWARDS] = EASY_DEX_REWARDS_ON,
         [FAST_CATCH]       = FAST_CATCH_OFF,
@@ -328,11 +349,17 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [EVO_EVERY_LEVEL]  = EVO_EV_OFF,
         [HM_BADGE_CHECKS]  = BADGE_PURGE,
         [EASY_SURGE_CANS]  = SURGE_NERF,
-        [NERF_BROCK]       = NERF_YES,
+        [NERF_BROCK]       = NERF_NO,
+		[EARLY_DAYCARE]    = DAYCARE_YES,
+		[FAST_BREED]       = BREED_YES,
+		[FAST_HATCH]       = HATCH_YES,
+		[MEME_FISH]        = FISH_YES,
+		[FORCE_DITTO]      = DITTO_YES,
     },
     [PRESET_CEA]     = {
         [PRESET]           = PRESET_CEA,
         [PLAYER_NAME_SET]  = 0xFF,
+		[RIVAL_NAME_SET]   = 0xFF,
         [EXPMATH]          = EXP_BW,
         [PLOTLESS]         = PLOT_FULL,
         [EARLY_SAFFRON]    = SAFFRON_YES,
@@ -350,10 +377,16 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [HM_BADGE_CHECKS]  = BADGE_PURGE,
         [EASY_SURGE_CANS]  = SURGE_NERF,
         [NERF_BROCK]       = NERF_YES,
+		[EARLY_DAYCARE]    = DAYCARE_YES,
+		[FAST_BREED]       = BREED_YES,
+		[FAST_HATCH]       = HATCH_NO,
+		[MEME_FISH]        = FISH_NO,
+		[FORCE_DITTO]      = DITTO_NO,
     },
     [PRESET_RACE]    = {
         [PRESET]           = PRESET_RACE,
         [PLAYER_NAME_SET]  = 0xFF,
+		[RIVAL_NAME_SET]   = 0xFF,
         [EXPMATH]          = EXP_BW,
         [PLOTLESS]         = PLOT_FULL,
         [EARLY_SAFFRON]    = SAFFRON_YES,
@@ -371,6 +404,11 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [HM_BADGE_CHECKS]  = BADGE_PURGE,
         [EASY_SURGE_CANS]  = SURGE_NERF,
         [NERF_BROCK]       = NERF_YES,
+		[EARLY_DAYCARE]    = DAYCARE_NO,
+		[FAST_BREED]       = BREED_NO,
+		[FAST_HATCH]       = HATCH_NO,
+		[MEME_FISH]        = FISH_NO,
+		[FORCE_DITTO]      = DITTO_NO,
     },
 };
 
@@ -477,6 +515,17 @@ const struct SpeedchoiceOption SpeedchoiceOptions[CURRENT_OPTIONS_NUM + 1] = // 
         .options = NULL,
         .tooltip = gSpeedchoiceTooltipName,
     },
+	// ----------------------------------
+	// RIVAL NAME
+	// ----------------------------------
+	[RIVAL_NAME_SET] = {
+		.optionCount = 1,
+		.optionType = RIVAL_NAME,
+		.enabled = TRUE,
+		.string = gSpeedchoiceOptionRivalName,
+		.options = NULL,
+		.tooltip = gSpeedchoiceTooltipRivalName,
+	},
     // ----------------------------------
     // EXP OPTION
     // ----------------------------------
@@ -664,6 +713,61 @@ const struct SpeedchoiceOption SpeedchoiceOptions[CURRENT_OPTIONS_NUM + 1] = // 
         .options = OptionChoiceConfigNerfKeep,
         .tooltip = gSpeedchoiceTooltipNerfBrock,
     },
+	// ----------------------------------
+	// EARLY DAYCARE OPTION
+	// ----------------------------------
+	[EARLY_DAYCARE] = {
+		.optionCount = EARLY_DAYCARE_OPTION_COUNT,
+		.optionType = NORMAL,
+		.enabled = TRUE,
+		.string = gSpeedchoiceOptionEarlyDaycare,
+		.options = OptionChoiceConfigOnOff,
+		.tooltip = gSpeedchoiceTooltipEarlyDaycare,
+	},
+	// ----------------------------------
+	// FAST EGG BREED OPTION
+	// ----------------------------------
+	[FAST_BREED] = {
+		.optionCount = FAST_BREED_OPTION_COUNT,
+		.optionType = NORMAL,
+		.enabled = TRUE,
+		.string = gSpeedchoiceOptionFastEggBreeding,
+		.options = OptionChoiceConfigOnOff,
+		.tooltip = gSpeedchoiceTooltipFastEggBreeding,
+	},
+	// ----------------------------------
+	// FAST EGG HATCH OPTION
+	// ----------------------------------
+	[FAST_HATCH] = {
+		.optionCount = FAST_HATCH_OPTION_COUNT,
+		.optionType = NORMAL,
+		.enabled = TRUE,
+		.string = gSpeedchoiceOptionFastEggHatching,
+		.options = OptionChoiceConfigOnOff,
+		.tooltip = gSpeedchoiceTooltipFastEggHatching,
+	},
+	// ----------------------------------
+	// MEME FISHING OPTION
+	// ----------------------------------
+	[MEME_FISH] = {
+		.optionCount = MEME_FISH_OPTION_COUNT,
+		.optionType = NORMAL,
+		.enabled = TRUE,
+		.string = gSpeedchoiceOptionMemeFishing,
+		.options = OptionChoiceConfigOnOff,
+		.tooltip = gSpeedchoiceTooltipMemeFishing,
+	},
+	// ----------------------------------
+	// FORCE DITTO OPTION
+	// ----------------------------------
+	[FORCE_DITTO] = {
+		.optionCount = FORCE_DITTO_OPTION_COUNT,
+		.optionType = NORMAL,
+		.enabled = TRUE,
+		.string = gSpeedchoiceOptionForceDitto,
+		.options = OptionChoiceConfigOnOff,
+		.tooltip = gSpeedchoiceTooltipForceDitto,
+	},
     // ----------------------------------
     // PAGE STATIC OPTION
     // ----------------------------------
@@ -701,6 +805,10 @@ struct SpeedchoiceMenuState
     // Stores the written player name in the options menu until it is flushed to the
     // Save Block.
     u8 tempPlayerName[PLAYER_NAME_LENGTH + 1];
+
+    // Stores the written rival name in the options menu until it is flushed to the
+	// Save Block.
+	u8 tempRivalName[RIVAL_NAME_LENGTH + 1];
 };
 
 static EWRAM_DATA struct SpeedchoiceMenuState * sSpeedchoice = NULL;
@@ -735,6 +843,11 @@ void SetByteArrayToSaveOptions(const u8 * options_arr)
     gSaveBlock2Ptr->speedchoiceConfig.hmBadgeChecks = options_arr[HM_BADGE_CHECKS];
     gSaveBlock2Ptr->speedchoiceConfig.easySurgeCans = options_arr[EASY_SURGE_CANS];
     gSaveBlock2Ptr->speedchoiceConfig.nerfBrock = options_arr[NERF_BROCK];
+    gSaveBlock2Ptr->speedchoiceConfig.earlyDaycare = options_arr[EARLY_DAYCARE];
+    gSaveBlock2Ptr->speedchoiceConfig.fastBreed = options_arr[FAST_BREED];
+    gSaveBlock2Ptr->speedchoiceConfig.fastHatch = options_arr[FAST_HATCH];
+    gSaveBlock2Ptr->speedchoiceConfig.memeFish = options_arr[MEME_FISH];
+    gSaveBlock2Ptr->speedchoiceConfig.forceDitto = options_arr[FORCE_DITTO];
 }
 
 /*
@@ -794,6 +907,14 @@ u8 CheckSpeedchoiceOption(u8 option)
         return gSaveBlock2Ptr->speedchoiceConfig.easySurgeCans;
     case NERF_BROCK:
         return gSaveBlock2Ptr->speedchoiceConfig.nerfBrock;
+    case FAST_BREED:
+        return gSaveBlock2Ptr->speedchoiceConfig.fastBreed;
+    case FAST_HATCH:
+        return gSaveBlock2Ptr->speedchoiceConfig.fastHatch;
+    case MEME_FISH:
+        return gSaveBlock2Ptr->speedchoiceConfig.memeFish;
+    case FORCE_DITTO:
+        return gSaveBlock2Ptr->speedchoiceConfig.forceDitto;
     default:
         return 0xFF;
     }
@@ -892,6 +1013,7 @@ static void DrawHeaderWindow(void);
 static void Task_SpeedchoiceMenuFadeIn(u8 taskId);
 
 extern const u8 *const gFemalePresetNames[19];
+extern const u8 *const gRivalNameChoices[4];
 
 /*
  * Initialize the default player name similar to how Birch intro does it.
@@ -899,6 +1021,14 @@ extern const u8 *const gFemalePresetNames[19];
 static inline void FormatInitialTempName(u8 nameId)
 {
     StringCopy7(sSpeedchoice->tempPlayerName, gFemalePresetNames[nameId]);
+}
+
+/*
+ * Initialize the default rival name similar to how Birch intro does it.
+ */
+static inline void FormatInitialRivalName(u8 nameId)
+{
+    StringCopy7(sSpeedchoice->tempRivalName, gRivalNameChoices[nameId]);
 }
 
 extern const u16 sHelpDocsPalette[0x80];
@@ -926,6 +1056,7 @@ void InitSpeedchoice(MainCallback savedCallback)
     sSpeedchoice->config.optionConfig[PRESET] = PRESET_VANILLA;
     SetOptionChoicesAndConfigFromPreset(gPresets[PRESET_VANILLA]);
     FormatInitialTempName(Random() % NELEMS(gFemalePresetNames));
+    FormatInitialRivalName(Random() % NELEMS(gRivalNameChoices));
     SetMainCallback2(CB2_InitSpeedchoice);
 }
 
@@ -1003,6 +1134,7 @@ void CB2_InitSpeedchoice(void)
             SetOptionChoicesAndConfigFromPreset(gPresets[PRESET_VANILLA]);
 
             FormatInitialTempName(Random() % NELEMS(gFemalePresetNames));
+            FormatInitialRivalName(Random() % NELEMS(gRivalNameChoices));
         }
         DrawHeaderWindow();
         DrawPageOptions(sSpeedchoice->config.pageNum);
@@ -1065,6 +1197,16 @@ static void DrawGeneralChoices(const struct SpeedchoiceOption *option, u8 select
         DrawOptionMenuChoice(sSpeedchoice->tempPlayerName, x_preset, y, SPC_COLOR_RED);
     }
         break;
+    case RIVAL_NAME:
+        {
+            // Rival name needs special handling as well.
+            s32 y = NEWMENUOPTIONCOORDS(row);
+            s32 length = GetStringWidth(2, sSpeedchoice->tempRivalName, 0);
+            s32 x_preset = 4 + ARROW_X_LEFT + (ARROW_X_RIGHT - ARROW_X_LEFT - length) / 2u;
+
+            DrawOptionMenuChoice(sSpeedchoice->tempRivalName, x_preset, y, SPC_COLOR_RED);
+        }
+            break;
     default:
     {
         // Assume everything else is a normal option render.
@@ -1197,6 +1339,8 @@ static void SaveSpeedchoiceOptions()
 
     // write the playername.
     StringCopy7(gSaveBlock2Ptr->playerName, sSpeedchoice->tempPlayerName);
+    // write the rivalname.
+    StringCopy7(gSaveBlock1Ptr->rivalName, sSpeedchoice->tempRivalName);
 }
 
 extern const struct BgTemplate sMainMenuBgTemplates[];
@@ -1298,6 +1442,19 @@ void Task_SpeedchoiceMenuFadeOutToNamingScreen(u8 taskId)
 }
 
 /*
+ * Fade out Task function to initialize naming screen.
+ */
+void Task_SpeedchoiceMenuFadeOutToNamingRivalScreen(u8 taskId)
+{
+    if(!gPaletteFade.active)
+    {
+        FreeAllWindowBuffers();
+        DestroyTask(taskId);
+        DoNamingScreen(NAMING_SCREEN_RIVAL, sSpeedchoice->tempRivalName, MALE, 0, 0, CB2_InitSpeedchoice);
+    }
+}
+
+/*
  * General processor for the input on the speedchoice menu.
  */
 static void Task_SpeedchoiceMenuProcessInput(u8 taskId)
@@ -1324,6 +1481,11 @@ static void Task_SpeedchoiceMenuProcessInput(u8 taskId)
             gTasks[taskId].func = Task_SpeedchoiceMenuFadeOutToNamingScreen;
             PlaySE(SE_SELECT); // page scrolling.
         }
+        else if (sSpeedchoice->config.trueIndex == RIVAL_NAME_SET) {
+			BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+			gTasks[taskId].func = Task_SpeedchoiceMenuFadeOutToNamingRivalScreen;
+			PlaySE(SE_SELECT); // page scrolling.
+		}
     }
     else if (JOY_NEW(SELECT_BUTTON)) // do tooltip.
     {

@@ -158,6 +158,16 @@ void NewGameInitData(void)
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
 
+    //saved to flag so it can hide NPCs
+    if(gSaveBlock2Ptr->speedchoiceConfig.earlyDaycare == DAYCARE_NO){
+    	//hide NPCs and use normal map layout
+    	FlagSet(FLAG_0x0AF);
+    }
+    else{
+    	//show NPCs and show speedchoice map layout
+    	FlagClear(FLAG_0x0AF);
+    }
+
     if (gSaveBlock2Ptr->speedchoiceConfig.earlyBike == EARLY_BIKE_YES)
         AddBagItem(ITEM_BICYCLE, 1);
     if (gSaveBlock2Ptr->speedchoiceConfig.raceGoal == GOAL_MANUAL)
@@ -176,12 +186,41 @@ void NewGameInitData(void)
             } while (!IsShinyOtIdPersonality(otid, pid));
             CreateMon(mon, SPECIES_MEWTWO, 100, 31, TRUE, pid, OT_ID_PLAYER_ID, 0);
             SetMonMoveSlot(mon, MOVE_PSYCHIC, 0);
-            SetMonMoveSlot(mon, MOVE_THUNDERBOLT, 1);
-            SetMonMoveSlot(mon, MOVE_ICE_BEAM, 2);
-            SetMonMoveSlot(mon, MOVE_FLAMETHROWER, 3);
+            SetMonMoveSlot(mon, MOVE_FLY, 1);
+            SetMonMoveSlot(mon, MOVE_SURF, 2);
+            SetMonMoveSlot(mon, MOVE_STRENGTH, 3);
             GiveMonToPlayer(mon);
             Free(mon);
         }
+        FlagSet(FLAG_WORLD_MAP_PALLET_TOWN);
+        FlagSet(FLAG_WORLD_MAP_VIRIDIAN_CITY);
+        FlagSet(FLAG_WORLD_MAP_PEWTER_CITY);
+        FlagSet(FLAG_WORLD_MAP_CERULEAN_CITY);
+        FlagSet(FLAG_WORLD_MAP_LAVENDER_TOWN);
+        FlagSet(FLAG_WORLD_MAP_VERMILION_CITY);
+        FlagSet(FLAG_WORLD_MAP_CELADON_CITY);
+        FlagSet(FLAG_WORLD_MAP_FUCHSIA_CITY);
+        FlagSet(FLAG_WORLD_MAP_CINNABAR_ISLAND);
+        FlagSet(FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR);
+        FlagSet(FLAG_WORLD_MAP_SAFFRON_CITY);
+        FlagSet(FLAG_WORLD_MAP_ONE_ISLAND);
+        FlagSet(FLAG_WORLD_MAP_TWO_ISLAND);
+        FlagSet(FLAG_WORLD_MAP_THREE_ISLAND);
+        FlagSet(FLAG_WORLD_MAP_FOUR_ISLAND);
+        FlagSet(FLAG_WORLD_MAP_FIVE_ISLAND);
+        FlagSet(FLAG_WORLD_MAP_SEVEN_ISLAND);
+        FlagSet(FLAG_WORLD_MAP_SIX_ISLAND);
+        FlagSet(FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F);
+        FlagSet(FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F);
+
+        FlagSet( FLAG_SYS_SEVII_MAP_123);
+		FlagSet( FLAG_SYS_SEVII_MAP_4567);
+		FlagSet( FLAG_ENABLE_SHIP_NAVEL_ROCK);
+		FlagSet( FLAG_ENABLE_SHIP_BIRTH_ISLAND);
+
+		AddBagItem(ITEM_RAINBOW_PASS,1);
+		AddBagItem(ITEM_MYSTIC_TICKET,1);
+		AddBagItem(ITEM_AURORA_TICKET,1);
     }
 #endif //DEVMODE
 }

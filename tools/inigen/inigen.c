@@ -91,7 +91,7 @@ const struct
     uint16_t vanilla;
     struct StaticPokemon mons[4];
 } gStaticPokemon[] = {
-    {SPECIES_EEVEE, {{ "CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall" , 5}, {"CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall", 8}, {"CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveeParty", 15}, {"CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveePC", 15}}},
+    {SPECIES_EEVEE, {{ "CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall", 13}, {"CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall", 16}, {"CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveeParty", 15}, {"CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveePC", 15}}},
     {SPECIES_HITMONLEE, {{"SaffronCity_Dojo_EventScript_HitmonleeBall", 12}, {"SaffronCity_Dojo_EventScript_HitmonleeBall", 19}}},
     {SPECIES_HITMONCHAN, {{"SaffronCity_Dojo_EventScript_HitmonchanBall", 12}, {"SaffronCity_Dojo_EventScript_HitmonchanBall", 19}}},
     {SPECIES_ELECTRODE, {{"PowerPlant_EventScript_Electrode1", 17}, {"PowerPlant_EventScript_Electrode1", 24}}},

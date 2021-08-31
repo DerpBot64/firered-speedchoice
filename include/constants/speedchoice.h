@@ -18,25 +18,31 @@
 
 #define PRESET               0
 #define PLAYER_NAME_SET      1
-#define EXPMATH              2
-#define PLOTLESS             3
-#define EARLY_SAFFRON        4
-#define RACE_GOAL            5
-#define SPINNERS             6
-#define EARLYSURF            7
-#define MAXVISION            8
-#define GOOD_EARLY_WILDS     9
-#define EASY_FALSE_SWIPE    10
-#define EASY_DEX_REWARDS    11
-#define FAST_CATCH          12
-#define EARLY_BIKE          13
-#define GEN_7_X_ITEMS       14
-#define EVO_EVERY_LEVEL     15
-#define HM_BADGE_CHECKS     16
-#define EASY_SURGE_CANS     17
-#define NERF_BROCK          18
+#define RIVAL_NAME_SET       2
+#define EXPMATH              3
+#define PLOTLESS             4
+#define EARLY_SAFFRON        5
+#define RACE_GOAL            6
+#define SPINNERS             7
+#define EARLYSURF            8
+#define MAXVISION            9
+#define GOOD_EARLY_WILDS    10
+#define EASY_FALSE_SWIPE    11
+#define EASY_DEX_REWARDS    12
+#define FAST_CATCH          13
+#define EARLY_BIKE          14
+#define GEN_7_X_ITEMS       15
+#define EVO_EVERY_LEVEL     16
+#define HM_BADGE_CHECKS     17
+#define EASY_SURGE_CANS     18
+#define NERF_BROCK          19
+#define EARLY_DAYCARE       20
+#define FAST_BREED          21
+#define FAST_HATCH          22
+#define MEME_FISH           23
+#define FORCE_DITTO         24
 
-#define CURRENT_OPTIONS_NUM 19
+#define CURRENT_OPTIONS_NUM 25
 // ----------------------
 // STATIC OPTIONS
 // ----------------------
@@ -199,10 +205,46 @@
 #define NERF_NO  1
 #define NERF_OPTION_COUNT 2
 
+// --------------------
+// EARLY DAYCARE ENUM
+// --------------------
+#define DAYCARE_YES 0
+#define DAYCARE_NO 1
+#define EARLY_DAYCARE_OPTION_COUNT 2
+
+// --------------------
+// FAST BREED ENUM
+// --------------------
+#define BREED_YES 0
+#define BREED_NO 1
+#define FAST_BREED_OPTION_COUNT 2
+
+// --------------------
+// FAST HATCH ENUM
+// --------------------
+#define HATCH_YES 0
+#define HATCH_NO 1
+#define FAST_HATCH_OPTION_COUNT 2
+
+// --------------------
+// MEME FISH ENUM
+// --------------------
+#define FISH_YES 0
+#define FISH_NO 1
+#define MEME_FISH_OPTION_COUNT 2
+
+// --------------------
+// FORCE DITTO ENUM
+// --------------------
+#define DITTO_YES 0
+#define DITTO_NO 1
+#define FORCE_DITTO_OPTION_COUNT 2
+
 // Enumeration for optionType in the Speedchoice struct below.
 
 #define NORMAL 0
 #define ARROW 1
 #define PLAYER_NAME 2
+#define RIVAL_NAME 3
 
 #endif //POKEFIRERED_CONSTANTS_SPEEDCHOICE_H

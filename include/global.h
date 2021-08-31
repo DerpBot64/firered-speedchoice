@@ -201,6 +201,7 @@ struct BerryCrush
 };
 
 #define PLAYER_NAME_LENGTH   7
+#define RIVAL_NAME_LENGTH   7
 
 #define LINK_B_RECORDS_COUNT 5
 
@@ -296,6 +297,11 @@ struct SpeedchoiceSaveOptions
     u32 hmBadgeChecks:1;
     u32 easySurgeCans:2;
     u32 nerfBrock:1;
+    u32 earlyDaycare:1;
+    u32 fastBreed:1;
+    u32 fastHatch:1;
+    u32 memeFish:1;
+    u32 forceDitto:1;
 };
 
 struct DoneButtonStats
