@@ -945,9 +945,9 @@ static u16 GetCenterScreenMetatileBehavior(void)
 
 bool32 Overworld_IsBikingAllowed(void)
 {
-    if (!gMapHeader.bikingAllowed)
+    /*if (!gMapHeader.bikingAllowed)
         return FALSE;
-    else
+    else*/
         return TRUE;
 }
 
