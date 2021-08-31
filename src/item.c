@@ -10,6 +10,9 @@
 #include "constants/hold_effects.h"
 #include "constants/items.h"
 #include "constants/maps.h"
+#include "speedchoice.h"
+
+extern const u8 gMoveDescription_FalseSwipe[];
 
 EWRAM_DATA struct BagPocket gBagPockets[NUM_BAG_POCKETS] = {};
 
@@ -643,7 +646,10 @@ u8 ItemId_GetHoldEffectParam(u16 itemId)
 
 const u8 * ItemId_GetDescription(u16 itemId)
 {
-    return gItems[SanitizeItemId(itemId)].description;
+	if (itemId == ITEM_HM05 && gSaveBlock2Ptr->speedchoiceConfig.easyFalseSwipe == EASY_FALSE_SWIPE_HM05)
+	        return gMoveDescription_FalseSwipe;
+
+	return gItems[SanitizeItemId(itemId)].description;
 }
 
 bool8 itemid_is_unique(u16 itemId)
