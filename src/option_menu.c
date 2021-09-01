@@ -23,7 +23,7 @@ enum
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
-    MENUITEM_CANCEL,
+    MENUITEM_NICKNAME,
     MENUITEM_COUNT
 };
 
@@ -138,7 +138,7 @@ static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {
     [MENUITEM_SOUND]       = OPTIONS_SOUND_COUNT,
     [MENUITEM_BUTTONMODE]  = OPTIONS_BUTTON_MODE_COUNT,
     [MENUITEM_FRAMETYPE]   = OPTIONS_FRAME_COUNT,
-    [MENUITEM_CANCEL]      = 0
+    [MENUITEM_NICKNAME]    = OPTIONS_NICKNAME_COUNT
 };
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
@@ -149,7 +149,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SOUND]       = gText_Sound,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
-    [MENUITEM_CANCEL]      = gText_OptionMenuCancel,
+    [MENUITEM_NICKNAME]    = gText_OptionMenuNickname,
 };
 
 // Speedchoice change: Instant text
@@ -184,6 +184,12 @@ static const u8 *const sButtonTypeOptions[] =
     [OPTIONS_BUTTON_MODE_HELP]       = gText_ButtonTypeHelp,
 	[OPTIONS_BUTTON_MODE_LR]         = gText_ButtonTypeLR,
 	[OPTIONS_BUTTON_MODE_L_EQUALS_A] = gText_ButtonTypeLEqualsA
+};
+
+static const u8 *const sNicknameOptions[] =
+{
+    [OPTIONS_NICKNAME_YES]  = gText_BattleSceneOn,
+    [OPTIONS_NICKNAME_NO]   = gText_BattleSceneOff
 };
 
 static const u8 sOptionMenuPickSwitchCancelTextColor[] = {TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
@@ -222,6 +228,7 @@ void CB2_OptionsMenuFromStartMenu(void)
     sOptionMenuPtr->option[MENUITEM_SOUND] = gSaveBlock2Ptr->optionsSound;
     sOptionMenuPtr->option[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
     sOptionMenuPtr->option[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
+    sOptionMenuPtr->option[MENUITEM_NICKNAME] = gSaveBlock2Ptr->optionsNickname;
     
     for (i = 0; i < MENUITEM_COUNT - 1; i++)
     {
@@ -450,14 +457,14 @@ static u8 OptionMenu_ProcessInput(void)
     else if (JOY_REPT(DPAD_UP))
     {
         if (sOptionMenuPtr->cursorPos == MENUITEM_TEXTSPEED)
-            sOptionMenuPtr->cursorPos = MENUITEM_CANCEL;
+            sOptionMenuPtr->cursorPos = MENUITEM_NICKNAME;
         else
             sOptionMenuPtr->cursorPos = sOptionMenuPtr->cursorPos - 1;
         return 3;        
     }
     else if (JOY_REPT(DPAD_DOWN))
     {
-        if (sOptionMenuPtr->cursorPos == MENUITEM_CANCEL)
+        if (sOptionMenuPtr->cursorPos == MENUITEM_NICKNAME)
             sOptionMenuPtr->cursorPos = MENUITEM_TEXTSPEED;
         else
             sOptionMenuPtr->cursorPos = sOptionMenuPtr->cursorPos + 1;
@@ -502,6 +509,9 @@ static void BufferOptionMenuString(u8 selection)
     case MENUITEM_BUTTONMODE:
         AddTextPrinterParameterized3(1, 2, x, y, dst, -1, sButtonTypeOptions[sOptionMenuPtr->option[selection]]);
         break;
+    case MENUITEM_NICKNAME:
+        AddTextPrinterParameterized3(1, 2, x, y, dst, -1, sNicknameOptions[sOptionMenuPtr->option[selection]]);
+        break;
     case MENUITEM_FRAMETYPE:
         StringCopy(str, gText_FrameType);
         ConvertIntToDecimalStringN(buf, sOptionMenuPtr->option[selection] + 1, 1, 2);
@@ -526,6 +536,7 @@ static void CloseAndSaveOptionMenu(u8 taskId)
     gSaveBlock2Ptr->optionsSound = sOptionMenuPtr->option[MENUITEM_SOUND];
     gSaveBlock2Ptr->optionsButtonMode = sOptionMenuPtr->option[MENUITEM_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = sOptionMenuPtr->option[MENUITEM_FRAMETYPE];
+    gSaveBlock2Ptr->optionsNickname = sOptionMenuPtr->option[MENUITEM_NICKNAME];
     SetPokemonCryStereo(gSaveBlock2Ptr->optionsSound);
     FREE_AND_SET_NULL(sOptionMenuPtr);
     DestroyTask(taskId);

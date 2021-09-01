@@ -1951,8 +1951,17 @@ static void CB2_EggHatch_1(void)
             sEggHatchData->CB2_state++;
         break;
     case 7:
-        if (IsFanfareTaskInactive())
-            sEggHatchData->CB2_state++;
+    	if (IsFanfareTaskInactive()){
+			//if nickname setting is off, skip straight to end of nickname function
+			if (gSaveBlock2Ptr->optionsNickname == OPTIONS_NICKNAME_YES){
+				//nickname is enabled
+				sEggHatchData->CB2_state++;
+			}
+			else{
+				//nickname is disabled
+				sEggHatchData->CB2_state = 11;
+			}
+		}
         break;
     case 8:
         DayCare_GetMonNickname(&gPlayerParty[sEggHatchData->eggPartyID], gStringVar1);

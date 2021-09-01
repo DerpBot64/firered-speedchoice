@@ -377,6 +377,7 @@ struct SaveBlock2
               u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
               u16 optionsBattleScene:1; // OPTIONS_BATTLE_SCENE_[ON/OFF]
               u16 regionMapZoom:1; // whether the map is zoomed in
+              u16 optionsNickname:1; // OPTIONS_NICKNAME
     /*0x018*/ struct Pokedex pokedex;
     /*0x090*/ u8 filler_90[0x8];
     /*0x098*/ struct Time localTimeOffset;
