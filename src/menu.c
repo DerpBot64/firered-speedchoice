@@ -5,6 +5,7 @@
 #include "strings.h"
 #include "text_window.h"
 #include "constants/songs.h"
+#include "event_data.h"
 
 struct Menu
 {
@@ -466,6 +467,35 @@ void MultichoiceList_PrintItems(u8 windowId, u8 fontId, u8 left, u8 top, u8 line
 
     for (i = 0; i < itemCount; i++)
         AddTextPrinterParameterized5(windowId, fontId, strs[i].text, left, (lineHeight * i) + top, 0xFF, NULL, letterSpacing, lineSpacing);
+    CopyWindowToVram(windowId, COPYWIN_GFX);
+}
+
+//used by pokemon game corner prizes only
+void MultichoiceList_PrintItemsPrizes(u8 windowId, u8 fontId, u8 left, u8 top, u8 lineHeight, u8 itemCount, const struct MenuAction *strs, u8 letterSpacing, u8 lineSpacing)
+{
+    u8 i;
+    //store full expanded text in STR_VAR_1
+    u8* gStringVar1ExpandedText = gStringVar1;
+    //lookup pokemon name into STR_VAR_2
+    u8* gStringVar2PokemonName = gStringVar2;
+
+    int species[5];
+    species[0] = VAR_TEMP_3;
+    species[1] = VAR_TEMP_4;
+    species[2] = VAR_TEMP_5;
+    species[3] = VAR_TEMP_6;
+    species[4] = VAR_TEMP_7;
+
+    for (i = 0; i < itemCount; i++){
+    	//bit of a hack but whatever. Pull the species ID from temp variables,
+    	//then replace placeholders in text strings found in strings.c
+    	//needed to do this special because there are no other multichoice menus with dynamic text.
+    	//Also there were only three available temp string vars, and we needed 5 for all the names
+    	GetSpeciesName(gStringVar2PokemonName,VarGet(species[i]));
+    	StringExpandPlaceholders(gStringVar1ExpandedText, strs[i].text);
+
+        AddTextPrinterParameterized5(windowId, fontId, gStringVar1ExpandedText, left, (lineHeight * i) + top, 0xFF, NULL, letterSpacing, lineSpacing);
+    }
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
 

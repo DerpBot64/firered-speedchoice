@@ -729,8 +729,12 @@ static void DrawVerticalMultichoiceMenu(u8 left, u8 top, u8 mcId, u8 ignoreBpres
         height = GetMCWindowHeight(count);
         windowId = CreateWindowFromRect(left, top, width, height);
         SetStdWindowBorderStyle(windowId, FALSE);
-        if (mcId == 30 || mcId == 13 || mcId == 41)
+        if(mcId == MULTICHOICE_GAME_CORNER_POKEMON_PRIZES){
+        	MultichoiceList_PrintItemsPrizes(windowId, 2, 8, 2, 14, count, list, 0, 2);
+        }
+        else if (mcId == 30 || mcId == 13 || mcId == 41){
             MultichoiceList_PrintItems(windowId, 2, 8, 2, 14, count, list, 0, 2);
+        }
         else
             MultichoiceList_PrintItems(windowId, 2, 8, 2, 14, count, list, 0, 2);
         Menu_InitCursor(windowId, 2, 0, 2, 14, count, initPos);

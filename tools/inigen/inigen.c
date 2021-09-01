@@ -111,11 +111,11 @@ const struct
     {SPECIES_KABUTO, {{"CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_GiveKabuto", 3}, {"CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_GiveKabuto", 7}, {"CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_GiveKabuto", 18}, {"CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ShowDomeFossil", 2}}},
     {SPECIES_LAPRAS, {{"SilphCo_7F_EventScript_LaprasGuy", 25}, {"SilphCo_7F_EventScript_ReceiveLaprasParty", 14}, {"SilphCo_7F_EventScript_ReceiveLaprasPC", 14}}},
     {SPECIES_MAGIKARP, {{"Route4_PokemonCenter_1F_EventScript_TryBuyMagikarp", 36}, {"Route4_PokemonCenter_1F_EventScript_PayForMagikarp", 22}}},
-    {SPECIES_ABRA, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_Abra", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 47}}},
-    {SPECIES_CLEFAIRY, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_Clefairy", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 58}}},
-    {SPECIES_DRATINI, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_DratiniPinsir", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 69}}},
-    {SPECIES_SCYTHER, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ScytherDratini", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 80}}},
-    {SPECIES_PORYGON, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_Porygon", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 91}}},
+    {SPECIES_ABRA, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 3}}},
+    {SPECIES_CLEFAIRY, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 8}}},
+    {SPECIES_DRATINI, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 13}}},
+    {SPECIES_SCYTHER, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 18}}},
+    {SPECIES_PORYGON, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 23}}},
 };
 
 const struct TMText gTMTexts[] = {
