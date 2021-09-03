@@ -33,6 +33,8 @@
 #include "pokemon_jump.h"
 #include "event_scripts.h"
 #include "done_button.h"
+#include "save_location.h"
+#include "constants/heal_locations.h"
 
 // this file's functions
 static void ResetMiniGamesResults(void);
@@ -189,7 +191,7 @@ void NewGameInitData(void)
             SetMonMoveSlot(mon, MOVE_PSYCHIC, 0);
             SetMonMoveSlot(mon, MOVE_FLY, 1);
             SetMonMoveSlot(mon, MOVE_SURF, 2);
-            SetMonMoveSlot(mon, MOVE_STRENGTH, 3);
+            SetMonMoveSlot(mon, MOVE_CUT, 3);
             GiveMonToPlayer(mon);
             Free(mon);
         }
@@ -222,8 +224,81 @@ void NewGameInitData(void)
 		AddBagItem(ITEM_RAINBOW_PASS,1);
 		AddBagItem(ITEM_MYSTIC_TICKET,1);
 		AddBagItem(ITEM_AURORA_TICKET,1);
+		SetMoney(&gSaveBlock1Ptr->money, 999999);
     }
 #endif //DEVMODE
+
+    if (gSaveBlock2Ptr->speedchoiceConfig.startLoc != START_PALLET){
+
+    	struct Pokemon * magikarp;
+
+    	FlagSet(FLAG_SYS_POKEMON_GET);
+    	FlagSet(FLAG_SYS_POKEDEX_GET);
+    	SetUnlockedPokedexFlags();
+
+    	magikarp = AllocZeroed(sizeof(struct Pokemon));
+		if (magikarp != NULL)
+		{
+			u32 pid;
+			u32 otid = T2_READ_32(gSaveBlock2Ptr->playerTrainerId);
+			pid = Random32();
+			CreateMon(magikarp, SPECIES_MAGIKARP, 1, 0, TRUE, pid, OT_ID_PLAYER_ID, 0);
+			SetMonMoveSlot(magikarp, MOVE_SPLASH, 0);
+			GiveMonToPlayer(magikarp);
+			Free(magikarp);
+		}
+		if(gSaveBlock2Ptr->speedchoiceConfig.startLoc == START_SAFARI){
+			//open saffron if option is chosen
+			if (gSaveBlock2Ptr->speedchoiceConfig.earlySaffron == SAFFRON_YES){
+				u16 * varPtr = GetVarPointer(VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES);
+				*varPtr = 1;
+			}
+
+			SetWarpDestination(MAP_GROUP(FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE), MAP_NUM(FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE), -1, 4, 6);
+			WarpIntoMap();
+			sInIntro = FALSE;
+			sInSubMenu = FALSE;
+			sInBattle = FALSE;
+			sInField = TRUE;
+			SetLastHealLocationWarp(SPAWN_FUCHSIA_CITY);
+		}
+		if(gSaveBlock2Ptr->speedchoiceConfig.startLoc == START_HITMON){
+
+			//force early saffron
+			u16 * varPtr = GetVarPointer(VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES);
+			*varPtr = 1;
+
+			//Set trainers in dojo to fought already.
+			FlagSet(1597);
+			FlagSet(1598);
+			FlagSet(1599);
+			FlagSet(1600);
+			FlagSet(1601);
+
+			SetWarpDestination(MAP_GROUP(SAFFRON_CITY_DOJO), MAP_NUM(SAFFRON_CITY_DOJO), -1, 6, 4);
+			WarpIntoMap();
+			sInIntro = FALSE;
+			sInSubMenu = FALSE;
+			sInBattle = FALSE;
+			sInField = TRUE;
+			SetLastHealLocationWarp(SPAWN_SAFFRON_CITY);
+		}
+		if(gSaveBlock2Ptr->speedchoiceConfig.startLoc == START_CELADON){
+			//open saffron if option is chosen
+			if (gSaveBlock2Ptr->speedchoiceConfig.earlySaffron == SAFFRON_YES){
+				u16 * varPtr = GetVarPointer(VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES);
+				*varPtr = 1;
+			}
+			SetWarpDestination(MAP_GROUP(CELADON_CITY_CONDOMINIUMS_ROOF_ROOM), MAP_NUM(CELADON_CITY_CONDOMINIUMS_ROOF_ROOM), -1, 6, 3);
+			WarpIntoMap();
+			sInIntro = FALSE;
+			sInSubMenu = FALSE;
+			sInBattle = FALSE;
+			sInField = TRUE;
+			SetLastHealLocationWarp(SPAWN_CELADON_CITY);
+		}
+
+    }
 }
 
 static void ResetMiniGamesResults(void)

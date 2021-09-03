@@ -190,40 +190,32 @@ const u8 gSpeedchoiceTextE4R2[]   = _("E4R2");
 /* SPEEDCHOICE MENU TEXT (Option Names)            */
 /* ----------------------------------------------- */
 
-// PAGE 1
 const u8 gSpeedchoiceOptionPreset[] = _("PRESET");
 const u8 gSpeedchoiceOptionName[] = _("NAME");
 const u8 gSpeedchoiceOptionRivalName[] = _("RIVAL NAME");
 const u8 gSpeedchoiceOptionEXP[] = _("EXP");
 const u8 gSpeedchoiceOptionPlotless[] = _("PLOTLESS");
-
-// PAGE 2
 const u8 gSpeedchoiceOptionEarlySaffron[] = _("EARLY SAFFRON");
 const u8 gSpeedchoiceOptionRaceGoal[] = _("RACE GOAL");
 const u8 gSpeedchoiceOptionSpinners[] = _("SPINNERS");
 const u8 gSpeedchoiceOptionEarlySurf[] = _("EARLY SURF");
 const u8 gSpeedchoiceOptionMaxVision[] = _("MAX VISION");
-
-// PAGE 3
 const u8 gSpeedchoiceOptionGoodEarlyWilds[] = _("GOOD EARLY WILDS");
 const u8 gSpeedchoiceOptionEasyFalseSwipe[] = _("EASY FALSE SWIPE");
 const u8 gSpeedchocieOptionEasyDexRewards[] = _("EASY DEX REWARDS");
 const u8 gSpeedchoiceOptionFastCatch[] = _("FAST CATCH");
 const u8 gSpeedchoiceOptionEarlyBike[] = _("EARLY BIKE");
-
-// PAGE 4
 const u8 gSpeedchoiceOptionGen7XItems[] = _("GEN 7 X ITEMS");
 const u8 gSpeedchoiceOptionEvoEveryLv[] = _("EVO EVERY LV");
 const u8 gSpeedchoiceOptionHmBadgeChk[] = _("HM BADGE CHK");
 const u8 gSpeedchoiceOptionEasySurgeCans[] = _("EASY SURGE");
 const u8 gSpeedchoiceOptionNerfBrock[] = _("NERF BROCK");
-
-// PAGE 5
 const u8 gSpeedchoiceOptionEarlyDaycare[] = _("EARLY DAYCARE");
 const u8 gSpeedchoiceOptionFastEggBreeding[] = _("FAST EGG BREEDING");
 const u8 gSpeedchoiceOptionFastEggHatching[] = _("FAST EGG HATCHING");
 const u8 gSpeedchoiceOptionMemeFishing[] = _("MEME FISHING");
 const u8 gSpeedchoiceOptionForceDitto[] = _("FORCE DITTO");
+const u8 gSpeedchoiceOptionStartLocation[] = _("START LOCATION");
 
 // CONSTANT OPTIONS
 const u8 gSpeedchoiceOptionPage[] = _("PAGE");
@@ -266,6 +258,7 @@ const u8 gSpeedchoiceTooltipFastEggBreeding[] = _("Eggs generate every cycle\nin
 const u8 gSpeedchoiceTooltipFastEggHatching[] = _("Eggs immediately hatch every cycle.");
 const u8 gSpeedchoiceTooltipMemeFishing[] = _("Old and Good Rod can catch high\nlevel pokemon.");
 const u8 gSpeedchoiceTooltipForceDitto[] = _("Eevee gift is always Ditto");
+const u8 gSpeedchoiceTooltipStartLocation[] = _("Starting Area.\nDOJO will force early Saffron.");
 
 // START GAME
 const u8 gSpeedchoiceStartGameText[] = _("CV: {STR_VAR_1}\nStart the game?");
@@ -293,6 +286,13 @@ const u8 gPresetNames[][20] = {
     [PRESET_BINGO]   =  _("BINGO"),
     [PRESET_CEA]     =  _("CEA"),
     [PRESET_RACE]    =  _("RACE"),
+};
+
+const u8 gStartLocationNames[][11] = {
+	[START_PALLET]  =  _("PALLET"),
+	[START_CELADON] =  _("EEVEE GIFT"),
+	[START_SAFARI]  =  _("SAFARI"),
+	[START_HITMON]  =  _("DOJO"),
 };
 
 // use local config optionConfig[0] for preset!
@@ -328,6 +328,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[FAST_HATCH]       = HATCH_NO,
 		[MEME_FISH]        = FISH_NO,
 		[FORCE_DITTO]      = DITTO_NO,
+		[START_LOC]        = START_PALLET,
     },
     [PRESET_BINGO]   = {
         [PRESET]           = PRESET_BINGO,
@@ -355,6 +356,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[FAST_HATCH]       = HATCH_YES,
 		[MEME_FISH]        = FISH_YES,
 		[FORCE_DITTO]      = DITTO_YES,
+		[START_LOC]        = START_PALLET,
     },
     [PRESET_CEA]     = {
         [PRESET]           = PRESET_CEA,
@@ -382,6 +384,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[FAST_HATCH]       = HATCH_NO,
 		[MEME_FISH]        = FISH_NO,
 		[FORCE_DITTO]      = DITTO_NO,
+		[START_LOC]        = START_PALLET,
     },
     [PRESET_RACE]    = {
         [PRESET]           = PRESET_RACE,
@@ -409,6 +412,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[FAST_HATCH]       = HATCH_NO,
 		[MEME_FISH]        = FISH_NO,
 		[FORCE_DITTO]      = DITTO_NO,
+		[START_LOC]        = START_PALLET,
     },
 };
 
@@ -484,6 +488,8 @@ const struct OptionChoiceConfig OptionChoiceConfigRaceGoal[] = {
     { 150, gSpeedchoiceTextHoF    },
     { 180, gSpeedchoiceTextE4R2   },
 };
+
+
 
 #define ARROW_X_LEFT    120
 #define ARROW_X_RIGHT   195
@@ -768,6 +774,17 @@ const struct SpeedchoiceOption SpeedchoiceOptions[CURRENT_OPTIONS_NUM + 1] = // 
 		.options = OptionChoiceConfigOnOff,
 		.tooltip = gSpeedchoiceTooltipForceDitto,
 	},
+	// ----------------------------------
+	// Start Location OPTION
+	// ----------------------------------
+	[START_LOC] = {
+		.optionCount = START_LOC_OPTION_COUNT,
+		.optionType = ARROW2,
+		.enabled = TRUE,
+		.string = gSpeedchoiceOptionStartLocation,
+		.options = NULL,
+		.tooltip = gSpeedchoiceTooltipStartLocation,
+	},
     // ----------------------------------
     // PAGE STATIC OPTION
     // ----------------------------------
@@ -848,6 +865,7 @@ void SetByteArrayToSaveOptions(const u8 * options_arr)
     gSaveBlock2Ptr->speedchoiceConfig.fastHatch = options_arr[FAST_HATCH];
     gSaveBlock2Ptr->speedchoiceConfig.memeFish = options_arr[MEME_FISH];
     gSaveBlock2Ptr->speedchoiceConfig.forceDitto = options_arr[FORCE_DITTO];
+    gSaveBlock2Ptr->speedchoiceConfig.startLoc = options_arr[START_LOC];
 }
 
 /*
@@ -915,6 +933,8 @@ u8 CheckSpeedchoiceOption(u8 option)
         return gSaveBlock2Ptr->speedchoiceConfig.memeFish;
     case FORCE_DITTO:
         return gSaveBlock2Ptr->speedchoiceConfig.forceDitto;
+    case START_LOC:
+        return gSaveBlock2Ptr->speedchoiceConfig.startLoc;
     default:
         return 0xFF;
     }
@@ -1187,6 +1207,18 @@ static void DrawGeneralChoices(const struct SpeedchoiceOption *option, u8 select
         DrawOptionMenuChoice(gPresetNames[sSpeedchoice->config.optionConfig[PRESET]], x_preset, y, SPC_COLOR_BLUE);
     }
         break;
+    case ARROW2:
+        {
+            s32 y = NEWMENUOPTIONCOORDS(row);
+            // perform centering, add 4 pixels for the 8x8 arrow centering
+            s32 x_preset = 4 + ARROW_X_LEFT + (ARROW_X_RIGHT - ARROW_X_LEFT -
+                                         GetStringWidth(2, gStartLocationNames[sSpeedchoice->config.optionConfig[START_LOC]], 0)) / 2u;
+
+            DrawOptionMenuChoice(gSpeedchoiceOptionLeftArrow, ARROW_X_LEFT, y, SPC_COLOR_RED); // left arrow
+            DrawOptionMenuChoice(gSpeedchoiceOptionRightArrow, ARROW_X_RIGHT, y, SPC_COLOR_RED); // right arrow
+            DrawOptionMenuChoice(gStartLocationNames[sSpeedchoice->config.optionConfig[START_LOC]], x_preset, y, SPC_COLOR_BLUE);
+        }
+            break;
     case PLAYER_NAME:
     {
         // Player name needs special handling as well.

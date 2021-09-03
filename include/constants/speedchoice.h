@@ -19,30 +19,36 @@
 #define PRESET               0
 #define PLAYER_NAME_SET      1
 #define RIVAL_NAME_SET       2
-#define EXPMATH              3
-#define PLOTLESS             4
-#define EARLY_SAFFRON        5
-#define RACE_GOAL            6
-#define SPINNERS             7
-#define EARLYSURF            8
-#define MAXVISION            9
-#define GOOD_EARLY_WILDS    10
-#define EASY_FALSE_SWIPE    11
-#define EASY_DEX_REWARDS    12
-#define FAST_CATCH          13
-#define EARLY_BIKE          14
-#define GEN_7_X_ITEMS       15
-#define EVO_EVERY_LEVEL     16
+#define START_LOC            3
+#define EXPMATH              4
+
+#define PLOTLESS             5
+#define EARLY_SAFFRON        6
+#define RACE_GOAL            7
+#define SPINNERS             8
+#define EARLYSURF            9
+
+#define MAXVISION           10
+#define GOOD_EARLY_WILDS    11
+#define EASY_FALSE_SWIPE    12
+#define EASY_DEX_REWARDS    13
+#define FAST_CATCH          14
+
+#define EARLY_BIKE          15
+#define GEN_7_X_ITEMS       16
 #define HM_BADGE_CHECKS     17
-#define EASY_SURGE_CANS     18
-#define NERF_BROCK          19
+#define NERF_BROCK          18
+#define EASY_SURGE_CANS     19
+
 #define EARLY_DAYCARE       20
 #define FAST_BREED          21
 #define FAST_HATCH          22
-#define MEME_FISH           23
-#define FORCE_DITTO         24
+#define FORCE_DITTO         23
+#define MEME_FISH           24
 
-#define CURRENT_OPTIONS_NUM 25
+#define EVO_EVERY_LEVEL     25
+
+#define CURRENT_OPTIONS_NUM 26
 // ----------------------
 // STATIC OPTIONS
 // ----------------------
@@ -240,11 +246,21 @@
 #define DITTO_NO 1
 #define FORCE_DITTO_OPTION_COUNT 2
 
+// --------------------
+// START LOC ENUM
+// --------------------
+#define START_PALLET 0
+#define START_CELADON 1
+#define START_SAFARI 2
+#define START_HITMON 3
+#define START_LOC_OPTION_COUNT 4
+
 // Enumeration for optionType in the Speedchoice struct below.
 
 #define NORMAL 0
 #define ARROW 1
 #define PLAYER_NAME 2
 #define RIVAL_NAME 3
+#define ARROW2 4
 
 #endif //POKEFIRERED_CONSTANTS_SPEEDCHOICE_H
