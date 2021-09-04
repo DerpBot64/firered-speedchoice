@@ -243,12 +243,12 @@ const u8 gSpeedchoiceTooltipPlotless[] = _("Affects whether the Rocket sections\
 const u8 gSpeedchoiceTooltipSpinners[] = _("PURGE: Makes spinners on a static\nspinning pattern at a fixed rate.\pHELL: Rapidly spins\nevery spinner every frame.\pWHY: Same as HELL but 4 frames\ninstead of 16.\pHELL and WHY also fix bag\nmanip.");
 const u8 gSpeedchoiceTooltipMaxVision[] = _("SANE: Will extend trainer vision\nto 8, but prevent trainers from\pwalking through walls or solid\nobjects.\pHELL: No collision or\nelevation detection.");
 const u8 gSpeedchoiceTooltipGoodEarlyWilds[] = _("SAME: Depending on the\nrandomizer check value, wild\pencounters in the grass for\n{PKMN} below lv 10 will have\ltheir final evolution.\pRAND: If they have a branching\nevolution, it will be randomly\lgenerated instead of being static.");
-const u8 gSpeedchoiceTooltipEarlySurf[] = _("Receive HM03 from Rival 2\ninstead of FAME CHECKER.");
+const u8 gSpeedchoiceTooltipEarlySurf[] = _("Receive HM03 from Rival 2\nalong with FAME CHECKER.");
 const u8 gSpeedchoiceTooltipEasyFalseSwipe[] = _("Makes FALSE SWIPE guaranteed\nOFF: Vanilla game behavior\pTUTOR: The tutor in Silph 2F teaches\nFALSE SWIPE.\pHM05: Replaces HM05 FLASH with\nHM05 FALSE SWIPE.");
 const u8 gSpeedchoiceTooltipFastCatch[] = _("All Pokeballs are guaranteed to\ncatch.");
 const u8 gSpeedchoiceTooltipEarlyBike[] = _("Start game with Bicycle.");
 const u8 gSpeedchoiceTooltipGen7XItems[] = _("Stat boost +2 instead of +1.");
-const u8 gSpeedchoiceTooltipEvoEveryLv[] = _("STATIC: {PKMN} evolve into a random\nbut set species every lv.\pRAND: Same thing as STATIC but\nrandom non-static every lv.");
+const u8 gSpeedchoiceTooltipEvoEveryLv[] = _("SAME: {PKMN} evolve into a random\nbut set species every lv.\pRAND: Same thing as SAME but\nrandom non-static every lv.");
 const u8 gSpeedchoiceTooltipHmBadgeChk[] = _("PURGE: There are no badge checks\nfor using HM moves in the field.\pKEEP: Vanilla behaviour.");
 const u8 gSpeedchoiceTooltipEasyDexRewards[] = _("Removes Pokédex caught conditions\nfor receiving certain items.");
 const u8 gSpeedchoiceTooltipEasySurgeCans[] = _("PURGE: The bottom left can will\nalways contain the first switch,\land the can to the right of it\lwill always contain the second.\pKEEP: Vanilla randomization\nHELL: Anything-goes randomization\lWHY: HELL + no save-scumming");
@@ -256,7 +256,7 @@ const u8 gSpeedchoiceTooltipNerfBrock[] = _("Nerfs LEADER BROCK by\nreducing his
 const u8 gSpeedchoiceTooltipEarlyDaycare[] = _("Clones Four Island Daycare couple\nto Route 5.\pAlso removes the lowest ledge.");
 const u8 gSpeedchoiceTooltipFastEggBreeding[] = _("Eggs generate every cycle\nin the daycare.");
 const u8 gSpeedchoiceTooltipFastEggHatching[] = _("Eggs immediately hatch every cycle.");
-const u8 gSpeedchoiceTooltipMemeFishing[] = _("Old and Good Rod can catch high\nlevel pokemon.");
+const u8 gSpeedchoiceTooltipMemeFishing[] = _("Old and Good Rod can catch high\nlevel Pokemon.");
 const u8 gSpeedchoiceTooltipForceDitto[] = _("Eevee gift is always Ditto");
 const u8 gSpeedchoiceTooltipStartLocation[] = _("Starting Area.\nDOJO will force early Saffron.");
 
@@ -1032,7 +1032,7 @@ static void HighlightOptionMenuItem(u8 index)
 static void DrawHeaderWindow(void);
 static void Task_SpeedchoiceMenuFadeIn(u8 taskId);
 
-extern const u8 *const gFemalePresetNames[19];
+extern const u8 *const gPlayerPresetNames[40];
 extern const u8 *const gRivalNameChoices[4];
 
 /*
@@ -1040,7 +1040,7 @@ extern const u8 *const gRivalNameChoices[4];
  */
 static inline void FormatInitialTempName(u8 nameId)
 {
-    StringCopy7(sSpeedchoice->tempPlayerName, gFemalePresetNames[nameId]);
+    StringCopy7(sSpeedchoice->tempPlayerName, gPlayerPresetNames[nameId]);
 }
 
 /*
@@ -1075,7 +1075,7 @@ void InitSpeedchoice(MainCallback savedCallback)
     sSpeedchoice->forceUpdate = FALSE;
     sSpeedchoice->config.optionConfig[PRESET] = PRESET_VANILLA;
     SetOptionChoicesAndConfigFromPreset(gPresets[PRESET_VANILLA]);
-    FormatInitialTempName(Random() % NELEMS(gFemalePresetNames));
+    FormatInitialTempName(Random() % NELEMS(gPlayerPresetNames));
     FormatInitialRivalName(Random() % NELEMS(gRivalNameChoices));
     SetMainCallback2(CB2_InitSpeedchoice);
 }
@@ -1153,7 +1153,7 @@ void CB2_InitSpeedchoice(void)
 
             SetOptionChoicesAndConfigFromPreset(gPresets[PRESET_VANILLA]);
 
-            FormatInitialTempName(Random() % NELEMS(gFemalePresetNames));
+            FormatInitialTempName(Random() % NELEMS(gPlayerPresetNames));
             FormatInitialRivalName(Random() % NELEMS(gRivalNameChoices));
         }
         DrawHeaderWindow();
