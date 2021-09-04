@@ -256,7 +256,7 @@ const u8 gSpeedchoiceTooltipNerfBrock[] = _("Nerfs LEADER BROCK by\nreducing his
 const u8 gSpeedchoiceTooltipEarlyDaycare[] = _("Clones Four Island Daycare couple\nto Route 5.\pAlso removes the lowest ledge.");
 const u8 gSpeedchoiceTooltipFastEggBreeding[] = _("Eggs generate every cycle\nin the daycare.");
 const u8 gSpeedchoiceTooltipFastEggHatching[] = _("Eggs immediately hatch every cycle.");
-const u8 gSpeedchoiceTooltipMemeFishing[] = _("Old and Good Rod can catch high\nlevel Pokemon.");
+const u8 gSpeedchoiceTooltipMemeFishing[] = _("Old and Good Rod can catch high\nlevel {PKMN}.");
 const u8 gSpeedchoiceTooltipForceDitto[] = _("Eevee gift is always Ditto");
 const u8 gSpeedchoiceTooltipStartLocation[] = _("Starting Area.\nDOJO will force early Saffron.");
 
