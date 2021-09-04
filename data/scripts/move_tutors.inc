@@ -53,12 +53,8 @@ MtText_27::
 	end
 
 SpeedchoiceEasyFalseSwipe:: @ SPEEDCHOICE
-	goto_if_set FLAG_TUTOR_THUNDER_WAVE, EventScript_FalseSwipeTaught
 	msgbox Text_SPEEDCHOICE_FALSE_SWIPE, MSGBOX_YESNO
 	compare VAR_RESULT, 0
-	goto_if_eq EventScript_FalseSwipeDeclined
-	call EventScript_CanOnlyBeLearnedOnce
-	compare VAR_RESULT, NO
 	goto_if_eq EventScript_FalseSwipeDeclined
 	msgbox Text_SPEEDCHOICE_FALSE_SWIPE2, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVETUTOR_THUNDER_WAVE
@@ -66,7 +62,6 @@ SpeedchoiceEasyFalseSwipe:: @ SPEEDCHOICE
 	compare VAR_RESULT, FALSE
 	goto_if_eq EventScript_FalseSwipeDeclined
 	msgbox Text_SPEEDCHOICE_FALSE_SWIPE3, MSGBOX_DEFAULT
-	setflag FLAG_TUTOR_THUNDER_WAVE
 	release
 	end
 
