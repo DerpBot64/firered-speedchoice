@@ -1600,6 +1600,16 @@ static void DrawHeaderWindow(void)
     FillWindowPixelBuffer(SPD_WIN_TEXT_OPTION, PIXEL_FILL(1));
     AddTextPrinterParameterized3(SPD_WIN_TEXT_OPTION, 2, 4, 1, sTextColors[SPC_COLOR_GRAY], TEXT_SPEED_FF, gSpeedchoiceTextHeader);
     width = GetStringWidth(2, gSpeedchoiceCurrentVersion, GetFontAttribute(2, FONTATTR_LETTER_SPACING));
+
+#if DEVMODE
+    {
+    	const u8 gSpeedchoiceTextDEV[]   = _(" DEV");
+    	s32 width2 = GetStringWidth(2, gSpeedchoiceTextDEV, GetFontAttribute(2, FONTATTR_LETTER_SPACING));
+    	width = width + width2;
+    	AddTextPrinterParameterized3(SPD_WIN_TEXT_OPTION, 2, (8 * WIN_TEXT_OPTION_WIDTH - 4) - width2, 1, sTextColors[SPC_COLOR_GRAY], TEXT_SPEED_FF, gSpeedchoiceTextDEV);
+    }
+#endif //DEVMODE
+
     AddTextPrinterParameterized3(SPD_WIN_TEXT_OPTION, 2, (8 * WIN_TEXT_OPTION_WIDTH - 4) - width, 1, sTextColors[SPC_COLOR_GRAY], TEXT_SPEED_FF, gSpeedchoiceCurrentVersion);
     CopyWindowToVram(SPD_WIN_TEXT_OPTION, COPYWIN_BOTH);
 }

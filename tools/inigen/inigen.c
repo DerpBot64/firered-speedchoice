@@ -304,6 +304,9 @@ int main(int argc, char ** argv)
 {
     const char * romName = "Emerald (U)";
     const char * romCode = "BPEE";
+
+    int devMode = 0;
+
     FILE * elfFile = NULL;
     FILE * outFile = NULL;
 
@@ -322,7 +325,15 @@ int main(int argc, char ** argv)
                 FATAL_ERROR("missing argument to --code\n");
             }
             romCode = argv[i];
-        } else if (arg[0] == '-') {
+        } else if (strcmp(arg, "--DEVMODE") == 0) {
+            i++;
+            if (i == argc) {
+                FATAL_ERROR("missing argument to --DEVMODE\n");
+            }
+            if(strcmp(argv[i], "1") == 0){
+            	devMode = 1;
+            }
+        }else if (arg[0] == '-') {
             FATAL_ERROR("unrecognized option: \"%s\"\n", arg);
         } else if (elfFile == NULL) {
             elfFile = fopen(arg, "rb");
@@ -362,7 +373,13 @@ int main(int argc, char ** argv)
     sh_scripts = GetSectionHeaderByName("script_data");
 
     // Start writing the INI
-    print("[%s (%s)]\n", romName, SPEEDCHOICE_VERSION);
+    print("[%s (%s", romName, SPEEDCHOICE_VERSION);
+    	if (devMode)
+        {
+        	print(" DEV");
+        }
+        print(")]\n");
+
     print("Game=%s\n", romCode);
     print("Version=1\n");
     print("Type=FRLG\n");
