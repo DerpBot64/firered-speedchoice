@@ -343,6 +343,16 @@ static const u8 sText_SpeedchoiceVersion[] = _("v" SPEEDCHOICE_VERSION);
 static void PrintSpeedchoiceVersion(u8 windowId)
 {
     s32 width = GetStringWidth(2, sText_SpeedchoiceVersion, 1);
+
+#if DEVMODE
+    {
+    	const u8 gSpeedchoiceTextDEV[]   = _(" DEV");
+    	s32 width2 = GetStringWidth(2, gSpeedchoiceTextDEV, 1);
+    	width = width + width2;
+    	AddTextPrinterParameterized3(windowId, 2, (8 * WIN_TILES_WIDE - 2) - width2, 1, sTextColor1, -1, gSpeedchoiceTextDEV);
+    }
+#endif //DEVMODE
+
     AddTextPrinterParameterized3(windowId, 2, (8 * WIN_TILES_WIDE - 2) - width, 2, sTextColor1, -1, sText_SpeedchoiceVersion);
 }
 
