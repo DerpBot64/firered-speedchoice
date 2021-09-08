@@ -5072,7 +5072,7 @@
       "price": 1000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "This attack move grows more\\npowerful the more the POKéMON\\nlikes its TRAINER.",
+      "description_english": "Allures the foe to\\nreduce evasiveness.\\nIt also attracts\\nwild POKéMON.",
       "importance": 0,
       "exitsBagOnUse": 0,
       "pocket": "POCKET_TM_CASE",
@@ -5081,7 +5081,7 @@
       "battleUsage": 0,
       "battleUseFunc": "NULL",
       "secondaryId": 0,
-      "moveId": "Return"
+      "moveId": "SweetScent"
     },
     {
       "english": "TM28",
