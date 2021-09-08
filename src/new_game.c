@@ -223,9 +223,12 @@ void NewGameInitData(void)
 		FlagSet( FLAG_ENABLE_SHIP_NAVEL_ROCK);
 		FlagSet( FLAG_ENABLE_SHIP_BIRTH_ISLAND);
 
+		FlagSet(FLAG_HIDE_POKEMON_MANSION_B1F_SECRET_KEY);
+
 		AddBagItem(ITEM_RAINBOW_PASS,1);
 		AddBagItem(ITEM_MYSTIC_TICKET,1);
 		AddBagItem(ITEM_AURORA_TICKET,1);
+		AddBagItem(ITEM_SECRET_KEY,1);
 		SetMoney(&gSaveBlock1Ptr->money, 999999);
 
 		AddBagItem(ITEM_PP_MAX,99);

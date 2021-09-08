@@ -138,6 +138,7 @@ CinnabarIsland_EventScript_BillPlotlessItems::
 	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_1
 	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_2
 	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_3
+	setflag FLAG_HIDE_RUIN_VALLEY_SCIENTIST
 	setvar VAR_MAP_SCENE_TWO_ISLAND, 4
 	special InitRoamer
 	checkspeedchoice PLOTLESS, PLOT_FULL
