@@ -36,6 +36,7 @@
 #include "save_location.h"
 #include "constants/heal_locations.h"
 #include "pokedex_screen.h"
+#include "constants/region_map_sections.h"
 
 // this file's functions
 static void ResetMiniGamesResults(void);
@@ -254,6 +255,7 @@ void NewGameInitData(void)
     if (gSaveBlock2Ptr->speedchoiceConfig.startLoc != START_PALLET){
 
     	struct Pokemon * magikarp;
+    	u8 metLocTemp;
 
     	FlagSet(FLAG_SYS_POKEMON_GET);
     	FlagSet(FLAG_SYS_POKEDEX_GET);
@@ -266,7 +268,14 @@ void NewGameInitData(void)
 			u32 otid = T2_READ_32(gSaveBlock2Ptr->playerTrainerId);
 			pid = Random32();
 			CreateMon(magikarp, SPECIES_MAGIKARP, 1, 0, TRUE, pid, OT_ID_PLAYER_ID, 0);
+
+			metLocTemp = METLOC_FATEFUL_ENCOUNTER;
+
+			SetBoxMonData(&magikarp->box, MON_DATA_MET_LOCATION, &metLocTemp);
 			SetMonMoveSlot(magikarp, MOVE_SPLASH, 0);
+			SetMonMoveSlot(magikarp, MOVE_NONE, 1);
+			SetMonMoveSlot(magikarp, MOVE_NONE, 2);
+			SetMonMoveSlot(magikarp, MOVE_NONE, 3);
 			GiveMonToPlayer(magikarp);
 			Free(magikarp);
 		}

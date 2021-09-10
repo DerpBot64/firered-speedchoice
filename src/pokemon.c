@@ -36,6 +36,7 @@
 #include "constants/facility_trainer_classes.h"
 #include "constants/hold_effects.h"
 #include "constants/battle_move_effects.h"
+#include "constants/region_map_sections.h"
 
 // Extracts the upper 16 bits of a 32-bit number
 #define HIHALF(n) (((n) & 0xFFFF0000) >> 16)
@@ -3629,7 +3630,11 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+        //override starter magikarp
+    	if ((GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_MAGIKARP) && (GetMonData(&gPlayerParty[i], MON_DATA_MET_LOCATION, NULL) == METLOC_FATEFUL_ENCOUNTER))
+    		break;
+
+    	if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE)
             break;
     }
 
@@ -3637,6 +3642,15 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
         return SendMonToPC(mon);
 
     CopyMon(&gPlayerParty[i], mon, sizeof(*mon));
+
+    //hypothetically somehow we replaced in the middle of the party?
+	//recount party size
+	for (i = 0; i < PARTY_SIZE; i++)
+	{
+		if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+			break;
+	}
+
     gPlayerPartyCount = i + 1;
     return MON_GIVEN_TO_PARTY;
 }
