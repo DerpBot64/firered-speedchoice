@@ -43,7 +43,6 @@ EWRAM_DATA struct FrameTimers gFrameTimers = {0};
 
 
 static EWRAM_DATA struct DoneButton* doneButton = NULL;
-static EWRAM_DATA struct BoxSlotCombo* boxSlotCombo = NULL;
 
 static void DoneButtonCB(void);
 static void PrintGameStatsPage(void);
@@ -177,79 +176,79 @@ void TryAddButtonStatBy(enum DoneButtonStat stat, u32 add)
         TRY_INC_GAME_STAT_BY(2, OHKOsDealt, add, USHRT_MAX);
         break;
     case DB_CRITS_TAKEN:
-        TRY_INC_GAME_STAT_BY(2, critsTaken, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, critsTaken, add, USHRT_MAX);
         break;
     case DB_OHKOS_TAKEN:
-        TRY_INC_GAME_STAT_BY(2, OHKOsTaken, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, OHKOsTaken, add, USHRT_MAX);
         break;
     case DB_PLAYER_HP_HEALED:
-        TRY_INC_GAME_STAT_BY(2, playerHPHealed, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, playerHPHealed, add, UINT_MAX);
         break;
     case DB_ENEMY_HP_HEALED:
-        TRY_INC_GAME_STAT_BY(2, enemyHPHealed, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, enemyHPHealed, add, UINT_MAX);
         break;
     case DB_PLAYER_POKEMON_FAINTED:
-        TRY_INC_GAME_STAT_BY(2, playerPokemonFainted, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, playerPokemonFainted, add, USHRT_MAX);
         break;
     case DB_ENEMY_POKEMON_FAINTED:
-        TRY_INC_GAME_STAT_BY(2, enemyPokemonFainted, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, enemyPokemonFainted, add, USHRT_MAX);
         break;
     case DB_EXP_GAINED:
-        TRY_INC_GAME_STAT_BY(2, expGained, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, expGained, add, UINT_MAX);
         break;
     case DB_SWITCHOUTS:
-        TRY_INC_GAME_STAT_BY(2, switchouts, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, switchouts, add, USHRT_MAX);
         break;
     case DB_BATTLES:
-        TRY_INC_GAME_STAT_BY(2, battles, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, battles, add, USHRT_MAX);
         break;
     case DB_TRAINER_BATTLES:
-        TRY_INC_GAME_STAT_BY(2, trainerBattles, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, trainerBattles, add, USHRT_MAX);
         break;
     case DB_WILD_BATTLES:
-        TRY_INC_GAME_STAT_BY(2, wildBattles, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, wildBattles, add, USHRT_MAX);
         break;
     case DB_BATTLES_FLED:
-        TRY_INC_GAME_STAT_BY(2, battlesFled, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, battlesFled, add, USHRT_MAX);
         break;
     case DB_FAILED_RUNS:
-        TRY_INC_GAME_STAT_BY(2, failedRuns, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, failedRuns, add, USHRT_MAX);
         break;
     case DB_MONEY_MADE:
-        TRY_INC_GAME_STAT_BY(2, moneyMade, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, moneyMade, add, UINT_MAX);
         break;
     case DB_MONEY_SPENT:
-        TRY_INC_GAME_STAT_BY(2, moneySpent, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, moneySpent, add, UINT_MAX);
         break;
     case DB_MONEY_LOST:
-        TRY_INC_GAME_STAT_BY(2, moneyLost, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, moneyLost, add, UINT_MAX);
         break;
     case DB_ITEMS_PICKED_UP:
-        TRY_INC_GAME_STAT_BY(2, itemsPickedUp, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, itemsPickedUp, add, USHRT_MAX);
         break;
     case DB_ITEMS_BOUGHT:
-        TRY_INC_GAME_STAT_BY(2, itemsBought, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, itemsBought, add, USHRT_MAX);
         break;
     case DB_ITEMS_SOLD:
-        TRY_INC_GAME_STAT_BY(2, itemsSold, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, itemsSold, add, USHRT_MAX);
         break;
     case DB_MOVES_LEARNT:
-        TRY_INC_GAME_STAT_BY(2, movesLearnt, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, movesLearnt, add, USHRT_MAX);
         break;
     case DB_BALLS_THROWN:
-        TRY_INC_GAME_STAT_BY(2, ballsThrown, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, ballsThrown, add, USHRT_MAX);
         break;
     case DB_POKEMON_CAUGHT_IN_BALLS:
-        TRY_INC_GAME_STAT_BY(2, pokemonCaughtInBalls, add, USHRT_MAX);
+        TRY_INC_GAME_STAT_BY(1, pokemonCaughtInBalls, add, USHRT_MAX);
         break;
     case DB_EVOLUTIONS_ATTEMPTED:
-        TRY_INC_GAME_STAT_BY(2, evosAttempted, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, evosAttempted, add, UINT_MAX);
         break;
     case DB_EVOLUTIONS_COMPLETED:
-        TRY_INC_GAME_STAT_BY(2, evosCompleted, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, evosCompleted, add, UINT_MAX);
         break;
     case DB_EVOLUTIONS_CANCELLED:
-        TRY_INC_GAME_STAT_BY(2, evosCancelled, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, evosCancelled, add, UINT_MAX);
         break;
     }
 }
@@ -342,79 +341,79 @@ void TryIncrementButtonStat(enum DoneButtonStat stat)
         TRY_INC_GAME_STAT(2, OHKOsDealt, USHRT_MAX);
         break;
     case DB_CRITS_TAKEN:
-        TRY_INC_GAME_STAT(2, critsTaken, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, critsTaken, USHRT_MAX);
         break;
     case DB_OHKOS_TAKEN:
-        TRY_INC_GAME_STAT(2, OHKOsTaken, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, OHKOsTaken, USHRT_MAX);
         break;
     case DB_PLAYER_HP_HEALED:
-        TRY_INC_GAME_STAT(2, playerHPHealed, UINT_MAX);
+        TRY_INC_GAME_STAT(1, playerHPHealed, UINT_MAX);
         break;
     case DB_ENEMY_HP_HEALED:
-        TRY_INC_GAME_STAT(2, enemyHPHealed, UINT_MAX);
+        TRY_INC_GAME_STAT(1, enemyHPHealed, UINT_MAX);
         break;
     case DB_PLAYER_POKEMON_FAINTED:
-        TRY_INC_GAME_STAT(2, playerPokemonFainted, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, playerPokemonFainted, USHRT_MAX);
         break;
     case DB_ENEMY_POKEMON_FAINTED:
-        TRY_INC_GAME_STAT(2, enemyPokemonFainted, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, enemyPokemonFainted, USHRT_MAX);
         break;
     case DB_EXP_GAINED:
-        TRY_INC_GAME_STAT(2, expGained, UINT_MAX);
+        TRY_INC_GAME_STAT(1, expGained, UINT_MAX);
         break;
     case DB_SWITCHOUTS:
-        TRY_INC_GAME_STAT(2, switchouts, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, switchouts, USHRT_MAX);
         break;
     case DB_BATTLES:
-        TRY_INC_GAME_STAT(2, battles, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, battles, USHRT_MAX);
         break;
     case DB_TRAINER_BATTLES:
-        TRY_INC_GAME_STAT(2, trainerBattles, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, trainerBattles, USHRT_MAX);
         break;
     case DB_WILD_BATTLES:
-        TRY_INC_GAME_STAT(2, wildBattles, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, wildBattles, USHRT_MAX);
         break;
     case DB_BATTLES_FLED:
-        TRY_INC_GAME_STAT(2, battlesFled, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, battlesFled, USHRT_MAX);
         break;
     case DB_FAILED_RUNS:
-        TRY_INC_GAME_STAT(2, failedRuns, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, failedRuns, USHRT_MAX);
         break;
     case DB_MONEY_MADE:
-        TRY_INC_GAME_STAT(2, moneyMade, UINT_MAX);
+        TRY_INC_GAME_STAT(1, moneyMade, UINT_MAX);
         break;
     case DB_MONEY_SPENT:
-        TRY_INC_GAME_STAT(2, moneySpent, UINT_MAX);
+        TRY_INC_GAME_STAT(1, moneySpent, UINT_MAX);
         break;
     case DB_MONEY_LOST:
-        TRY_INC_GAME_STAT(2, moneyLost, UINT_MAX);
+        TRY_INC_GAME_STAT(1, moneyLost, UINT_MAX);
         break;
     case DB_ITEMS_PICKED_UP:
-        TRY_INC_GAME_STAT(2, itemsPickedUp, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, itemsPickedUp, USHRT_MAX);
         break;
     case DB_ITEMS_BOUGHT:
-        TRY_INC_GAME_STAT(2, itemsBought, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, itemsBought, USHRT_MAX);
         break;
     case DB_ITEMS_SOLD:
-        TRY_INC_GAME_STAT(2, itemsSold, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, itemsSold, USHRT_MAX);
         break;
     case DB_MOVES_LEARNT:
-        TRY_INC_GAME_STAT(2, movesLearnt, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, movesLearnt, USHRT_MAX);
         break;
     case DB_BALLS_THROWN:
-        TRY_INC_GAME_STAT(2, ballsThrown, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, ballsThrown, USHRT_MAX);
         break;
     case DB_POKEMON_CAUGHT_IN_BALLS:
-        TRY_INC_GAME_STAT(2, pokemonCaughtInBalls, USHRT_MAX);
+        TRY_INC_GAME_STAT(1, pokemonCaughtInBalls, USHRT_MAX);
         break;
     case DB_EVOLUTIONS_ATTEMPTED:
-        TRY_INC_GAME_STAT(2, evosAttempted, UINT_MAX);
+        TRY_INC_GAME_STAT(1, evosAttempted, UINT_MAX);
         break;
     case DB_EVOLUTIONS_COMPLETED:
-        TRY_INC_GAME_STAT(2, evosCompleted, UINT_MAX);
+        TRY_INC_GAME_STAT(1, evosCompleted, UINT_MAX);
         break;
     case DB_EVOLUTIONS_CANCELLED:
-        TRY_INC_GAME_STAT(2, evosCancelled, UINT_MAX);
+        TRY_INC_GAME_STAT(1, evosCancelled, UINT_MAX);
         break;
     }
 }
@@ -480,55 +479,55 @@ u32 GetDoneButtonStat(enum DoneButtonStat stat)
     case DB_OHKOS_DEALT:
         GET_GAME_STAT(2, OHKOsDealt, USHRT_MAX);
     case DB_CRITS_TAKEN:
-        GET_GAME_STAT(2, critsTaken, USHRT_MAX);
+        GET_GAME_STAT(1, critsTaken, USHRT_MAX);
     case DB_OHKOS_TAKEN:
-        GET_GAME_STAT(2, OHKOsTaken, USHRT_MAX);
+        GET_GAME_STAT(1, OHKOsTaken, USHRT_MAX);
     case DB_PLAYER_HP_HEALED:
-        GET_GAME_STAT(2, playerHPHealed, UINT_MAX);
+        GET_GAME_STAT(1, playerHPHealed, UINT_MAX);
     case DB_ENEMY_HP_HEALED:
-        GET_GAME_STAT(2, enemyHPHealed, UINT_MAX);
+        GET_GAME_STAT(1, enemyHPHealed, UINT_MAX);
     case DB_PLAYER_POKEMON_FAINTED:
-        GET_GAME_STAT(2, playerPokemonFainted, USHRT_MAX);
+        GET_GAME_STAT(1, playerPokemonFainted, USHRT_MAX);
     case DB_ENEMY_POKEMON_FAINTED:
-        GET_GAME_STAT(2, enemyPokemonFainted, USHRT_MAX);
+        GET_GAME_STAT(1, enemyPokemonFainted, USHRT_MAX);
     case DB_EXP_GAINED:
-        GET_GAME_STAT(2, expGained, UINT_MAX);
+        GET_GAME_STAT(1, expGained, UINT_MAX);
     case DB_SWITCHOUTS:
-        GET_GAME_STAT(2, switchouts, USHRT_MAX);
+        GET_GAME_STAT(1, switchouts, USHRT_MAX);
     case DB_BATTLES:
-        GET_GAME_STAT(2, battles, USHRT_MAX);
+        GET_GAME_STAT(1, battles, USHRT_MAX);
     case DB_TRAINER_BATTLES:
-        GET_GAME_STAT(2, trainerBattles, USHRT_MAX);
+        GET_GAME_STAT(1, trainerBattles, USHRT_MAX);
     case DB_WILD_BATTLES:
-        GET_GAME_STAT(2, wildBattles, USHRT_MAX);
+        GET_GAME_STAT(1, wildBattles, USHRT_MAX);
     case DB_BATTLES_FLED:
-        GET_GAME_STAT(2, battlesFled, USHRT_MAX);
+        GET_GAME_STAT(1, battlesFled, USHRT_MAX);
     case DB_FAILED_RUNS:
-        GET_GAME_STAT(2, failedRuns, USHRT_MAX);
+        GET_GAME_STAT(1, failedRuns, USHRT_MAX);
     case DB_MONEY_MADE:
-        GET_GAME_STAT(2, moneyMade, UINT_MAX);
+        GET_GAME_STAT(1, moneyMade, UINT_MAX);
     case DB_MONEY_SPENT:
-        GET_GAME_STAT(2, moneySpent, UINT_MAX);
+        GET_GAME_STAT(1, moneySpent, UINT_MAX);
     case DB_MONEY_LOST:
-        GET_GAME_STAT(2, moneyLost, UINT_MAX);
+        GET_GAME_STAT(1, moneyLost, UINT_MAX);
     case DB_ITEMS_PICKED_UP:
-        GET_GAME_STAT(2, itemsPickedUp, USHRT_MAX);
+        GET_GAME_STAT(1, itemsPickedUp, USHRT_MAX);
     case DB_ITEMS_BOUGHT:
-        GET_GAME_STAT(2, itemsBought, USHRT_MAX);
+        GET_GAME_STAT(1, itemsBought, USHRT_MAX);
     case DB_ITEMS_SOLD:
-        GET_GAME_STAT(2, itemsSold, USHRT_MAX);
+        GET_GAME_STAT(1, itemsSold, USHRT_MAX);
     case DB_MOVES_LEARNT:
-        GET_GAME_STAT(2, movesLearnt, USHRT_MAX);
+        GET_GAME_STAT(1, movesLearnt, USHRT_MAX);
     case DB_BALLS_THROWN:
-        GET_GAME_STAT(2, ballsThrown, USHRT_MAX);
+        GET_GAME_STAT(1, ballsThrown, USHRT_MAX);
     case DB_POKEMON_CAUGHT_IN_BALLS:
-        GET_GAME_STAT(2, pokemonCaughtInBalls, USHRT_MAX);
+        GET_GAME_STAT(1, pokemonCaughtInBalls, USHRT_MAX);
     case DB_EVOLUTIONS_ATTEMPTED:
-        GET_GAME_STAT(2, evosAttempted, UINT_MAX);
+        GET_GAME_STAT(1, evosAttempted, UINT_MAX);
     case DB_EVOLUTIONS_COMPLETED:
-        GET_GAME_STAT(2, evosCompleted, UINT_MAX);
+        GET_GAME_STAT(1, evosCompleted, UINT_MAX);
     case DB_EVOLUTIONS_CANCELLED:
-        GET_GAME_STAT(2, evosCancelled, UINT_MAX);
+        GET_GAME_STAT(1, evosCancelled, UINT_MAX);
     }
 }
 

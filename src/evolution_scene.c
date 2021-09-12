@@ -604,7 +604,8 @@ static void Task_EvolutionScene(u8 taskId)
         && gTasks[sEvoGraphicsTaskId].isActive
         && gTasks[taskId].tBits & EVO_SCENE_CAN_STOP)
     {
-        gTasks[taskId].tState = 17;
+    	TryIncrementButtonStat(DB_EVOLUTIONS_CANCELLED);
+    	gTasks[taskId].tState = 17;
         gTasks[sEvoGraphicsTaskId].EvoGraphicsTaskEvoStop = TRUE;
         DestroyMovingBackgroundTasks();
         return;
@@ -730,6 +731,7 @@ static void Task_EvolutionScene(u8 taskId)
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_SEEN);
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_CAUGHT);
             IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
+            TryIncrementButtonStat(DB_EVOLUTIONS_COMPLETED);
         }
         break;
     case 15: // check if it wants to learn a new move
@@ -779,7 +781,6 @@ static void Task_EvolutionScene(u8 taskId)
             Free(sEvoStructPtr);
             sEvoStructPtr = NULL;
             FreeAllWindowBuffers();
-            TryIncrementButtonStat(DB_EVOLUTIONS_COMPLETED);
             SetMainCallback2(gCB2_AfterEvolution);
         }
         break;
@@ -1148,7 +1149,6 @@ static void Task_TradeEvolutionScene(u8 taskId)
             Free(sEvoStructPtr);
             sEvoStructPtr = NULL;
             gTextFlags.useAlternateDownArrow = FALSE;
-            TryIncrementButtonStat(DB_EVOLUTIONS_CANCELLED);
             SetMainCallback2(gCB2_AfterEvolution);
         }
         break;
