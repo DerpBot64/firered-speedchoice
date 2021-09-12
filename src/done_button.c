@@ -1202,6 +1202,7 @@ static void handlePartyStatsPage(s8 slotID, s8 boxID) {
 				boxID);
 	}
 }
+
 static void getPrevPartySlot() {
 	s32 i;
 	struct DoneButton *currentPosition = doneButton;
@@ -1219,6 +1220,7 @@ static void getPrevPartySlot() {
 		return;
 	}
 }
+
 static void getNextPartySlot() {
 	struct DoneButton *currentPosition = doneButton;
 	//skip if we have no pokemon yet
@@ -1230,11 +1232,19 @@ static void getNextPartySlot() {
 		currentPosition->slotID = -1;
 		getNextBoxSlot();
 		return;
+	} else {
+		if (GetMonData(&gPlayerParty[currentPosition->slotID + 1],
+				MON_DATA_SPECIES) == SPECIES_NONE) {
+			currentPosition->boxID = 1;
+			currentPosition->slotID = -1;
+			getNextBoxSlot();
+			return;
+		}
+		currentPosition->slotID = currentPosition->slotID + 1;
+		return;
 	}
-	currentPosition->slotID = currentPosition->slotID + 1;
-	return;
-
 }
+
 static void getNextBoxSlot() {
 	s32 i;
 	struct DoneButton *currentPosition = doneButton;

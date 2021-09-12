@@ -246,8 +246,11 @@ static const u16 sWhiteOutMoneyLossBadgeFlagIDs[] = {
 
 static void DoWhiteOut(void)
 {
-    ScriptContext2_RunNewScript(EventScript_ResetEliteFourEnd);
-    RemoveMoney(&gSaveBlock1Ptr->money, ComputeWhiteOutMoneyLoss());
+	u32 losings;
+	ScriptContext2_RunNewScript(EventScript_ResetEliteFourEnd);
+    losings = ComputeWhiteOutMoneyLoss();
+    RemoveMoney(&gSaveBlock1Ptr->money, losings);
+    TryAddButtonStatBy(DB_MONEY_LOST, losings);
     HealPlayerParty();
     Overworld_ResetStateAfterWhitingOut();
     Overworld_SetWhiteoutRespawnPoint();
@@ -262,7 +265,6 @@ u32 ComputeWhiteOutMoneyLoss(void)
     u32 money = GetMoney(&gSaveBlock1Ptr->money);
     if (losings > money)
         losings = money;
-    TryAddButtonStatBy(DB_MONEY_LOST, losings);
     return losings;
 }
 

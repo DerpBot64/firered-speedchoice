@@ -998,7 +998,7 @@ static void BuyMenuTryMakePurchase(u8 taskId)
     PutWindowTilemap(4);
     if (AddBagItem(tItemId, tItemCount) == TRUE)
     {
-        TryIncrementButtonStat(DB_ITEMS_BOUGHT);
+        TryAddButtonStatBy(DB_ITEMS_BOUGHT, tItemCount);
         BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
         DebugFunc_PrintPurchaseDetails(taskId);
         RecordItemPurchase(tItemId, tItemCount, 1);
@@ -1113,7 +1113,6 @@ void RecordItemPurchase(u16 item, u16 quantity, u8 a2)
         if (history->unk0 > 999999)
             history->unk0 = 999999;
     }
-    TryAddButtonStatBy(DB_ITEMS_BOUGHT, quantity);
 }
 
 static void RecordQuestLogItemPurchase(void)

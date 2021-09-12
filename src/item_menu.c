@@ -33,6 +33,7 @@
 #include "tm_case.h"
 #include "constants/items.h"
 #include "constants/songs.h"
+#include "done_button.h"
 
 #define FREE_IF_SET(ptr) ({ if (ptr) Free(ptr); })
 
@@ -1949,6 +1950,7 @@ static void Task_FinalizeSaleToShop(u8 taskId)
     s16 *data = gTasks[taskId].data;
     PlaySE(SE_SHOP);
     RemoveBagItem(gSpecialVar_ItemId, tTossQuantity);
+    TryAddButtonStatBy(DB_ITEMS_SOLD, tTossQuantity);
     AddMoney(&gSaveBlock1Ptr->money, itemid_get_market_price(gSpecialVar_ItemId) / 2 * tTossQuantity);
     RecordItemPurchase(gSpecialVar_ItemId, tTossQuantity, 2);
     DestroyListMenuTask(tListMenuId, &gBagMenuState.cursorPos[gBagMenuState.pocket], &gBagMenuState.itemsAbove[gBagMenuState.pocket]);
