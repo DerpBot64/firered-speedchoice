@@ -117,6 +117,57 @@ void ResetMenuAndMonGlobals(void)
     ResetSpecialVars();
 }
 
+void NewGameResetDoneButtonStats(){
+	//excludes timers, those are done on hitting the go button
+    gSaveBlock2Ptr->doneButtonStats.saveCount = 0;
+    gSaveBlock2Ptr->doneButtonStats.reloadCount = 0;
+    gSaveBlock2Ptr->doneButtonStats.stepCount = 0;
+    gSaveBlock2Ptr->doneButtonStats.stepCountWalk = 0;
+    gSaveBlock2Ptr->doneButtonStats.stepCountSurf = 0;
+    gSaveBlock2Ptr->doneButtonStats.stepCountBike = 0;
+    gSaveBlock2Ptr->doneButtonStats.stepCountRun = 0;
+    gSaveBlock2Ptr->doneButtonStats.bonks = 0;
+    gSaveBlock2Ptr->doneButtonStats.totalDamageDealt = 0;
+    gSaveBlock2Ptr->doneButtonStats.actualDamageDealt = 0;
+    gSaveBlock2Ptr->doneButtonStats.totalDamageTaken = 0;
+    gSaveBlock2Ptr->doneButtonStats.actualDamageTaken = 0;
+    gSaveBlock2Ptr->doneButtonStats.ownMovesHit = 0;
+    gSaveBlock2Ptr->doneButtonStats.ownMovesMissed = 0;
+    gSaveBlock2Ptr->doneButtonStats.enemyMovesHit = 0;
+    gSaveBlock2Ptr->doneButtonStats.enemyMovesMissed = 0;
+    gSaveBlock2Ptr->doneButtonStats.ownMovesSE = 0;
+    gSaveBlock2Ptr->doneButtonStats.ownMovesNVE = 0;
+    gSaveBlock2Ptr->doneButtonStats.enemyMovesSE = 0;
+    gSaveBlock2Ptr->doneButtonStats.enemyMovesNVE = 0;
+    gSaveBlock2Ptr->doneButtonStats.critsDealt = 0;
+    gSaveBlock2Ptr->doneButtonStats.OHKOsDealt = 0;
+    gSaveBlock2Ptr->doneButtonStats.critsTaken = 0;
+    gSaveBlock2Ptr->doneButtonStats.OHKOsTaken = 0;
+    gSaveBlock2Ptr->doneButtonStats.playerHPHealed = 0;
+    gSaveBlock2Ptr->doneButtonStats.enemyHPHealed = 0;
+    gSaveBlock2Ptr->doneButtonStats.playerPokemonFainted = 0;
+    gSaveBlock2Ptr->doneButtonStats.enemyPokemonFainted = 0;
+    gSaveBlock2Ptr->doneButtonStats.expGained = 0;
+    gSaveBlock2Ptr->doneButtonStats.switchouts = 0;
+    gSaveBlock2Ptr->doneButtonStats.battles = 0;
+    gSaveBlock2Ptr->doneButtonStats.trainerBattles = 0;
+    gSaveBlock2Ptr->doneButtonStats.wildBattles = 0;
+    gSaveBlock2Ptr->doneButtonStats.battlesFled = 0;
+    gSaveBlock2Ptr->doneButtonStats.failedRuns = 0;
+    gSaveBlock2Ptr->doneButtonStats.moneyMade = 0;
+    gSaveBlock2Ptr->doneButtonStats.moneySpent = 0;
+    gSaveBlock2Ptr->doneButtonStats.moneyLost = 0;
+    gSaveBlock2Ptr->doneButtonStats.itemsPickedUp = 0;
+    gSaveBlock2Ptr->doneButtonStats.itemsBought = 0;
+    gSaveBlock2Ptr->doneButtonStats.itemsSold = 0;
+    gSaveBlock2Ptr->doneButtonStats.movesLearnt = 0;
+    gSaveBlock2Ptr->doneButtonStats.ballsThrown = 0;
+    gSaveBlock2Ptr->doneButtonStats.pokemonCaughtInBalls = 0;
+    gSaveBlock2Ptr->doneButtonStats.evosAttempted = 0;
+    gSaveBlock2Ptr->doneButtonStats.evosCompleted = 0;
+    gSaveBlock2Ptr->doneButtonStats.evosCancelled = 0;
+}
+
 void NewGameInitData(void)
 {
     u8 rivalName[PLAYER_NAME_LENGTH + 1];
@@ -162,6 +213,8 @@ void NewGameInitData(void)
     ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
+
+    NewGameResetDoneButtonStats();
 
     //saved to flag so it can hide NPCs
     if(gSaveBlock2Ptr->speedchoiceConfig.earlyDaycare == DAYCARE_NO){

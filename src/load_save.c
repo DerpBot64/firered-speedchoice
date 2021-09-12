@@ -209,17 +209,11 @@ void LoadSerializedGame(void)
 {
     LoadPlayerParty();
     LoadObjectEvents();
-
     // ---------------------
-    // SPEEDCHOICE CHANGE
-    // ---------------------
-    // Load the timers here. Note we don't overwrite them: we add the counts to the total
-    // timers since we want to include the intro counts it took to reach the load.
-    gFrameTimers.frameCount += gSaveBlock2Ptr->doneButtonStats.frameCount;
-    gFrameTimers.owFrameCount += gSaveBlock2Ptr->doneButtonStats.owFrameCount;
-    gFrameTimers.battleFrameCount += gSaveBlock2Ptr->doneButtonStats.battleFrameCount;
-    gFrameTimers.menuFrameCount += gSaveBlock2Ptr->doneButtonStats.menuFrameCount;
-    gFrameTimers.introsFrameCount += gSaveBlock2Ptr->doneButtonStats.introsFrameCount;
+	// SPEEDCHOICE CHANGE
+	// ---------------------
+	// DON'T load the timers here.
+	// Game is loaded multiple times on boot, so do this in overworld CB2_ContinueSavedGame
 }
 
 void LoadPlayerBag(void)

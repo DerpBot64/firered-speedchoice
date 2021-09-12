@@ -977,11 +977,18 @@ void DoneButtonCB(void)
         gMain.state++;
     case 9:
         DrawDoneButtonFrame();
-        gLocalFrameTimers.totalFrames = GetDoneButtonStat(DB_FRAME_COUNT_TOTAL) + gFrameTimers.frameCount;
-        gLocalFrameTimers.totalFramesOw = GetDoneButtonStat(DB_FRAME_COUNT_OW) + gFrameTimers.owFrameCount;
-        gLocalFrameTimers.totalFramesBattle = GetDoneButtonStat(DB_FRAME_COUNT_BATTLE) + gFrameTimers.battleFrameCount;
-        gLocalFrameTimers.totalFramesMenu = GetDoneButtonStat(DB_FRAME_COUNT_MENU) + gFrameTimers.menuFrameCount;
-        gLocalFrameTimers.totalFramesIntro = GetDoneButtonStat(DB_FRAME_COUNT_INTROS) + gFrameTimers.introsFrameCount;
+        //remove double count of done button time. Frames from earlier saves already counted on
+		//save load into gFrameTimers.
+		//gLocalFrameTimers.totalFrames = GetDoneButtonStat(DB_FRAME_COUNT_TOTAL) + gFrameTimers.frameCount;
+		//gLocalFrameTimers.totalFramesOw = GetDoneButtonStat(DB_FRAME_COUNT_OW) + gFrameTimers.owFrameCount;
+		//gLocalFrameTimers.totalFramesBattle = GetDoneButtonStat(DB_FRAME_COUNT_BATTLE) + gFrameTimers.battleFrameCount;
+		//gLocalFrameTimers.totalFramesMenu = GetDoneButtonStat(DB_FRAME_COUNT_MENU) + gFrameTimers.menuFrameCount;
+		//gLocalFrameTimers.totalFramesIntro = GetDoneButtonStat(DB_FRAME_COUNT_INTROS) + gFrameTimers.introsFrameCount;
+		gLocalFrameTimers.totalFrames = gFrameTimers.frameCount;
+		gLocalFrameTimers.totalFramesOw = gFrameTimers.owFrameCount;
+		gLocalFrameTimers.totalFramesBattle = gFrameTimers.battleFrameCount;
+		gLocalFrameTimers.totalFramesMenu = gFrameTimers.menuFrameCount;
+		gLocalFrameTimers.totalFramesIntro = gFrameTimers.introsFrameCount;
         gMain.state++;
         break;
     case 10:
@@ -1047,8 +1054,8 @@ static void Task_DestroyDoneButton(u8 taskId)
 // it doesnt seem centered right. subtract 8 pixels to compensate for these functions
 void PrintPageHeader(const struct DoneButtonLineItem *item)
 {
-    s32 width = GetStringWidth(0, item->name, 0);
-    s32 centered_x = ((29 * 8) - (1 * 8) - width) / 2;
+    s32 width = GetStringWidth(2, item->name, 0);
+    s32 centered_x = (240 - width) / 2;
 
     AddTextPrinterParameterized(0, 2, item->name, centered_x - 8, 1, -1, NULL);
 }
@@ -1060,7 +1067,7 @@ void PrintPageString(void)
 
     ConvertIntToDecimalStringN(gStringVar1, data->page + 1, STR_CONV_MODE_RIGHT_ALIGN, 1);
     StringExpandPlaceholders(gStringVar4, gPageText);
-    width = GetStringWidth(0, gStringVar4, 0);
+    width = GetStringWidth(2, gStringVar4, 0);
     centered_x = (240 - width) / 2;
 
     AddTextPrinterParameterized(0, 2, gStringVar4, centered_x - 8, 128, -1, NULL);
@@ -1092,13 +1099,10 @@ static void PrintGameStatsPage(void)
             {
                 value_s = gTODOString;
             }
-            width = GetStringWidth(0, value_s, 0);
+            width = GetStringWidth(2, value_s, 0);
             if (items[i].name != NULL)
             {
-                if(doneButton->page + 1 == 1) // timer spacing handling
-                    AddTextPrinterParameterized(0, 2, value_s, 216 - width, 18 * i + 1, -1, NULL);
-                else
-                    AddTextPrinterParameterized(0, 2, value_s, 192 - width, 18 * i + 1, -1, NULL);
+                AddTextPrinterParameterized(0, 2, value_s, 216 - width, 18 * i + 1, -1, NULL);
             }
         }
     }

@@ -19,6 +19,7 @@
 #include "naming_screen.h"
 #include "random.h"
 #include "new_menu_helpers.h"
+#include "done_button.h"
 
 // We reuse the option menu and main menu palette data to simplfy things.
 extern const u16 sOptionMenuPalette[1];
@@ -1406,7 +1407,17 @@ static void Task_AskToStartGame(u8 taskId)
     switch (Menu_ProcessInputNoWrapClearOnChoose())
     {
     case 0:  // YES
-        gTextFlags.disableHoldToMash = FALSE;
+
+    	//set frame counters to 0 right on pressing go button
+    	//this is run before the oak intro starts
+    	//NewGameInitData is run after oak intro
+    	gFrameTimers.frameCount = 0;
+    	gFrameTimers.owFrameCount = 0;
+    	gFrameTimers.battleFrameCount = 0;
+    	gFrameTimers.menuFrameCount = 0;
+    	gFrameTimers.introsFrameCount = 0;
+
+    	gTextFlags.disableHoldToMash = FALSE;
         PlayBGM(MUS_NEW_GAME_EXIT);
         PlaySE(SE_SELECT);
         SaveSpeedchoiceOptions();
