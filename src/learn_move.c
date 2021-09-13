@@ -16,6 +16,7 @@
 #include "strings.h"
 #include "constants/songs.h"
 #include "constants/moves.h"
+#include "done_button.h"
 
 /*
  * Move relearner state machine
@@ -515,7 +516,8 @@ static void MoveRelearnerStateMachine(void)
         case 0:
             if (GiveMoveToMon(&gPlayerParty[sMoveRelearner->selectedPartyMember], sMoveRelearner->learnableMoves[sMoveRelearner->selectedIndex]) != 0xFFFF)
             {
-                StringExpandPlaceholdersAndPrintTextOnWindow7Color2(gText_MonLearnedMove);
+                TryIncrementButtonStat(DB_MOVES_LEARNT);
+				StringExpandPlaceholdersAndPrintTextOnWindow7Color2(gText_MonLearnedMove);
                 gSpecialVar_0x8004 = TRUE;
                 sMoveRelearner->state = 31;
             }
@@ -655,6 +657,7 @@ static void MoveRelearnerStateMachine(void)
         break;
     case MENU_STATE_DOUBLE_FANFARE_FORGOT_MOVE:
         StringExpandPlaceholdersAndPrintTextOnWindow7Color2(gText_MonForgotOldMoveAndMonLearnedNewMove);
+		TryIncrementButtonStat(DB_MOVES_LEARNT);
         sMoveRelearner->state = 31;
         PlayFanfare(MUS_LEVEL_UP);
         break;
