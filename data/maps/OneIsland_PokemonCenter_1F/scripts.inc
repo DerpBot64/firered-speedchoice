@@ -295,13 +295,20 @@ OneIsland_PokemonCenter_1F_EventScript_GiveCelioSapphire:: @ 8170FA5
 	msgbox OneIsland_PokemonCenter_1F_Text_LinkedUpWithLanette
 	applymovement LOCALID_CELIO, Movement_FacePlayer
 	waitmovement 0
+	specialvar VAR_RESULT, GetStarterSpecies
+	copyvar VAR_0x8004, VAR_RESULT
+	compare VAR_0x8004, SPECIES_BULBASAUR
+	call_if_eq CinnabarIsland_EventScript_Set_Entei
+	compare VAR_0x8004, SPECIES_CHARMANDER
+	call_if_eq CinnabarIsland_EventScript_Set_Suicune
+	compare VAR_0x8004, SPECIES_SQUIRTLE
+	call_if_eq CinnabarIsland_EventScript_Set_Raikou
 	msgbox OneIsland_PokemonCenter_1F_Text_ManagedToLinkWithHoennThankYou
 	special SetPostgameFlags
 	setflag FLAG_SYS_CAN_LINK_WITH_RS
 	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
 	setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 6
-	special InitRoamer
 	release
 	end
 

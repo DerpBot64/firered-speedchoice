@@ -140,11 +140,37 @@ CinnabarIsland_EventScript_BillPlotlessItems::
 	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_3
 	setflag FLAG_HIDE_RUIN_VALLEY_SCIENTIST
 	setvar VAR_MAP_SCENE_TWO_ISLAND, 4
-	special InitRoamer
+	specialvar VAR_RESULT, GetStarterSpecies
+	copyvar VAR_0x8004, VAR_RESULT
+	compare VAR_0x8004, SPECIES_BULBASAUR
+	call_if_eq CinnabarIsland_EventScript_Set_Entei
+	compare VAR_0x8004, SPECIES_CHARMANDER
+	call_if_eq CinnabarIsland_EventScript_Set_Suicune
+	compare VAR_0x8004, SPECIES_SQUIRTLE
+	call_if_eq CinnabarIsland_EventScript_Set_Raikou
+	msgbox CinnabarIsland_Text_Roamer
 	checkspeedchoice PLOTLESS, PLOT_FULL
 	call_if_eq CinnabarIsland_EventScript_BillFullPlotlessFlags
 	goto CinnabarIsland_EventScript_SkipSeviiIslands
 	end
+
+CinnabarIsland_EventScript_Set_Raikou::
+	setvar VAR_TEMP_3, SPECIES_RAIKOU
+	getspeciesname 0, VAR_TEMP_3
+	startroamer VAR_TEMP_3
+	return
+
+CinnabarIsland_EventScript_Set_Entei::
+	setvar VAR_TEMP_3, SPECIES_ENTEI
+	getspeciesname 0, VAR_TEMP_3
+	startroamer VAR_TEMP_3
+	return
+
+CinnabarIsland_EventScript_Set_Suicune::
+	setvar VAR_TEMP_3, SPECIES_SUICUNE
+	getspeciesname 0, VAR_TEMP_3
+	startroamer VAR_TEMP_3
+	return
 
 CinnabarIsland_EventScript_BillFullPlotlessFlags::
 	setflag FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS

@@ -77,3 +77,7 @@ CinnabarIsland_Text_IfYouHaveTriPassYouCanGoAgain:: @ 8180F09
     .string "VERMILION PORT.\p"
     .string "All right, thanks for your company!$"
 
+CinnabarIsland_Text_Roamer::
+	.string "{STR_VAR_1} is now roaming\n"
+	.string "the wild.$"
+

@@ -1456,6 +1456,11 @@
 	.2byte \max
 	.endm
 
+	.macro startroamer species:req
+	.byte 0xd7
+	.2byte \species
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

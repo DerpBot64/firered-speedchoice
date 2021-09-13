@@ -116,6 +116,9 @@ const struct
     {SPECIES_DRATINI, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 13}}},
     {SPECIES_SCYTHER, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 18}}},
     {SPECIES_PORYGON, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 23}}},
+	{SPECIES_RAIKOU, {{"CinnabarIsland_EventScript_Set_Raikou", 3}}},
+	{SPECIES_ENTEI, {{"CinnabarIsland_EventScript_Set_Entei", 3}}},
+	{SPECIES_SUICUNE, {{"CinnabarIsland_EventScript_Set_Suicune", 3}}},
 };
 
 const struct TMText gTMTexts[] = {

@@ -216,6 +216,7 @@ gScriptCmdTable:: @ 815F9B4
 	.4byte ScrCmd_bufferitemnameplural
 	.4byte ScrCmd_checkspeedchoice
 	.4byte ScrCmd_seededrandom
+	.4byte ScrCmd_startroamer
 
 gScriptCmdTableEnd:: @ 815FD08
 	.4byte ScrCmd_nop
