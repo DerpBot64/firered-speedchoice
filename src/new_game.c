@@ -171,6 +171,7 @@ void NewGameResetDoneButtonStats(){
 void NewGameInitData(void)
 {
     u8 rivalName[PLAYER_NAME_LENGTH + 1];
+    u16 * natDexScenePointer;
 
     StringCopy(rivalName, gSaveBlock1Ptr->rivalName);
     gDifferentSaveFile = TRUE;
@@ -231,6 +232,9 @@ void NewGameInitData(void)
     if (gSaveBlock2Ptr->speedchoiceConfig.raceGoal == GOAL_MANUAL)
         AddBagItem(ITEM_DONE_BUTTON, 1);
     FlagSet(FLAG_SYS_B_DASH);
+
+	natDexScenePointer = GetVarPointer(VAR_MAP_SCENE_PALLET_TOWN_OAK_NATIONAL_DEX_SCENE);
+	*natDexScenePointer = 0;
 
 #if DEVMODE
     {

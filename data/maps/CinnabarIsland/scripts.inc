@@ -125,6 +125,7 @@ CinnabarIsland_EventScript_BillPlotlessItems::
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
 	special SetPostgameFlags
+	setflag FLAG_SYS_PSEUDO_NATIONAL_DEX
 	setflag FLAG_GOT_RUBY
 	setflag FLAG_SYS_CAN_LINK_WITH_RS
 	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD

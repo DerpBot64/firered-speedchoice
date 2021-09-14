@@ -41,7 +41,7 @@ PalletTown_EventScript_MoveSignLadyToRouteEntrance:: @ 81654BD
 	return
 
 PalletTown_OnFrame:: @ 81654CE
-	map_script_2 VAR_MAP_SCENE_PALLET_TOWN_OAK, 2, PalletTown_EventScript_OakRatingScene
+	map_script_2 VAR_MAP_SCENE_PALLET_TOWN_OAK_NATIONAL_DEX_SCENE, 2, PalletTown_EventScript_OakRatingScene
 	.2byte 0
 
 @ Oak approaches player after exiting their house post Elite Four to check if they should receieve the National Dex
@@ -53,9 +53,9 @@ PalletTown_EventScript_OakRatingScene:: @ 81654D8
 	addobject LOCALID_PROF_OAK
 	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakWalkToPlayersDoor
 	waitmovement 0
-	goto_if_unset FLAG_WORLD_MAP_ONE_ISLAND, PalletTown_EventScript_NotBeenToOneIslandYet
 	checkspeedchoice EASY_DEX_REWARDS, EASY_DEX_REWARDS_ON
 	goto_if_eq PalletTown_EventScript_SkipDexCheck
+	goto_if_unset FLAG_WORLD_MAP_ONE_ISLAND, PalletTown_EventScript_NotBeenToOneIslandYet
 	msgbox PalletTown_Text_OakLetMeSeePokedex
 	setvar VAR_0x8004, 0
 	specialvar VAR_RESULT, GetPokedexCount
@@ -83,9 +83,9 @@ PalletTown_EventScript_DoFollowMe::
 	waitmovement 0
 	closedoor 16, 13
 	waitdooranim
-	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 7
-	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 3
+	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK_NATIONAL_DEX_SCENE, 7
 	setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
+	setflag FLAG_HIDE_RIVAL_IN_LAB
 	warp MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB, 255, 6, 12
 	waitstate
 	releaseall
@@ -96,7 +96,7 @@ PalletTown_EventScript_EndOakRatingScene:: @ 816557E
 	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakExit
 	waitmovement 0
 	removeobject LOCALID_PROF_OAK
-	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 3
+	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK_NATIONAL_DEX_SCENE, 3
 	releaseall
 	end
 
@@ -231,6 +231,7 @@ PalletTown_EventScript_OakTrigger:: @ 8165605
 	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
 	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1
 	setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
+	clearflag FLAG_HIDE_RIVAL_IN_LAB
 	setflag FLAG_DONT_TRANSITION_MUSIC
 	warp MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB, 255, 6, 12
 	waitstate

@@ -27,13 +27,13 @@ PalletTown_RivalsHouse_EventScript_Daisy:: @ 8168D56
 	lock
 	faceplayer
 	famechecker FAMECHECKER_DAISY, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
+	compare VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1
+	goto_if_eq PalletTown_RivalsHouse_EventScript_GiveTownMap
 	goto_if_set FLAG_SYS_GAME_CLEAR, PalletTown_RivalsHouse_EventScript_GroomMon
 	compare RECEIVED_TOWN_MAP, TRUE
 	goto_if_eq PalletTown_RivalsHouse_EventScript_PleaseGiveMonsRest
 	compare VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2
 	goto_if_eq PalletTown_RivalsHouse_EventScript_ExplainTownMap
-	compare VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1
-	goto_if_eq PalletTown_RivalsHouse_EventScript_GiveTownMap
 	compare VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1
 	goto_if_ge PalletTown_RivalsHouse_EventScript_HeardBattledRival
 	msgbox PalletTown_RivalsHouse_Text_HiBrothersAtLab
