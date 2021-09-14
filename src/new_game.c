@@ -37,6 +37,7 @@
 #include "constants/heal_locations.h"
 #include "pokedex_screen.h"
 #include "constants/region_map_sections.h"
+#include "pokemon.h"
 
 // this file's functions
 static void ResetMiniGamesResults(void);
@@ -238,20 +239,27 @@ void NewGameInitData(void)
 
 #if DEVMODE
     {
-    	u16 i;
+		u16 i;
+		u8 ev = 252;
+		u8 ev2 = 6;
     	struct Pokemon * mon = AllocZeroed(sizeof(struct Pokemon));
         if (mon != NULL)
         {
             u32 pid;
             u32 otid = T2_READ_32(gSaveBlock2Ptr->playerTrainerId);
-            do {
-                pid = Random32();
-            } while (!IsShinyOtIdPersonality(otid, pid));
+            do
+			{
+				pid = Random32();
+			} while (NATURE_RASH != GetNatureFromPersonality(pid));
             CreateMon(mon, SPECIES_MEWTWO, 100, 31, TRUE, pid, OT_ID_PLAYER_ID, 0);
             SetMonMoveSlot(mon, MOVE_PSYCHIC, 0);
             SetMonMoveSlot(mon, MOVE_FLY, 1);
             SetMonMoveSlot(mon, MOVE_SURF, 2);
             SetMonMoveSlot(mon, MOVE_THUNDERBOLT, 3);
+			SetMonData(mon, MON_DATA_ATK_EV, &ev);
+			SetMonData(mon, MON_DATA_SPATK_EV, &ev);
+			SetMonData(mon, MON_DATA_SPEED_EV, &ev2);
+			CalculateMonStats(mon);
             GiveMonToPlayer(mon);
             Free(mon);
         }
