@@ -10,6 +10,7 @@
 .equ PLAYER_STARTER_SPECIES,  VAR_TEMP_2
 .equ RIVAL_STARTER_SPECIES,   VAR_TEMP_3
 .equ RIVAL_STARTER_ID,        VAR_TEMP_4
+.equ NICKNAME_VARIABLE,       VAR_TEMP_5
 
 .equ SHOWED_OAK_COMPLETE_DEX, FLAG_TEMP_2
 
@@ -1224,6 +1225,7 @@ PalletTown_ProfessorOaksLab_EventScript_ChoseStarter:: @ 8169C74
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_PALLET_LADY_NOT_BLOCKING_SIGN
 	givemon PLAYER_STARTER_SPECIES, 5, ITEM_NONE
+	copyvar NICKNAME_VARIABLE, VAR_RESULT
 	copyvar VAR_STARTER_MON, PLAYER_STARTER_NUM
 	getspeciesname 0, PLAYER_STARTER_SPECIES
 	message PalletTown_ProfessorOaksLab_Text_ReceivedMonFromOak
@@ -1238,10 +1240,24 @@ PalletTown_ProfessorOaksLab_EventScript_ChoseStarter:: @ 8169C74
 	end
 
 EventScript_GiveNicknameToStarter:: @ 8169CCC
+	compare NICKNAME_VARIABLE, 0
+	goto_if_eq EventScript_GiveNicknameToStarterParty
+	compare NICKNAME_VARIABLE, 1
+	goto_if_eq EventScript_GiveNicknameToStarterPC
+	goto PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter @you blew it, no room for starter anywhere
+	end
+
+EventScript_GiveNicknameToStarterParty:: @ 8169CCC
 	call EventScript_GetGiftMonPartySlot
 	call EventScript_ChangePokemonNickname
 	goto PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter
 	end
+
+EventScript_GiveNicknameToStarterPC:: @ 8169CCC
+	call EventScript_NameReceivedBoxMon
+	goto PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter
+	end
+
 
 PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter:: @ 8169CDC
 	closemessage
