@@ -271,9 +271,7 @@ OneIsland_PokemonCenter_1F_Text_ManagedToLinkWithHoennThankYou:: @ 81A1D7D
     .string "fully operational!\p"
     .string "{PLAYER}, I owe it all to you!\p"
     .string "Thanks to you, my dream came\n"
-    .string "true…\p"
-	.string "{STR_VAR_1} is now roaming\n"
-	.string "the wild.$"
+    .string "true…$"
 
 
 OneIsland_PokemonCenter_1F_Text_WishYouBestOfLuck:: @ 81A1E39

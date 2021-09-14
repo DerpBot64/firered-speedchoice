@@ -302,6 +302,10 @@ OneIsland_PokemonCenter_1F_EventScript_GiveCelioSapphire:: @ 8170FA5
 	compare VAR_0x8004, SPECIES_SQUIRTLE
 	call_if_eq CinnabarIsland_EventScript_Set_Raikou
 	msgbox OneIsland_PokemonCenter_1F_Text_ManagedToLinkWithHoennThankYou
+	drawmonpic VAR_TEMP_3, 10, 3
+	msgbox CinnabarIsland_Text_Roamer
+	waitbuttonpress
+	erasemonpic
 	special SetPostgameFlags
 	setflag FLAG_SYS_CAN_LINK_WITH_RS
 	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD

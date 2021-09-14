@@ -149,7 +149,10 @@ CinnabarIsland_EventScript_BillPlotlessItems::
 	call_if_eq CinnabarIsland_EventScript_Set_Suicune
 	compare VAR_0x8004, SPECIES_SQUIRTLE
 	call_if_eq CinnabarIsland_EventScript_Set_Raikou
+	drawmonpic VAR_TEMP_3, 10, 3
 	msgbox CinnabarIsland_Text_Roamer
+	waitbuttonpress
+	erasemonpic
 	checkspeedchoice PLOTLESS, PLOT_FULL
 	call_if_eq CinnabarIsland_EventScript_BillFullPlotlessFlags
 	goto CinnabarIsland_EventScript_SkipSeviiIslands
