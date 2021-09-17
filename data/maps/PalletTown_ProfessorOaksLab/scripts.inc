@@ -1191,7 +1191,7 @@ PalletTown_ProfessorOaksLab_EventScript_ConfirmStarterChoice:: @ 8169BE1
 PalletTown_ProfessorOaksLab_EventScript_ConfirmBulbasaur:: @ 8169C14
 	msgbox PalletTown_ProfessorOaksLab_Text_OakChoosingBulbasaur, MSGBOX_YESNO
 	compare VAR_RESULT, YES
-	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_ChoseStarter
+	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_ChoseStarter_Speedchoice
 	compare VAR_RESULT, NO
 	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_DeclinedStarter
 	end
@@ -1199,7 +1199,7 @@ PalletTown_ProfessorOaksLab_EventScript_ConfirmBulbasaur:: @ 8169C14
 PalletTown_ProfessorOaksLab_EventScript_ConfirmSquirtle:: @ 8169C33
 	msgbox PalletTown_ProfessorOaksLab_Text_OakChoosingSquirtle, MSGBOX_YESNO
 	compare VAR_RESULT, YES
-	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_ChoseStarter
+	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_ChoseStarter_Speedchoice
 	compare VAR_RESULT, NO
 	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_DeclinedStarter
 	end
@@ -1207,7 +1207,7 @@ PalletTown_ProfessorOaksLab_EventScript_ConfirmSquirtle:: @ 8169C33
 PalletTown_ProfessorOaksLab_EventScript_ConfirmCharmander:: @ 8169C52
 	msgbox PalletTown_ProfessorOaksLab_Text_OakChoosingCharmander, MSGBOX_YESNO
 	compare VAR_RESULT, YES
-	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_ChoseStarter
+	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_ChoseStarter_Speedchoice
 	compare VAR_RESULT, NO
 	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_DeclinedStarter
 	end
@@ -1225,7 +1225,6 @@ PalletTown_ProfessorOaksLab_EventScript_ChoseStarter:: @ 8169C74
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_PALLET_LADY_NOT_BLOCKING_SIGN
 	givemon PLAYER_STARTER_SPECIES, 5, ITEM_NONE
-	copyvar NICKNAME_VARIABLE, VAR_RESULT
 	copyvar VAR_STARTER_MON, PLAYER_STARTER_NUM
 	getspeciesname 0, PLAYER_STARTER_SPECIES
 	message PalletTown_ProfessorOaksLab_Text_ReceivedMonFromOak
@@ -1240,24 +1239,10 @@ PalletTown_ProfessorOaksLab_EventScript_ChoseStarter:: @ 8169C74
 	end
 
 EventScript_GiveNicknameToStarter:: @ 8169CCC
-	compare NICKNAME_VARIABLE, 0
-	goto_if_eq EventScript_GiveNicknameToStarterParty
-	compare NICKNAME_VARIABLE, 1
-	goto_if_eq EventScript_GiveNicknameToStarterPC
-	goto PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter @you blew it, no room for starter anywhere
-	end
-
-EventScript_GiveNicknameToStarterParty:: @ 8169CCC
 	call EventScript_GetGiftMonPartySlot
 	call EventScript_ChangePokemonNickname
 	goto PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter
 	end
-
-EventScript_GiveNicknameToStarterPC:: @ 8169CCC
-	call EventScript_NameReceivedBoxMon
-	goto PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter
-	end
-
 
 PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter:: @ 8169CDC
 	closemessage
@@ -1428,4 +1413,45 @@ PalletTown_ProfessorOaksLab_EventScript_RightSign:: @ 8169E7A
 PalletTown_ProfessorOaksLab_EventScript_RightSignAlt:: @ 8169E90
 	msgbox PalletTown_ProfessorOaksLab_Text_AllMonTypesHaveStrongAndWeakPoints
 	releaseall
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_ChoseStarter_Speedchoice:: @ 8169C74
+	erasemonpic
+	removeobject VAR_LAST_TALKED
+	msgbox PalletTown_ProfessorOaksLab_Text_OakThisMonIsEnergetic
+	call EventScript_RestorePrevTextColor
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_PALLET_LADY_NOT_BLOCKING_SIGN
+	givemon PLAYER_STARTER_SPECIES, 5, ITEM_NONE
+	copyvar NICKNAME_VARIABLE, VAR_RESULT
+	copyvar VAR_STARTER_MON, PLAYER_STARTER_NUM
+	getspeciesname 0, PLAYER_STARTER_SPECIES
+	message PalletTown_ProfessorOaksLab_Text_ReceivedMonFromOak
+	waitmessage
+	playfanfare MUS_OBTAIN_KEY_ITEM
+	waitfanfare
+	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq EventScript_GiveNicknameToStarter_Speedchoice
+	compare VAR_RESULT, NO
+	goto_if_eq PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter
+	end
+
+EventScript_GiveNicknameToStarter_Speedchoice:: @ 8169CCC
+	compare NICKNAME_VARIABLE, 0
+	goto_if_eq EventScript_GiveNicknameToStarterParty_Speedchoice
+	compare NICKNAME_VARIABLE, 1
+	goto_if_eq EventScript_GiveNicknameToStarterPC_Speedchoice
+	goto PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter @you blew it, no room for starter anywhere
+	end
+
+EventScript_GiveNicknameToStarterParty_Speedchoice:: @ 8169CCC
+	call EventScript_GetGiftMonPartySlot
+	call EventScript_ChangePokemonNickname
+	goto PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter
+	end
+
+EventScript_GiveNicknameToStarterPC_Speedchoice:: @ 8169CCC
+	call EventScript_NameReceivedBoxMon
+	goto PalletTown_ProfessorOaksLab_EventScript_RivalPicksStarter
 	end
