@@ -151,6 +151,20 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysA;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysN;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SSAnne;
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanSurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanVSSeekerBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MaySurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayVSSeekerBike;
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ItemBallHidden;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ItemBallBuried;
@@ -310,4 +324,18 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SS_ANNE]                  = &gObjectEventGraphicsInfo_SSAnne,
 	[OBJ_EVENT_GFX_ITEM_BALL_HIDDEN]         = &gObjectEventGraphicsInfo_ItemBallHidden,
 	[OBJ_EVENT_GFX_ITEM_BALL_BURIED]         = &gObjectEventGraphicsInfo_ItemBallBuried
+	[OBJ_EVENT_GFX_BRENDAN_NORMAL] 			= &gObjectEventGraphicsInfo_BrendanNormal,
+	[OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] 		= &gObjectEventGraphicsInfo_BrendanBike,
+	[OBJ_EVENT_GFX_BRENDAN_SURFING] 		= &gObjectEventGraphicsInfo_BrendanSurf,
+	[OBJ_EVENT_GFX_BRENDAN_FIELD_MOVE] 		= &gObjectEventGraphicsInfo_BrendanFieldMove,
+	[OBJ_EVENT_GFX_BRENDAN_FISHING] 		= &gObjectEventGraphicsInfo_BrendanFish,
+	[OBJ_EVENT_GFX_BRENDAN_VS_SEEKER]		= &gObjectEventGraphicsInfo_BrendanVSSeeker,
+	[OBJ_EVENT_GFX_BRENDAN_VS_SEEKER_BIKE]	= &gObjectEventGraphicsInfo_BrendanVSSeekerBike,
+	[OBJ_EVENT_GFX_MAY_NORMAL] 				= &gObjectEventGraphicsInfo_MayNormal,
+	[OBJ_EVENT_GFX_MAY_MACH_BIKE] 			= &gObjectEventGraphicsInfo_MayBike,
+	[OBJ_EVENT_GFX_MAY_SURFING] 			= &gObjectEventGraphicsInfo_MaySurf,
+	[OBJ_EVENT_GFX_MAY_FIELD_MOVE] 			= &gObjectEventGraphicsInfo_MayFieldMove,
+	[OBJ_EVENT_GFX_MAY_FISHING] 			= &gObjectEventGraphicsInfo_MayFish,
+	[OBJ_EVENT_GFX_MAY_VS_SEEKER]			= &gObjectEventGraphicsInfo_MayVSSeeker,
+	[OBJ_EVENT_GFX_MAY_VS_SEEKER_BIKE]		= &gObjectEventGraphicsInfo_MayVSSeekerBike,
 };

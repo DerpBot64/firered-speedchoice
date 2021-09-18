@@ -2161,11 +2161,16 @@ static void mli4_mapscripts_and_other(void)
     ResetObjectEvents();
     GetCameraFocusCoords(&x, &y);
     player = GetInitialPlayerAvatarState();
-    InitPlayerAvatar(x, y, player->direction, gSaveBlock2Ptr->playerGender);
+    InitPlayerAvatar(x, y, player->direction, getPlayerAvatarID());
     SetPlayerAvatarTransitionFlags(player->transitionFlags);
     ResetInitialPlayerAvatarState();
     TrySpawnObjectEvents(0, 0);
     TryRunOnWarpIntoMapScript();
+}
+
+u8 getPlayerAvatarID(){
+	//return 1;
+	return (gSaveBlock2Ptr->playerTrainerId[0]) % AVATAR_COUNT;
 }
 
 static void sub_8057100(void)
@@ -3544,7 +3549,7 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
         if (gameVersion == VERSION_FIRE_RED || gameVersion == VERSION_LEAF_GREEN)
         {
             objEvent->spriteId = AddPseudoObjectEvent(
-                GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)),
+                GetRivalAvatarGraphicsIdByStateIdAndAvatar(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)),
                 SpriteCB_LinkPlayer, 0, 0, 0);
         }
         else
