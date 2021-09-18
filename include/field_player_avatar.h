@@ -5,7 +5,6 @@
 
 void ClearPlayerAvatarInfo(void);
 void SetPlayerAvatarExtraStateTransition(u8, u8);
-u8 GetPlayerAvatarGenderByGraphicsId(u8);
 bool8 TestPlayerAvatarFlags(u8);
 void PlayerGetDestCoords(s16 *, s16 *);
 u8 GetPlayerFacingDirection(void);
@@ -38,8 +37,8 @@ bool8 PartyHasMonWithSurf(void);
 bool8 IsPlayerSurfingNorth(void);
 u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y);
 void StartPlayerAvatarVsSeekerAnim(void);
-u8 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender);
-u8 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender);
+u8 GetRivalAvatarGraphicsIdByStateIdAndAvatar(u8 state, u8 avatar);
+u8 GetPlayerAvatarGraphicsIdByStateIdAndAvatar(u8 state, u8 avatar);
 u8 CheckForObjectEventCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 direction, u8 metatileBehavior);
 void PlayerGoSlowest(u8 direction);
 void PlayerGoSlow(u8 direction);
@@ -60,7 +59,7 @@ void sub_805C260(void);
 void player_step(u8 direction, u16 newKeys, u16 heldKeys);
 bool32 PlayerIsMovingOnRockStairs(u8 direction);
 void UpdatePlayerAvatarTransitionState(void);
-void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender);
+void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 avatar);
 void PlayerUseAcroBikeOnBumpySlope(u8 direction);
 u8 GetRSAvatarGraphicsIdByGender(u8 gender);
 
