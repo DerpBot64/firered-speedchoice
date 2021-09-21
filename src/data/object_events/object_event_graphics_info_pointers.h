@@ -177,6 +177,14 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueFish;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueVSSeeker;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueVSSeekerBike;
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanSurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanVSSeekerBike;
+
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_RED_NORMAL]               = &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE]                 = &gObjectEventGraphicsInfo_RedBike,
@@ -353,4 +361,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 	[OBJ_EVENT_GFX_BLUE_FISHING] 			= &gObjectEventGraphicsInfo_BlueFish,
 	[OBJ_EVENT_GFX_BLUE_VS_SEEKER]			= &gObjectEventGraphicsInfo_BlueVSSeeker,
 	[OBJ_EVENT_GFX_BLUE_VS_SEEKER_BIKE]		= &gObjectEventGraphicsInfo_BlueVSSeekerBike,
+	[OBJ_EVENT_GFX_ETHAN_NORMAL] 			= &gObjectEventGraphicsInfo_EthanNormal,
+	[OBJ_EVENT_GFX_ETHAN_MACH_BIKE] 		= &gObjectEventGraphicsInfo_EthanBike,
+	[OBJ_EVENT_GFX_ETHAN_SURFING] 			= &gObjectEventGraphicsInfo_EthanSurf,
+	[OBJ_EVENT_GFX_ETHAN_FIELD_MOVE] 		= &gObjectEventGraphicsInfo_EthanFieldMove,
+	[OBJ_EVENT_GFX_ETHAN_FISHING] 			= &gObjectEventGraphicsInfo_EthanFish,
+	[OBJ_EVENT_GFX_ETHAN_VS_SEEKER]			= &gObjectEventGraphicsInfo_EthanVSSeeker,
+	[OBJ_EVENT_GFX_ETHAN_VS_SEEKER_BIKE]	= &gObjectEventGraphicsInfo_EthanVSSeekerBike,
 };
