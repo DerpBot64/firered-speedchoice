@@ -2170,8 +2170,7 @@ static void mli4_mapscripts_and_other(void)
 }
 
 u8 getPlayerAvatarID(){
-	return 4;
-	//return (gSaveBlock2Ptr->playerTrainerId[0]) % AVATAR_COUNT;
+	return (gSaveBlock2Ptr->playerTrainerId[0]) % AVATAR_COUNT;
 }
 
 static void sub_8057100(void)
