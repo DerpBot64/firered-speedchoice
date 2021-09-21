@@ -283,3 +283,13 @@ const u32 gObjectEventPic_BlueMachBike[] = INCBIN_U32("graphics/object_events/pi
 const u32 gObjectEventPic_BlueFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/blue/field_move.4bpp");
 const u32 gObjectEventPic_BlueFishing[] = INCBIN_U32("graphics/object_events/pics/people/blue/fishing.4bpp");
 const u32 gObjectEventPic_BlueVsSeekerBike[] = INCBIN_U32("graphics/object_events/pics/people/blue/vs_seeker_bike.4bpp");
+
+
+const u32 gObjectEventPic_EthanNormal[] = INCBIN_U32("graphics/object_events/pics/people/ethan/walking.4bpp");
+const u32 gObjectEventPic_EthanRunning[] = INCBIN_U32("graphics/object_events/pics/people/ethan/running.4bpp");
+const u32 gObjectEventPic_EthanSurfing[] = INCBIN_U32("graphics/object_events/pics/people/ethan/surfing.4bpp");
+const u32 gObjectEventPic_EthanBike[] = INCBIN_U32("graphics/object_events/pics/people/ethan/bike.4bpp");
+const u32 gObjectEventPic_EthanFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/ethan/field_move.4bpp");
+const u32 gObjectEventPic_EthanFishing[] = INCBIN_U32("graphics/object_events/pics/people/ethan/fishing.4bpp");
+
+const u16 gObjectEventPal_Ethan[] = INCBIN_U16("graphics/object_events/palettes/ethan.gbapal");

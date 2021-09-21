@@ -178,15 +178,24 @@
 #define OBJ_EVENT_GFX_BLUE_VS_SEEKER				171
 #define OBJ_EVENT_GFX_BLUE_VS_SEEKER_BIKE			172
 
-#define NUM_OBJ_EVENT_GFX     						173
+#define OBJ_EVENT_GFX_ETHAN_NORMAL					173
+#define OBJ_EVENT_GFX_ETHAN_MACH_BIKE				174
+#define OBJ_EVENT_GFX_ETHAN_SURFING					175
+#define OBJ_EVENT_GFX_ETHAN_FIELD_MOVE				176
+#define OBJ_EVENT_GFX_ETHAN_FISHING					177
+#define OBJ_EVENT_GFX_ETHAN_VS_SEEKER				178
+#define OBJ_EVENT_GFX_ETHAN_VS_SEEKER_BIKE			179
+
+#define NUM_OBJ_EVENT_GFX     						180
 
 #define AVATAR_RED   			0
 #define AVATAR_GREEN 			1
 #define AVATAR_BRENDAN   		2
 #define AVATAR_MAY 				3
 #define AVATAR_BLUE 			4
+#define AVATAR_ETHAN 			5
 
-#define AVATAR_COUNT 			5
+#define AVATAR_COUNT 			6
 
 
 // These are dynamic object gfx ids.
