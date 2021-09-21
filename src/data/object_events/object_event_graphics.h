@@ -279,3 +279,9 @@ const u32 gObjectEventPic_MaySurfRun[] = INCBIN_U32("graphics/object_events/pics
 const u32 gObjectEventPic_MayVsSeekerBike[] = INCBIN_U32("graphics/object_events/pics/people/may/vs_seeker_bike.4bpp");
 
 const u16 gObjectEventPal_May[] = INCBIN_U16("graphics/object_events/palettes/may.gbapal");
+
+const u32 gObjectEventPic_BlueNormal[] = INCBIN_U32("graphics/object_events/pics/people/blue/walking.4bpp");
+const u32 gObjectEventPic_BlueMachBike[] = INCBIN_U32("graphics/object_events/pics/people/blue/mach_bike.4bpp");
+const u32 gObjectEventPic_BlueFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/blue/field_move.4bpp");
+const u32 gObjectEventPic_BlueFishing[] = INCBIN_U32("graphics/object_events/pics/people/blue/fishing.4bpp");
+const u32 gObjectEventPic_BlueVsSeekerBike[] = INCBIN_U32("graphics/object_events/pics/people/blue/vs_seeker_bike.4bpp");

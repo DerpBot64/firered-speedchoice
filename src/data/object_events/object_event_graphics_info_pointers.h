@@ -169,6 +169,14 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayVSSeekerBike;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ItemBallHidden;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ItemBallBuried;
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueSurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueVSSeekerBike;
+
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_RED_NORMAL]               = &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE]                 = &gObjectEventGraphicsInfo_RedBike,
@@ -338,4 +346,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 	[OBJ_EVENT_GFX_MAY_FISHING] 			= &gObjectEventGraphicsInfo_MayFish,
 	[OBJ_EVENT_GFX_MAY_VS_SEEKER]			= &gObjectEventGraphicsInfo_MayVSSeeker,
 	[OBJ_EVENT_GFX_MAY_VS_SEEKER_BIKE]		= &gObjectEventGraphicsInfo_MayVSSeekerBike,
+	[OBJ_EVENT_GFX_BLUE_NORMAL] 			= &gObjectEventGraphicsInfo_BlueNormal,
+	[OBJ_EVENT_GFX_BLUE_MACH_BIKE] 			= &gObjectEventGraphicsInfo_BlueBike,
+	[OBJ_EVENT_GFX_BLUE_SURFING] 			= &gObjectEventGraphicsInfo_BlueSurf,
+	[OBJ_EVENT_GFX_BLUE_FIELD_MOVE] 		= &gObjectEventGraphicsInfo_BlueFieldMove,
+	[OBJ_EVENT_GFX_BLUE_FISHING] 			= &gObjectEventGraphicsInfo_BlueFish,
+	[OBJ_EVENT_GFX_BLUE_VS_SEEKER]			= &gObjectEventGraphicsInfo_BlueVSSeeker,
+	[OBJ_EVENT_GFX_BLUE_VS_SEEKER_BIKE]		= &gObjectEventGraphicsInfo_BlueVSSeekerBike,
 };
