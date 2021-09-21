@@ -51,6 +51,7 @@
 #include "constants/maps.h"
 #include "constants/region_map_sections.h"
 #include "constants/songs.h"
+#include "constants/event_objects.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -2169,8 +2170,8 @@ static void mli4_mapscripts_and_other(void)
 }
 
 u8 getPlayerAvatarID(){
-	//return 1;
-	return (gSaveBlock2Ptr->playerTrainerId[0]) % AVATAR_COUNT;
+	return 4;
+	//return (gSaveBlock2Ptr->playerTrainerId[0]) % AVATAR_COUNT;
 }
 
 static void sub_8057100(void)

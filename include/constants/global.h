@@ -40,12 +40,6 @@
 #define FEMALE 1
 #define GENDER_COUNT 2
 
-#define AVATAR_RED   			0
-#define AVATAR_GREEN 			1
-#define AVATAR_BRENDAN   		2
-#define AVATAR_MAY 				3
-#define AVATAR_COUNT 			4
-
 #define BARD_SONG_LENGTH       6
 #define NUM_STORYTELLER_TALES  4
 #define NUM_TRADER_ITEMS       4
