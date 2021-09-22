@@ -182,6 +182,29 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanFish;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanVSSeeker;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanVSSeekerBike;
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_BrendanNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_BrendanBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_BrendanSurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_BrendanFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_BrendanFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_BrendanVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_BrendanVSSeekerBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_MayNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_MayBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_MaySurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_MayFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_MayFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_MayVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_MayVSSeekerBike;
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_Blue_MayNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_Blue_MayBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_Blue_MaySurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_Blue_MayFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_Blue_MayFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_Blue_MayVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RS_Blue_MayVSSeekerBike;
+
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_RED_NORMAL]               = &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE]                 = &gObjectEventGraphicsInfo_RedBike,
@@ -363,4 +386,25 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 	[OBJ_EVENT_GFX_ETHAN_FISHING] 			= &gObjectEventGraphicsInfo_EthanFish,
 	[OBJ_EVENT_GFX_ETHAN_VS_SEEKER]			= &gObjectEventGraphicsInfo_EthanVSSeeker,
 	[OBJ_EVENT_GFX_ETHAN_VS_SEEKER_BIKE]	= &gObjectEventGraphicsInfo_EthanVSSeekerBike,
+	[OBJ_EVENT_GFX_RS_BRENDAN_NORMAL] 			= &gObjectEventGraphicsInfo_RS_BrendanNormal,
+	[OBJ_EVENT_GFX_RS_BRENDAN_MACH_BIKE] 		= &gObjectEventGraphicsInfo_RS_BrendanBike,
+	[OBJ_EVENT_GFX_RS_BRENDAN_SURFING] 			= &gObjectEventGraphicsInfo_RS_BrendanSurf,
+	[OBJ_EVENT_GFX_RS_BRENDAN_FIELD_MOVE] 		= &gObjectEventGraphicsInfo_RS_BrendanFieldMove,
+	[OBJ_EVENT_GFX_RS_BRENDAN_FISHING] 			= &gObjectEventGraphicsInfo_RS_BrendanFish,
+	[OBJ_EVENT_GFX_RS_BRENDAN_VS_SEEKER]		= &gObjectEventGraphicsInfo_RS_BrendanVSSeeker,
+	[OBJ_EVENT_GFX_RS_BRENDAN_VS_SEEKER_BIKE]	= &gObjectEventGraphicsInfo_RS_BrendanVSSeekerBike,
+	[OBJ_EVENT_GFX_RS_MAY_NORMAL] 				= &gObjectEventGraphicsInfo_RS_MayNormal,
+	[OBJ_EVENT_GFX_RS_MAY_MACH_BIKE] 			= &gObjectEventGraphicsInfo_RS_MayBike,
+	[OBJ_EVENT_GFX_RS_MAY_SURFING] 				= &gObjectEventGraphicsInfo_RS_MaySurf,
+	[OBJ_EVENT_GFX_RS_MAY_FIELD_MOVE] 			= &gObjectEventGraphicsInfo_RS_MayFieldMove,
+	[OBJ_EVENT_GFX_RS_MAY_FISHING] 				= &gObjectEventGraphicsInfo_RS_MayFish,
+	[OBJ_EVENT_GFX_RS_MAY_VS_SEEKER]			= &gObjectEventGraphicsInfo_RS_MayVSSeeker,
+	[OBJ_EVENT_GFX_RS_MAY_VS_SEEKER_BIKE]		= &gObjectEventGraphicsInfo_RS_MayVSSeekerBike,
+	[OBJ_EVENT_GFX_RS_BLUE_MAY_NORMAL] 				= &gObjectEventGraphicsInfo_RS_Blue_MayNormal,
+	[OBJ_EVENT_GFX_RS_BLUE_MAY_MACH_BIKE] 			= &gObjectEventGraphicsInfo_RS_Blue_MayBike,
+	[OBJ_EVENT_GFX_RS_BLUE_MAY_SURFING] 				= &gObjectEventGraphicsInfo_RS_Blue_MaySurf,
+	[OBJ_EVENT_GFX_RS_BLUE_MAY_FIELD_MOVE] 			= &gObjectEventGraphicsInfo_RS_Blue_MayFieldMove,
+	[OBJ_EVENT_GFX_RS_BLUE_MAY_FISHING] 				= &gObjectEventGraphicsInfo_RS_Blue_MayFish,
+	[OBJ_EVENT_GFX_RS_BLUE_MAY_VS_SEEKER]			= &gObjectEventGraphicsInfo_RS_Blue_MayVSSeeker,
+	[OBJ_EVENT_GFX_RS_BLUE_MAY_VS_SEEKER_BIKE]		= &gObjectEventGraphicsInfo_RS_Blue_MayVSSeekerBike,
 };
