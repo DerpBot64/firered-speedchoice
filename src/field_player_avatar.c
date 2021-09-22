@@ -1129,70 +1129,34 @@ void StopPlayerAvatar(void)
     }
 }
 
-static const u8 sPlayerAvatarGfxIds[][AVATAR_COUNT] = {
+static const u8 sPlayerAvatarGfxIds[][3] = {
     [PLAYER_AVATAR_GFX_NORMAL]     = {OBJ_EVENT_GFX_RED_NORMAL,
     		OBJ_EVENT_GFX_GREEN_NORMAL,
-			OBJ_EVENT_GFX_BRENDAN_NORMAL,
-			OBJ_EVENT_GFX_MAY_NORMAL,
-			OBJ_EVENT_GFX_BLUE_NORMAL,
-			OBJ_EVENT_GFX_ETHAN_NORMAL,
-			OBJ_EVENT_GFX_RS_BRENDAN_NORMAL,
-			OBJ_EVENT_GFX_RS_MAY_NORMAL,
-			OBJ_EVENT_GFX_RS_BLUE_MAY_NORMAL//blue variant
+			OBJ_EVENT_GFX_AVATAR_NORMAL
     },
     [PLAYER_AVATAR_GFX_BIKE]       = {OBJ_EVENT_GFX_RED_BIKE,
     		OBJ_EVENT_GFX_GREEN_BIKE,
-			OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,
-			OBJ_EVENT_GFX_MAY_MACH_BIKE,
-			OBJ_EVENT_GFX_BLUE_MACH_BIKE,
-			OBJ_EVENT_GFX_ETHAN_MACH_BIKE,
-			OBJ_EVENT_GFX_RS_BRENDAN_MACH_BIKE,
-			OBJ_EVENT_GFX_RS_MAY_MACH_BIKE,
-			OBJ_EVENT_GFX_RS_BLUE_MAY_MACH_BIKE
+			OBJ_EVENT_GFX_AVATAR_MACH_BIKE
     },
     [PLAYER_AVATAR_GFX_RIDE]       = {OBJ_EVENT_GFX_RED_SURF,
     		OBJ_EVENT_GFX_GREEN_SURF,
-			OBJ_EVENT_GFX_BRENDAN_SURFING,
-			OBJ_EVENT_GFX_MAY_SURFING,
-			OBJ_EVENT_GFX_BLUE_SURFING,
-			OBJ_EVENT_GFX_ETHAN_SURFING,
-			OBJ_EVENT_GFX_RS_BRENDAN_SURFING,
-			OBJ_EVENT_GFX_RS_MAY_SURFING,
-			OBJ_EVENT_GFX_RS_BLUE_MAY_SURFING
+			OBJ_EVENT_GFX_AVATAR_SURFING
     },
     [PLAYER_AVATAR_GFX_FIELD_MOVE] = {OBJ_EVENT_GFX_RED_FIELD_MOVE,
     		OBJ_EVENT_GFX_GREEN_FIELD_MOVE,
-			OBJ_EVENT_GFX_BRENDAN_FIELD_MOVE,
-			OBJ_EVENT_GFX_MAY_FIELD_MOVE,
-			OBJ_EVENT_GFX_BLUE_FIELD_MOVE,
-			OBJ_EVENT_GFX_ETHAN_FIELD_MOVE,
-			OBJ_EVENT_GFX_RS_BRENDAN_FIELD_MOVE,
-			OBJ_EVENT_GFX_RS_MAY_FIELD_MOVE,
-			OBJ_EVENT_GFX_RS_BLUE_MAY_FIELD_MOVE
+			OBJ_EVENT_GFX_AVATAR_FIELD_MOVE
     },
     [PLAYER_AVATAR_GFX_FISH]       = {OBJ_EVENT_GFX_RED_FISH,
     		OBJ_EVENT_GFX_GREEN_FISH,
-			OBJ_EVENT_GFX_BRENDAN_FISHING,
-			OBJ_EVENT_GFX_MAY_FISHING,
-			OBJ_EVENT_GFX_BLUE_FISHING,
-			OBJ_EVENT_GFX_ETHAN_FISHING,
-			OBJ_EVENT_GFX_RS_BRENDAN_FISHING,
-			OBJ_EVENT_GFX_RS_MAY_FISHING,
-			OBJ_EVENT_GFX_RS_BLUE_MAY_FISHING
+			OBJ_EVENT_GFX_AVATAR_FISHING
     },
     [PLAYER_AVATAR_GFX_VSSEEKER]   = {OBJ_EVENT_GFX_RED_VS_SEEKER,
     		OBJ_EVENT_GFX_GREEN_VS_SEEKER,
-			OBJ_EVENT_GFX_BRENDAN_VS_SEEKER,
-			OBJ_EVENT_GFX_MAY_VS_SEEKER,
-			OBJ_EVENT_GFX_BLUE_VS_SEEKER,
-			OBJ_EVENT_GFX_ETHAN_VS_SEEKER,
-			OBJ_EVENT_GFX_RS_BRENDAN_VS_SEEKER,
-			OBJ_EVENT_GFX_RS_MAY_VS_SEEKER,
-			OBJ_EVENT_GFX_RS_BLUE_MAY_VS_SEEKER
+			OBJ_EVENT_GFX_AVATAR_VS_SEEKER
     },
 };
 
-static const u8 sPlayerAvatarGfxToStateFlag[][3][AVATAR_COUNT] = {
+static const u8 sPlayerAvatarGfxToStateFlag[][3][3] = {
     [AVATAR_RED] = {
         {OBJ_EVENT_GFX_RED_NORMAL, PLAYER_AVATAR_FLAG_ON_FOOT},
         {OBJ_EVENT_GFX_RED_BIKE,   PLAYER_AVATAR_FLAG_MACH_BIKE},
@@ -1204,52 +1168,16 @@ static const u8 sPlayerAvatarGfxToStateFlag[][3][AVATAR_COUNT] = {
         {OBJ_EVENT_GFX_GREEN_SURF,   PLAYER_AVATAR_FLAG_SURFING},
     },
 	[AVATAR_BRENDAN] = {
-		{OBJ_EVENT_GFX_BRENDAN_NORMAL,		PLAYER_AVATAR_FLAG_ON_FOOT},
-		{OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,	PLAYER_AVATAR_FLAG_MACH_BIKE},
-		{OBJ_EVENT_GFX_BRENDAN_SURFING,		PLAYER_AVATAR_FLAG_SURFING},
-	},
-	[AVATAR_MAY] = {
-		{OBJ_EVENT_GFX_MAY_NORMAL,			PLAYER_AVATAR_FLAG_ON_FOOT},
-		{OBJ_EVENT_GFX_MAY_MACH_BIKE,		PLAYER_AVATAR_FLAG_MACH_BIKE},
-		{OBJ_EVENT_GFX_MAY_SURFING,			PLAYER_AVATAR_FLAG_SURFING},
-	},
-	[AVATAR_BLUE] = {
-		{OBJ_EVENT_GFX_BLUE_NORMAL,			PLAYER_AVATAR_FLAG_ON_FOOT},
-		{OBJ_EVENT_GFX_BLUE_MACH_BIKE,		PLAYER_AVATAR_FLAG_MACH_BIKE},
-		{OBJ_EVENT_GFX_BLUE_SURFING,			PLAYER_AVATAR_FLAG_SURFING},
-	},
-	[AVATAR_ETHAN] = {
-		{OBJ_EVENT_GFX_ETHAN_NORMAL,			PLAYER_AVATAR_FLAG_ON_FOOT},
-		{OBJ_EVENT_GFX_ETHAN_MACH_BIKE,		PLAYER_AVATAR_FLAG_MACH_BIKE},
-		{OBJ_EVENT_GFX_ETHAN_SURFING,			PLAYER_AVATAR_FLAG_SURFING},
-	},
-	[AVATAR_RS_BRENDAN] = {
-		{OBJ_EVENT_GFX_RS_BRENDAN_NORMAL,		PLAYER_AVATAR_FLAG_ON_FOOT},
-		{OBJ_EVENT_GFX_RS_BRENDAN_MACH_BIKE,	PLAYER_AVATAR_FLAG_MACH_BIKE},
-		{OBJ_EVENT_GFX_RS_BRENDAN_SURFING,		PLAYER_AVATAR_FLAG_SURFING},
-	},
-	[AVATAR_RS_MAY] = {
-		{OBJ_EVENT_GFX_RS_MAY_NORMAL,			PLAYER_AVATAR_FLAG_ON_FOOT},
-		{OBJ_EVENT_GFX_RS_MAY_MACH_BIKE,		PLAYER_AVATAR_FLAG_MACH_BIKE},
-		{OBJ_EVENT_GFX_RS_MAY_SURFING,			PLAYER_AVATAR_FLAG_SURFING},
-	},
-	[AVATAR_RS_MAY_BLUE] = {
-		{OBJ_EVENT_GFX_RS_BLUE_MAY_NORMAL,			PLAYER_AVATAR_FLAG_ON_FOOT},
-		{OBJ_EVENT_GFX_RS_BLUE_MAY_MACH_BIKE,		PLAYER_AVATAR_FLAG_MACH_BIKE},
-		{OBJ_EVENT_GFX_RS_BLUE_MAY_SURFING,			PLAYER_AVATAR_FLAG_SURFING},
+		{OBJ_EVENT_GFX_AVATAR_NORMAL,		PLAYER_AVATAR_FLAG_ON_FOOT},
+		{OBJ_EVENT_GFX_AVATAR_MACH_BIKE,	PLAYER_AVATAR_FLAG_MACH_BIKE},
+		{OBJ_EVENT_GFX_AVATAR_SURFING,		PLAYER_AVATAR_FLAG_SURFING},
 	}
 };
 
 static const u8 sPlayerAvatarVsSeekerBikeGfxIds[] = {
     OBJ_EVENT_GFX_RED_VS_SEEKER_BIKE,
     OBJ_EVENT_GFX_GREEN_VS_SEEKER_BIKE,
-	OBJ_EVENT_GFX_BRENDAN_VS_SEEKER_BIKE,
-	OBJ_EVENT_GFX_MAY_VS_SEEKER_BIKE,
-	OBJ_EVENT_GFX_BLUE_VS_SEEKER_BIKE,
-	OBJ_EVENT_GFX_ETHAN_VS_SEEKER_BIKE,
-	OBJ_EVENT_GFX_RS_BRENDAN_VS_SEEKER_BIKE,
-	OBJ_EVENT_GFX_RS_MAY_VS_SEEKER_BIKE,
-	OBJ_EVENT_GFX_RS_BLUE_MAY_VS_SEEKER_BIKE
+	OBJ_EVENT_GFX_AVATAR_VS_SEEKER_BIKE
 };
 
 static const u8 sHoennLinkPartnerGfxIds[] = {
@@ -1264,7 +1192,10 @@ u8 GetRivalAvatarGraphicsIdByStateIdAndAvatar(u8 state, u8 avatar)
 
 u8 GetPlayerAvatarGraphicsIdByStateIdAndAvatar(u8 state, u8 avatar)
 {
-    return sPlayerAvatarGfxIds[state][avatar];
+    if(avatar > 1){
+    	return sPlayerAvatarGfxIds[state][2];
+    }
+	return sPlayerAvatarGfxIds[state][avatar];
 }
 
 u8 GetRSAvatarGraphicsIdByGender(u8 gender)
@@ -1337,10 +1268,16 @@ u8 GetPlayerAvatarStateTransitionByGraphicsId(u8 graphicsId, u8 avatar)
 {
     u8 i;
 
-    for (i = 0; i < NELEMS(*sPlayerAvatarGfxToStateFlag); i++)
+    for (i = 0; i < 3; i++)
     {
-        if (sPlayerAvatarGfxToStateFlag[avatar][i][0] == graphicsId)
-            return sPlayerAvatarGfxToStateFlag[avatar][i][1];
+        if(avatar >1){
+        	if (sPlayerAvatarGfxToStateFlag[2][i][0] == graphicsId)
+        		return sPlayerAvatarGfxToStateFlag[2][i][1];
+        }
+        else{
+        	if (sPlayerAvatarGfxToStateFlag[avatar][i][0] == graphicsId)
+        		return sPlayerAvatarGfxToStateFlag[avatar][i][1];
+        }
     }
     return 1;
 }
@@ -1350,10 +1287,17 @@ u8 GetPlayerAvatarGraphicsIdByCurrentState(void)
     u8 i;
     u8 flags = gPlayerAvatar.flags;
 
-    for (i = 0; i < NELEMS(*sPlayerAvatarGfxToStateFlag); i++)
+    for (i = 0; i < 3; i++)
     {
-        if (sPlayerAvatarGfxToStateFlag[gPlayerAvatar.avatar][i][1] & flags)
-            return sPlayerAvatarGfxToStateFlag[gPlayerAvatar.avatar][i][0];
+    	if(gPlayerAvatar.avatar >1){
+    	    if (sPlayerAvatarGfxToStateFlag[2][i][1] & flags){
+    	    	return sPlayerAvatarGfxToStateFlag[2][i][0];
+    	    }
+		}
+		else{
+			if (sPlayerAvatarGfxToStateFlag[gPlayerAvatar.avatar][i][1] & flags)
+				return sPlayerAvatarGfxToStateFlag[gPlayerAvatar.avatar][i][0];
+		}
     }
     return 0;
 }
@@ -1413,8 +1357,14 @@ void StartPlayerAvatarSummonMonForFieldMoveAnim(void)
 
 u8 GetPlayerAvatarVsSeekerGfxId(void)
 {
-    if (gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
-        return sPlayerAvatarVsSeekerBikeGfxIds[gPlayerAvatar.avatar];
+    if (gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE)){
+    	if(gPlayerAvatar.avatar>1){
+    		return sPlayerAvatarVsSeekerBikeGfxIds[2];
+    	}
+    	else{
+    		return sPlayerAvatarVsSeekerBikeGfxIds[gPlayerAvatar.avatar];
+    	}
+    }
     else
         return GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_GFX_VSSEEKER);
 }

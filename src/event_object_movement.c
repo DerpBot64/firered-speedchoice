@@ -492,6 +492,11 @@ const u8 gInitialMovementTypeFacingDirections[NUM_FIELD_MAP_OBJECT_TEMPLATES] = 
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN		0x1127
 #define OBJ_EVENT_PAL_TAG_RS_MAY			0x1128
 #define OBJ_EVENT_PAL_TAG_RS_MAY_BLUE		0x1129
+#define OBJ_EVENT_PAL_TAG_DAWN				0x112A
+#define OBJ_EVENT_PAL_TAG_LUCAS				0x112B
+#define OBJ_EVENT_PAL_TAG_LYRA				0x112C
+#define OBJ_EVENT_PAL_TAG_PEACH				0x112D
+#define OBJ_EVENT_PAL_TAG_YUGI				0x112E
 #define OBJ_EVENT_PAL_TAG_NONE 				0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -527,6 +532,11 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 	{gObjectEventPal_RS_Brendan,		OBJ_EVENT_PAL_TAG_RS_BRENDAN},
 	{gObjectEventPal_RS_May,			OBJ_EVENT_PAL_TAG_RS_MAY},
 	{gObjectEventPal_RS_May_Blue,		OBJ_EVENT_PAL_TAG_RS_MAY_BLUE},
+	{gObjectEventPal_Dawn,				OBJ_EVENT_PAL_TAG_DAWN},
+	{gObjectEventPal_Lucas,				OBJ_EVENT_PAL_TAG_LUCAS},
+	{gObjectEventPal_Lyra,				OBJ_EVENT_PAL_TAG_LYRA},
+	{gObjectEventPal_Peach,				OBJ_EVENT_PAL_TAG_PEACH},
+	{gObjectEventPal_Yugi,				OBJ_EVENT_PAL_TAG_YUGI},
     {},
 };
 
@@ -2149,8 +2159,13 @@ void PlayerObjectTurn(struct PlayerAvatar *playerAvatar, u8 direction)
 
 const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8 graphicsId)
 {
-    if (graphicsId >= OBJ_EVENT_GFX_VARS)
+
+	if (graphicsId >= OBJ_EVENT_GFX_VARS)
         graphicsId = VarGetObjectEventGraphicsId(graphicsId - OBJ_EVENT_GFX_VARS);
+
+	if(graphicsId >= OBJ_EVENT_GFX_AVATAR_NORMAL && graphicsId <=OBJ_EVENT_GFX_AVATAR_VS_SEEKER_BIKE){
+		return gAvatarGraphicsInfoPointers[((getPlayerAvatarID()-2)*7)+(graphicsId-OBJ_EVENT_GFX_AVATAR_NORMAL)];
+	}
     
     if (graphicsId >= NUM_OBJ_EVENT_GFX)
         graphicsId = OBJ_EVENT_GFX_LITTLE_BOY;
