@@ -488,10 +488,13 @@ const u8 gInitialMovementTypeFacingDirections[NUM_FIELD_MAP_OBJECT_TEMPLATES] = 
 #define OBJ_EVENT_PAL_TAG_32 0x1121
 #define OBJ_EVENT_PAL_TAG_33 0x1122
 #define OBJ_EVENT_PAL_TAG_34 0x1123
-#define OBJ_EVENT_PAL_TAG_BRENDAN	0x1124
-#define OBJ_EVENT_PAL_TAG_MAY		0x1125
-#define OBJ_EVENT_PAL_TAG_ETHAN		0x1126
-#define OBJ_EVENT_PAL_TAG_NONE 0x11FF
+#define OBJ_EVENT_PAL_TAG_BRENDAN			0x1124
+#define OBJ_EVENT_PAL_TAG_MAY				0x1125
+#define OBJ_EVENT_PAL_TAG_ETHAN				0x1126
+#define OBJ_EVENT_PAL_TAG_RS_BRENDAN		0x1127
+#define OBJ_EVENT_PAL_TAG_RS_MAY			0x1128
+#define OBJ_EVENT_PAL_TAG_RS_MAY_BLUE		0x1129
+#define OBJ_EVENT_PAL_TAG_NONE 				0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -520,9 +523,12 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gUnknown_8394EA8, OBJ_EVENT_PAL_TAG_20},
     {gUnknown_8395AE8, OBJ_EVENT_PAL_TAG_11},
     {gUnknown_83952C8, OBJ_EVENT_PAL_TAG_21},
-	{gObjectEventPal_Brendan,	OBJ_EVENT_PAL_TAG_BRENDAN},
-	{gObjectEventPal_May,		OBJ_EVENT_PAL_TAG_MAY},
-	{gObjectEventPal_Ethan,		OBJ_EVENT_PAL_TAG_ETHAN},
+	{gObjectEventPal_Brendan,			OBJ_EVENT_PAL_TAG_BRENDAN},
+	{gObjectEventPal_May,				OBJ_EVENT_PAL_TAG_MAY},
+	{gObjectEventPal_Ethan,				OBJ_EVENT_PAL_TAG_ETHAN},
+	{gObjectEventPal_RS_Brendan,		OBJ_EVENT_PAL_TAG_RS_BRENDAN},
+	{gObjectEventPal_RS_May,			OBJ_EVENT_PAL_TAG_RS_MAY},
+	{gObjectEventPal_RS_May_Blue,		OBJ_EVENT_PAL_TAG_RS_MAY_BLUE},
     {},
 };
 
