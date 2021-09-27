@@ -242,14 +242,17 @@ void TryAddButtonStatBy(enum DoneButtonStat stat, u32 add)
         TRY_INC_GAME_STAT_BY(1, pokemonCaughtInBalls, add, USHRT_MAX);
         break;
     case DB_EVOLUTIONS_ATTEMPTED:
-        TRY_INC_GAME_STAT_BY(1, evosAttempted, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, evosAttempted, add, USHRT_MAX);
         break;
     case DB_EVOLUTIONS_COMPLETED:
-        TRY_INC_GAME_STAT_BY(1, evosCompleted, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, evosCompleted, add, USHRT_MAX);
         break;
     case DB_EVOLUTIONS_CANCELLED:
-        TRY_INC_GAME_STAT_BY(1, evosCancelled, add, UINT_MAX);
+        TRY_INC_GAME_STAT_BY(1, evosCancelled, add, USHRT_MAX);
         break;
+    case DB_SWEET_SCENTS:
+		TRY_INC_GAME_STAT_BY(1, sweetScents, add, USHRT_MAX);
+		break;
     }
 }
 
@@ -407,14 +410,17 @@ void TryIncrementButtonStat(enum DoneButtonStat stat)
         TRY_INC_GAME_STAT(1, pokemonCaughtInBalls, USHRT_MAX);
         break;
     case DB_EVOLUTIONS_ATTEMPTED:
-        TRY_INC_GAME_STAT(1, evosAttempted, UINT_MAX);
+        TRY_INC_GAME_STAT(1, evosAttempted, USHRT_MAX);
         break;
     case DB_EVOLUTIONS_COMPLETED:
-        TRY_INC_GAME_STAT(1, evosCompleted, UINT_MAX);
+        TRY_INC_GAME_STAT(1, evosCompleted, USHRT_MAX);
         break;
     case DB_EVOLUTIONS_CANCELLED:
-        TRY_INC_GAME_STAT(1, evosCancelled, UINT_MAX);
+        TRY_INC_GAME_STAT(1, evosCancelled, USHRT_MAX);
         break;
+    case DB_SWEET_SCENTS:
+    	TRY_INC_GAME_STAT(1, sweetScents, USHRT_MAX);
+		break;
     }
 }
 
@@ -523,11 +529,13 @@ u32 GetDoneButtonStat(enum DoneButtonStat stat)
     case DB_POKEMON_CAUGHT_IN_BALLS:
         GET_GAME_STAT(1, pokemonCaughtInBalls, USHRT_MAX);
     case DB_EVOLUTIONS_ATTEMPTED:
-        GET_GAME_STAT(1, evosAttempted, UINT_MAX);
+        GET_GAME_STAT(1, evosAttempted, USHRT_MAX);
     case DB_EVOLUTIONS_COMPLETED:
-        GET_GAME_STAT(1, evosCompleted, UINT_MAX);
+        GET_GAME_STAT(1, evosCompleted, USHRT_MAX);
     case DB_EVOLUTIONS_CANCELLED:
-        GET_GAME_STAT(1, evosCancelled, UINT_MAX);
+        GET_GAME_STAT(1, evosCancelled, USHRT_MAX);
+    case DB_SWEET_SCENTS:
+        GET_GAME_STAT(1, sweetScents, USHRT_MAX);
     }
 }
 
@@ -585,7 +593,7 @@ const u8 gBattle2PkmnCaptured[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}PKMN CA
 
 // PAGE 5
 const u8 gBattle3Header[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}PLAYER STATS (BATTLE 3)");
-const u8 gBattle3MovesHitBy[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}MOVES HIT BY: ");
+const u8 gBattle3MovesHitBy[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}MOVES HIT (BY): ");
 const u8 gBattle3MovesMissed[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}MOVES MISSED: ");
 const u8 gBattle3SEMovesUsed[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}S.E. MOVES USED: ");
 const u8 gBattle3NVEMovesUsed[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}N.V.E. MOVES USED: ");
@@ -611,6 +619,7 @@ const u8 gMoneyItemsItemsSold[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}ITEMS S
 
 // PAGE 8
 const u8 gMiscHeader[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}PLAYER STATS (MISC.)");
+const u8 gMiscSweetScents[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}SWEET SCENTS: ");
 const u8 gMiscTimesSaved[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}TIMES SAVED: ");
 const u8 gMiscSaveReloads[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}SAVE RELOADS: ");
 const u8 gMiscEvosAttempted[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}EVOS ATTEMPTED: ");
@@ -804,6 +813,7 @@ const struct DoneButtonLineItem sLineItems[8][7] = {
     },
     { // PAGE 8 (TODO)
         {gMiscHeader, NULL},
+		{gMiscSweetScents, GetStandardButtonStat, DB_SWEET_SCENTS},
         {gMiscTimesSaved, GetStandardButtonStat, DB_SAVE_COUNT},
         {gMiscSaveReloads, GetStandardButtonStat, DB_RELOAD_COUNT},
         {gMiscEvosAttempted, GetStandardButtonStat, DB_EVOLUTIONS_ATTEMPTED},

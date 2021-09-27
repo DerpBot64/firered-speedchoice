@@ -9,6 +9,7 @@
 #include "field_weather.h"
 #include "wild_encounter.h"
 #include "constants/songs.h"
+#include "done_button.h"
 
 static EWRAM_DATA u8 *sPlttBufferBak = NULL;
 
@@ -55,6 +56,7 @@ static void StartSweetScentFieldEffect(void)
     CpuFastCopy(gPlttBufferUnfaded, sPlttBufferBak, PLTT_SIZE);
     CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_SIZE);
     BeginNormalPaletteFade(~(1 << (gSprites[GetPlayerAvatarObjectId()].oam.paletteNum + 16)), 4, 0, 8, RGB(31, 0, 0));
+    TryIncrementButtonStat(DB_SWEET_SCENTS);
     taskId = CreateTask(TrySweetScentEncounter, 0);
     gTasks[taskId].data[0] = 0;
     FieldEffectActiveListRemove(FLDEFF_SWEET_SCENT);

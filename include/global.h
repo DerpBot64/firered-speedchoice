@@ -330,9 +330,10 @@ struct DoneButtonStats1
     u16 movesLearnt;
     u16 ballsThrown;
     u16 pokemonCaughtInBalls;
-    u32 evosAttempted;
-    u32 evosCompleted;
-    u32 evosCancelled;
+    u16 evosAttempted;
+    u16 evosCompleted;
+    u16 evosCancelled;
+    u16 sweetScents;
 };
 
 struct DoneButtonStats2
