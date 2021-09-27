@@ -47,8 +47,9 @@
 #define MEME_FISH           24
 
 #define EVO_EVERY_LEVEL     25
+#define SHOW_HIDDEN_ITEMS   26
 
-#define CURRENT_OPTIONS_NUM 26
+#define CURRENT_OPTIONS_NUM 27
 // ----------------------
 // STATIC OPTIONS
 // ----------------------
@@ -254,6 +255,13 @@
 #define START_SAFARI 2
 #define START_HITMON 3
 #define START_LOC_OPTION_COUNT 4
+
+// --------------------
+// SHOW HIDDEN ITEMS ENUM
+// --------------------
+#define SHOW_HIDDEN_YES 0
+#define SHOW_HIDDEN_NO 1
+#define SHOW_HIDDEN_OPTION_COUNT 2
 
 // Enumeration for optionType in the Speedchoice struct below.
 

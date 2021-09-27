@@ -303,6 +303,7 @@ struct SpeedchoiceSaveOptions
     u32 memeFish:1;
     u32 forceDitto:1;
     u32 startLoc:2;
+    u32 showHiddenItems:1;
 };
 
 struct DoneButtonStats1

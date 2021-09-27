@@ -217,6 +217,7 @@ const u8 gSpeedchoiceOptionFastEggHatching[] = _("FAST EGG HATCHING");
 const u8 gSpeedchoiceOptionMemeFishing[] = _("MEME FISHING");
 const u8 gSpeedchoiceOptionForceDitto[] = _("FORCE DITTO");
 const u8 gSpeedchoiceOptionStartLocation[] = _("START LOCATION");
+const u8 gSpeedchoiceOptionShowHiddenItems[] = _("SHOW HIDDEN ITEMS");
 
 // CONSTANT OPTIONS
 const u8 gSpeedchoiceOptionPage[] = _("PAGE");
@@ -260,6 +261,7 @@ const u8 gSpeedchoiceTooltipFastEggHatching[] = _("Eggs immediately hatch every 
 const u8 gSpeedchoiceTooltipMemeFishing[] = _("Old and Good Rod can catch high\nlevel {PKMN}.");
 const u8 gSpeedchoiceTooltipForceDitto[] = _("Eevee gift is always Ditto");
 const u8 gSpeedchoiceTooltipStartLocation[] = _("Starting Area.\nDOJO will force early Saffron.");
+const u8 gSpeedchoiceTooltipShowHiddenItems[] = _("Shows hidden items in the overworld.\nGold must be dug up with itemfinder.");
 
 // START GAME
 const u8 gSpeedchoiceStartGameText[] = _("CV: {STR_VAR_1}\nStart the game?");
@@ -330,6 +332,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[MEME_FISH]        = FISH_NO,
 		[FORCE_DITTO]      = DITTO_NO,
 		[START_LOC]        = START_PALLET,
+		[SHOW_HIDDEN_ITEMS]= SHOW_HIDDEN_NO,
     },
     [PRESET_BINGO]   = {
         [PRESET]           = PRESET_BINGO,
@@ -358,6 +361,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[MEME_FISH]        = FISH_YES,
 		[FORCE_DITTO]      = DITTO_YES,
 		[START_LOC]        = START_PALLET,
+		[SHOW_HIDDEN_ITEMS]= SHOW_HIDDEN_YES,
     },
     [PRESET_CEA]     = {
         [PRESET]           = PRESET_CEA,
@@ -386,6 +390,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[MEME_FISH]        = FISH_NO,
 		[FORCE_DITTO]      = DITTO_NO,
 		[START_LOC]        = START_PALLET,
+		[SHOW_HIDDEN_ITEMS]= SHOW_HIDDEN_YES,
     },
     [PRESET_RACE]    = {
         [PRESET]           = PRESET_RACE,
@@ -414,6 +419,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[MEME_FISH]        = FISH_NO,
 		[FORCE_DITTO]      = DITTO_NO,
 		[START_LOC]        = START_PALLET,
+		[SHOW_HIDDEN_ITEMS]= SHOW_HIDDEN_YES,
     },
 };
 
@@ -786,6 +792,17 @@ const struct SpeedchoiceOption SpeedchoiceOptions[CURRENT_OPTIONS_NUM + 1] = // 
 		.options = NULL,
 		.tooltip = gSpeedchoiceTooltipStartLocation,
 	},
+	// ----------------------------------
+	// Show hidden items OPTION
+	// ----------------------------------
+	[SHOW_HIDDEN_ITEMS] = {
+		.optionCount = SHOW_HIDDEN_OPTION_COUNT,
+		.optionType = NORMAL,
+		.enabled = TRUE,
+		.string = gSpeedchoiceOptionShowHiddenItems,
+		.options = OptionChoiceConfigOnOff,
+		.tooltip = gSpeedchoiceTooltipShowHiddenItems,
+	},
     // ----------------------------------
     // PAGE STATIC OPTION
     // ----------------------------------
@@ -867,6 +884,7 @@ void SetByteArrayToSaveOptions(const u8 * options_arr)
     gSaveBlock2Ptr->speedchoiceConfig.memeFish = options_arr[MEME_FISH];
     gSaveBlock2Ptr->speedchoiceConfig.forceDitto = options_arr[FORCE_DITTO];
     gSaveBlock2Ptr->speedchoiceConfig.startLoc = options_arr[START_LOC];
+    gSaveBlock2Ptr->speedchoiceConfig.showHiddenItems = options_arr[SHOW_HIDDEN_ITEMS];
 }
 
 /*
@@ -936,6 +954,8 @@ u8 CheckSpeedchoiceOption(u8 option)
         return gSaveBlock2Ptr->speedchoiceConfig.forceDitto;
     case START_LOC:
         return gSaveBlock2Ptr->speedchoiceConfig.startLoc;
+    case SHOW_HIDDEN_ITEMS:
+        return gSaveBlock2Ptr->speedchoiceConfig.showHiddenItems;
     default:
         return 0xFF;
     }
