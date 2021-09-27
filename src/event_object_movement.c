@@ -19,6 +19,8 @@
 #include "constants/trainer_types.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
+#include "field_specials.h"
+#include "itemfinder.h"
 
 #define NUM_FIELD_MAP_OBJECT_TEMPLATES 0x51
 
@@ -1877,9 +1879,23 @@ u8 sub_805EB44(u8 graphicsId, u8 a1, s16 x, s16 y)
     return spriteId;
 }
 
+#define MAPSEC_CELADON_CITY                 0x5E
+
+const u8 ItemFinderShowIDs[] = {
+	OBJ_EVENT_ID_SHOWITEMFINDER_1,
+	OBJ_EVENT_ID_SHOWITEMFINDER_2,
+	OBJ_EVENT_ID_SHOWITEMFINDER_3,
+	OBJ_EVENT_ID_SHOWITEMFINDER_4,
+	OBJ_EVENT_ID_SHOWITEMFINDER_5,
+	OBJ_EVENT_ID_SHOWITEMFINDER_6,
+	OBJ_EVENT_ID_SHOWITEMFINDER_7,
+	OBJ_EVENT_ID_SHOWITEMFINDER_8
+};
+
 void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
 {
     u8 i;
+    u8 j;
     u8 objectCount;
 
     if (gMapHeader.events != NULL)
@@ -1901,8 +1917,36 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
                 && !FlagGet(template->flagId))
                 TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
         }
+
+        //SHOW ITEMFINDER
+        if(CheckSpeedchoiceOption(SHOW_HIDDEN_ITEMS)==SHOW_HIDDEN_YES && !(gMapHeader.regionMapSectionId == MAPSEC_CELADON_CITY && gMapHeader.mapLayoutId==Overworld_GetMapHeaderByGroupAndId(10,14)->mapLayoutId)){
+			j=0;
+			for (i = 0; i < gMapHeader.events->bgEventCount; i++)
+			{
+				if (gMapHeader.events->bgEvents[i].kind == 7 )
+				{
+					if(!FlagGet(GetHiddenItemAttr(gMapHeader.events->bgEvents[i].bgUnion.hiddenItem, HIDDEN_ITEM_FLAG))){
+						if (top <= (gMapHeader.events->bgEvents[i].y + 7) && bottom >= (gMapHeader.events->bgEvents[i].y + 7) && left <= (gMapHeader.events->bgEvents[i].x + 7) && right >= (gMapHeader.events->bgEvents[i].x + 7)){
+							if (GetHiddenItemAttr(gMapHeader.events->bgEvents[i].bgUnion.hiddenItem, HIDDEN_ITEM_UNDERFOOT) == TRUE){
+								SpawnSpecialObjectEventParameterized(OBJ_EVENT_GFX_ITEM_BALL_BURIED, 7, ItemFinderShowIDs[j], gMapHeader.events->bgEvents[i].x + 7, gMapHeader.events->bgEvents[i].y + 7, 0);
+							}
+							else{
+								SpawnSpecialObjectEventParameterized(OBJ_EVENT_GFX_ITEM_BALL_HIDDEN, 7, ItemFinderShowIDs[j], gMapHeader.events->bgEvents[i].x + 7, gMapHeader.events->bgEvents[i].y + 7, 0);
+							}
+						}
+					}
+					//increment J even if item was picked up to keep local ids used consistent
+					j++;
+					if(j > 7){
+						break;
+					}
+				}
+			}
+        }
     }
 }
+
+
 
 void RemoveObjectEventsOutsideView(void)
 {
@@ -2419,7 +2463,8 @@ u8 GetObjectEventIdByXYZ(u16 x, u16 y, u8 z)
     {
         if (gObjectEvents[i].active)
         {
-            if (gObjectEvents[i].currentCoords.x == x && gObjectEvents[i].currentCoords.y == y && ObjectEventDoesZCoordMatch(&gObjectEvents[i], z))
+            if (gObjectEvents[i].currentCoords.x == x && gObjectEvents[i].currentCoords.y == y && ObjectEventDoesZCoordMatch(&gObjectEvents[i], z)
+            && !(gObjectEvents[i].localId >= OBJ_EVENT_ID_SHOWITEMFINDER_1 && gObjectEvents[i].localId <=OBJ_EVENT_ID_SHOWITEMFINDER_8))
             {
                 return i;
             }
@@ -4996,7 +5041,7 @@ static bool8 DoesObjectCollideWithObjectAt(struct ObjectEvent *objectEvent, s16 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
         curObject = &gObjectEvents[i];
-        if (curObject->active && curObject != objectEvent)
+        if (curObject->active && curObject != objectEvent && !(curObject->localId >= OBJ_EVENT_ID_SHOWITEMFINDER_1 && curObject->localId <=OBJ_EVENT_ID_SHOWITEMFINDER_8))
         {
             if ((curObject->currentCoords.x == x && curObject->currentCoords.y == y) || (curObject->previousCoords.x == x && curObject->previousCoords.y == y))
             {
