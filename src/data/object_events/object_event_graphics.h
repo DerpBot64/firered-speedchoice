@@ -1,4 +1,4 @@
-const u16 gUnknown_835B968[] = INCBIN_U16("graphics/object_events/palettes/0.gbapal");
+const u16 gObjectEventPal_Player_Red[] = INCBIN_U16("graphics/object_events/palettes/player_red.gbapal");
 const u16 gUnknown_835B988[] = INCBIN_U16("graphics/object_events/palettes/unk_835B988.gbapal");
 const u16 gObjectEventPaletteNull1[16] = {};
 const u16 gObjectEventPaletteNull2[16] = {};
@@ -18,7 +18,7 @@ const u32 gObjectEventPic_RedNormal[] = INCBIN_U32("graphics/object_events/pics/
 const u32 gObjectEventPic_RedSurfRun[] = INCBIN_U32("graphics/object_events/pics/people/red_surf_run.4bpp");
 const u32 gObjectEventPic_GreenNormal[] = INCBIN_U32("graphics/object_events/pics/people/green_normal.4bpp");
 const u32 gObjectEventPic_GreenSurfRun[] = INCBIN_U32("graphics/object_events/pics/people/green_surf_run.4bpp");
-const u16 gUnknown_835E968[] = INCBIN_U16("graphics/object_events/palettes/1.gbapal");
+const u16 gObjectEventPal_Player_Red_Reflection[] = INCBIN_U16("graphics/object_events/palettes/player_red_reflection.gbapal");
 const u16 gUnknown_835E988[] = INCBIN_U16("graphics/object_events/palettes/2.gbapal");
 const u32 gObjectEventPic_RedItem[] = INCBIN_U32("graphics/object_events/pics/people/red_item.4bpp");
 const u32 gObjectEventPic_GreenItem[] = INCBIN_U32("graphics/object_events/pics/people/green_item.4bpp");
@@ -45,14 +45,14 @@ const u32 gObjectEventPic_Koga[] = INCBIN_U32("graphics/object_events/pics/peopl
 const u32 gObjectEventPic_Brock[] = INCBIN_U32("graphics/object_events/pics/people/brock.4bpp");
 const u32 gObjectEventPic_LtSurge[] = INCBIN_U32("graphics/object_events/pics/people/lt_surge.4bpp");
 const u32 gObjectEventPic_Bill[] = INCBIN_U32("graphics/object_events/pics/people/bill.4bpp");
-const u16 gUnknown_836D828[] = INCBIN_U16("graphics/object_events/palettes/3.gbapal");
-const u16 gUnknown_836D848[] = INCBIN_U16("graphics/object_events/palettes/4.gbapal");
-const u16 gUnknown_836D868[] = INCBIN_U16("graphics/object_events/palettes/5.gbapal");
-const u16 gUnknown_836D888[] = INCBIN_U16("graphics/object_events/palettes/6.gbapal");
-const u16 gUnknown_836D8A8[] = INCBIN_U16("graphics/object_events/palettes/7.gbapal");
-const u16 gUnknown_836D8C8[] = INCBIN_U16("graphics/object_events/palettes/8.gbapal");
-const u16 gUnknown_836D8E8[] = INCBIN_U16("graphics/object_events/palettes/9.gbapal");
-const u16 gUnknown_836D908[] = INCBIN_U16("graphics/object_events/palettes/10.gbapal");
+const u16 gObjectEventPal_NPC1[] = INCBIN_U16("graphics/object_events/palettes/npc_1.gbapal");
+const u16 gObjectEventPal_NPC3[] = INCBIN_U16("graphics/object_events/palettes/npc_3.gbapal");
+const u16 gObjectEventPal_NPC4[] = INCBIN_U16("graphics/object_events/palettes/npc_4.gbapal");
+const u16 gObjectEventPal_NPC2[] = INCBIN_U16("graphics/object_events/palettes/npc_2.gbapal");
+const u16 gObjectEventPal_NPC1_Reflection[] = INCBIN_U16("graphics/object_events/palettes/npc_1_reflection.gbapal");
+const u16 gObjectEventPal_NPC3_Reflection[] = INCBIN_U16("graphics/object_events/palettes/npc_3_reflection.gbapal");
+const u16 gObjectEventPal_NPC4_Reflection[] = INCBIN_U16("graphics/object_events/palettes/npc_4_reflection.gbapal");
+const u16 gObjectEventPal_NPC2_Reflection[] = INCBIN_U16("graphics/object_events/palettes/npc_2_reflection.gbapal");
 const u32 gObjectEventPic_LittleBoy[] = INCBIN_U32("graphics/object_events/pics/people/little_boy.4bpp");
 const u32 gObjectEventPic_LittleGirl[] = INCBIN_U32("graphics/object_events/pics/people/little_girl.4bpp");
 const u32 gObjectEventPic_SittingBoy[] = INCBIN_U32("graphics/object_events/pics/people/sitting_boy.4bpp");
@@ -175,12 +175,12 @@ const u32 gObjectEventPic_GymSign[] = INCBIN_U32("graphics/object_events/pics/mi
 const u32 gObjectEventPic_Sign[] = INCBIN_U32("graphics/object_events/pics/misc/sign.4bpp");
 const u32 gObjectEventPic_WoodenSign[] = INCBIN_U32("graphics/object_events/pics/misc/wooden_sign.4bpp");
 const u32 gObjectEventPic_Clipboard[] = INCBIN_U32("graphics/object_events/pics/misc/clipboard.4bpp");
-const u16 gUnknown_8394EA8[] = INCBIN_U16("graphics/object_events/palettes/19.gbapal");
+const u16 gObjectEventPal_Meteorite[] = INCBIN_U16("graphics/object_events/palettes/meteorite.gbapal");
 const u32 gObjectEventPic_BirthIslandStone[] = INCBIN_U32("graphics/object_events/pics/misc/birth_island_stone.4bpp");
 const u32 gObjectEventPic_LaprasDoll[] = INCBIN_U32("graphics/object_events/pics/misc/lapras_doll.4bpp");
-const u16 gUnknown_83952C8[] = INCBIN_U16("graphics/object_events/palettes/20.gbapal");
+const u16 gObjectEventPal_SeaGallop[] = INCBIN_U16("graphics/object_events/palettes/seagallop.gbapal");
 const u32 gObjectEventPic_Seagallop[] = INCBIN_U32("graphics/object_events/pics/misc/seagallop.4bpp");
-const u16 gUnknown_8395AE8[] = INCBIN_U16("graphics/object_events/palettes/21.gbapal");
+const u16 gObjectEventPal_SSAnne[] = INCBIN_U16("graphics/object_events/palettes/ssanne.gbapal");
 const u32 gObjectEventPic_SSAnne[] = INCBIN_U32("graphics/object_events/pics/misc/ss_anne.4bpp");
 const u32 gObjectEventPic_SurfBlob[] = INCBIN_U32("graphics/object_events/pics/misc/surf_blob.4bpp");
 const u32 gObjectEventPic_Policeman[] = INCBIN_U32("graphics/object_events/pics/people/policeman.4bpp");
@@ -363,4 +363,52 @@ const u32 gObjectEventPic_RetroRedBike[] = INCBIN_U32("graphics/object_events/pi
 const u32 gObjectEventPic_RetroRedFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/retrored/field_move.4bpp");
 const u32 gObjectEventPic_RetroRedFishing[] = INCBIN_U32("graphics/object_events/pics/people/retrored/fishing.4bpp");
 
+const u16 gObjectEventPal_Emerald_NPC1[] = INCBIN_U16("graphics/object_events/palettes/e_npc_1.gbapal");
+const u16 gObjectEventPal_Emerald_NPC2[] = INCBIN_U16("graphics/object_events/palettes/e_npc_2.gbapal");
+const u16 gObjectEventPal_Emerald_NPC4[] = INCBIN_U16("graphics/object_events/palettes/e_npc_4.gbapal");
+const u16 gObjectEventPal_Emerald_Zigzagoon[] = INCBIN_U16("graphics/object_events/palettes/enemy_zigzagoon.gbapal");
 
+const u32 gObjectEventPic_archieNormal[] = INCBIN_U32("graphics/object_events/pics/people/archie/walking.4bpp");
+const u32 gObjectEventPic_archieMachBike[] = INCBIN_U32("graphics/object_events/pics/people/archie/mach_bike.4bpp");
+const u32 gObjectEventPic_archieFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/archie/field_move.4bpp");
+const u32 gObjectEventPic_archieFishing[] = INCBIN_U32("graphics/object_events/pics/people/archie/fishing.4bpp");
+
+const u32 gObjectEventPic_dusclopsNormal[] = INCBIN_U32("graphics/object_events/pics/people/dusclops/walking.4bpp");
+const u32 gObjectEventPic_dusclopsMachBike[] = INCBIN_U32("graphics/object_events/pics/people/dusclops/mach_bike.4bpp");
+const u32 gObjectEventPic_dusclopsFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/dusclops/field_move.4bpp");
+const u32 gObjectEventPic_dusclopsFishing[] = INCBIN_U32("graphics/object_events/pics/people/dusclops/fishing.4bpp");
+
+const u32 gObjectEventPic_loreleiNormal[] = INCBIN_U32("graphics/object_events/pics/people/lorelei/walking.4bpp");
+const u32 gObjectEventPic_loreleiMachBike[] = INCBIN_U32("graphics/object_events/pics/people/lorelei/mach_bike.4bpp");
+const u32 gObjectEventPic_loreleiFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/lorelei/field_move.4bpp");
+const u32 gObjectEventPic_loreleiFishing[] = INCBIN_U32("graphics/object_events/pics/people/lorelei/fishing.4bpp");
+
+const u32 gObjectEventPic_maxieNormal[] = INCBIN_U32("graphics/object_events/pics/people/maxie/walking.4bpp");
+const u32 gObjectEventPic_maxieMachBike[] = INCBIN_U32("graphics/object_events/pics/people/maxie/mach_bike.4bpp");
+const u32 gObjectEventPic_maxieFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/maxie/field_move.4bpp");
+const u32 gObjectEventPic_maxieFishing[] = INCBIN_U32("graphics/object_events/pics/people/maxie/fishing.4bpp");
+
+const u32 gObjectEventPic_oakNormal[] = INCBIN_U32("graphics/object_events/pics/people/oak/walking.4bpp");
+const u32 gObjectEventPic_oakMachBike[] = INCBIN_U32("graphics/object_events/pics/people/oak/mach_bike.4bpp");
+const u32 gObjectEventPic_oakFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/oak/field_move.4bpp");
+const u32 gObjectEventPic_oakFishing[] = INCBIN_U32("graphics/object_events/pics/people/oak/fishing.4bpp");
+
+const u32 gObjectEventPic_stevenNormal[] = INCBIN_U32("graphics/object_events/pics/people/steven/walking.4bpp");
+const u32 gObjectEventPic_stevenMachBike[] = INCBIN_U32("graphics/object_events/pics/people/steven/mach_bike.4bpp");
+const u32 gObjectEventPic_stevenFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/steven/field_move.4bpp");
+const u32 gObjectEventPic_stevenFishing[] = INCBIN_U32("graphics/object_events/pics/people/steven/fishing.4bpp");
+
+const u32 gObjectEventPic_wallaceNormal[] = INCBIN_U32("graphics/object_events/pics/people/wallace/walking.4bpp");
+const u32 gObjectEventPic_wallaceMachBike[] = INCBIN_U32("graphics/object_events/pics/people/wallace/mach_bike.4bpp");
+const u32 gObjectEventPic_wallaceFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/wallace/field_move.4bpp");
+const u32 gObjectEventPic_wallaceFishing[] = INCBIN_U32("graphics/object_events/pics/people/wallace/fishing.4bpp");
+
+const u32 gObjectEventPic_wallyNormal[] = INCBIN_U32("graphics/object_events/pics/people/wally/walking.4bpp");
+const u32 gObjectEventPic_wallyMachBike[] = INCBIN_U32("graphics/object_events/pics/people/wally/mach_bike.4bpp");
+const u32 gObjectEventPic_wallyFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/wally/field_move.4bpp");
+const u32 gObjectEventPic_wallyFishing[] = INCBIN_U32("graphics/object_events/pics/people/wally/fishing.4bpp");
+
+const u32 gObjectEventPic_zigzagoonNormal[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/walking.4bpp");
+const u32 gObjectEventPic_zigzagoonMachBike[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/mach_bike.4bpp");
+const u32 gObjectEventPic_zigzagoonFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/field_move.4bpp");
+const u32 gObjectEventPic_zigzagoonFishing[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/fishing.4bpp");

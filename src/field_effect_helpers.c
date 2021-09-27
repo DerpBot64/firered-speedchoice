@@ -159,10 +159,14 @@ static void UpdateObjectReflectionSprite(struct Sprite * reflectionSprite)
 
 extern const struct SpriteTemplate * const gFieldEffectObjectTemplatePointers[];
 
+#define OBJ_EVENT_PAL_TAG_PLAYER_RED  0x1100
+
 u8 CreateWarpArrowSprite(void)
 {
     u8 spriteId;
     struct Sprite * sprite;
+
+    LoadObjectEventPalette(OBJ_EVENT_PAL_TAG_PLAYER_RED);
 
     spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[8], 0, 0, 0x52);
     if (spriteId != MAX_SPRITES)
@@ -189,7 +193,9 @@ void ShowWarpArrowSprite(u8 spriteId, u8 direction, s16 x, s16 y)
     sprite = &gSprites[spriteId];
     if (sprite->invisible || sprite->data[0] != x || sprite->data[1] != y)
     {
-        SetSpritePosToMapCoords(x, y, &x2, &y2);
+    	LoadObjectEventPalette(OBJ_EVENT_PAL_TAG_PLAYER_RED);
+
+    	SetSpritePosToMapCoords(x, y, &x2, &y2);
         sprite = &gSprites[spriteId];
         sprite->pos1.x = x2 + 8;
         sprite->pos1.y = y2 + 8;
@@ -938,18 +944,22 @@ static void UpdateAshFieldEffect_Step2(struct Sprite * sprite)
         FieldEffectStop(sprite, FLDEFF_ASH);
 }
 
+#define OBJ_EVENT_PAL_TAG_PLAYER_RED  0x1100
+
 u32 FldEff_SurfBlob(void)
 {
     u8 spriteId;
     struct Sprite * sprite;
 
     sub_8063BC4((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
+
+    LoadObjectEventPalette(OBJ_EVENT_PAL_TAG_PLAYER_RED);
+
     spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[7], gFieldEffectArguments[0], gFieldEffectArguments[1], 0x96);
     if (spriteId !=MAX_SPRITES)
     {
         sprite = &gSprites[spriteId];
         sprite->coordOffsetEnabled = TRUE;
-        sprite->oam.paletteNum = 0;
         sprite->data[2] = gFieldEffectArguments[2];
         sprite->data[3] = 0;
         sprite->data[6] = -1;

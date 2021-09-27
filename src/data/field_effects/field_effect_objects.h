@@ -218,7 +218,7 @@ const union AnimCmd *const gUnknown_83A555C[] =
 const struct SpriteTemplate gUnknown_83A556C =
 {
     .tileTag = SPRITE_INVALID_TAG,
-    .paletteTag = SPRITE_INVALID_TAG,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_RED,
     .oam = &gObjectEventBaseOam_32x32,
     .anims = gUnknown_83A555C,
     .images = gObjectEventPicTable_SurfBlob,
@@ -277,7 +277,7 @@ const union AnimCmd *const gUnknown_83A55F4[] =
 const struct SpriteTemplate gUnknown_83A5604 =
 {
     .tileTag = SPRITE_INVALID_TAG,
-    .paletteTag = SPRITE_INVALID_TAG,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_RED,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = gUnknown_83A55F4,
     .images = gUnknown_83A5584,
@@ -1096,7 +1096,7 @@ const union AnimCmd *const gUnknown_83A5DEC[] =
 const struct SpriteTemplate gUnknown_83A5E00 =
 {
     .tileTag = SPRITE_INVALID_TAG,
-    .paletteTag = SPRITE_INVALID_TAG,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_RED,
     .oam = &gObjectEventBaseOam_64x64,
     .anims = gUnknown_83A5DEC,
     .images = gUnknown_83A5D9C,
