@@ -527,7 +527,15 @@ static void BufferOptionMenuString(u8 selection)
 
 static void CloseAndSaveOptionMenu(u8 taskId)
 {
-    gFieldCallback = FieldCB_DefaultWarpExit;
+	#if DEVMODE
+	{
+		//increment trainer ID portion to test avatars
+		gSaveBlock2Ptr->playerTrainerId[0] = gSaveBlock2Ptr->playerTrainerId[0]-1;
+	}
+	#endif //DEVMODE
+
+
+	gFieldCallback = FieldCB_DefaultWarpExit;
     SetMainCallback2(gMain.savedCallback);
     FreeAllWindowBuffers();
     gSaveBlock2Ptr->optionsTextSpeed = sOptionMenuPtr->option[MENUITEM_TEXTSPEED];

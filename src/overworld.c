@@ -51,6 +51,7 @@
 #include "constants/maps.h"
 #include "constants/region_map_sections.h"
 #include "constants/songs.h"
+#include "constants/event_objects.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -2161,11 +2162,16 @@ static void mli4_mapscripts_and_other(void)
     ResetObjectEvents();
     GetCameraFocusCoords(&x, &y);
     player = GetInitialPlayerAvatarState();
-    InitPlayerAvatar(x, y, player->direction, gSaveBlock2Ptr->playerGender);
+    InitPlayerAvatar(x, y, player->direction, getPlayerAvatarID());
     SetPlayerAvatarTransitionFlags(player->transitionFlags);
     ResetInitialPlayerAvatarState();
     TrySpawnObjectEvents(0, 0);
     TryRunOnWarpIntoMapScript();
+}
+
+
+u8 getPlayerAvatarID(){
+	return (gSaveBlock2Ptr->playerTrainerId[0]) % AVATAR_COUNT;
 }
 
 static void ReloadObjectsAndRunReturnToFieldMapScript(void)
@@ -3544,7 +3550,7 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
         if (gameVersion == VERSION_FIRE_RED || gameVersion == VERSION_LEAF_GREEN)
         {
             objEvent->spriteId = AddPseudoObjectEvent(
-                GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)),
+                GetRivalAvatarGraphicsIdByStateIdAndAvatar(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)),
                 SpriteCB_LinkPlayer, 0, 0, 0);
         }
         else

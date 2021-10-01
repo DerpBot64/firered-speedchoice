@@ -71,7 +71,7 @@ static void UpdateObjectEventVisibility(struct ObjectEvent *, struct Sprite *);
 static void MakeObjectTemplateFromObjectEventTemplate(struct ObjectEventTemplate *, struct SpriteTemplate *, const struct SubspriteTable **);
 static void GetObjectEventMovingCameraOffset(s16 *, s16 *);
 static struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
-static void LoadObjectEventPalette(u16);
+void LoadObjectEventPalette(u16);
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *);
 static void ReloadMapObjectWithOffset(u8 objectEventId, s16 x, s16 y);
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8, u8);
@@ -479,7 +479,24 @@ static const u8 gInitialMovementTypeFacingDirections[MOVEMENT_TYPES_COUNT] = {
 #define OBJ_EVENT_PAL_TAG_RS_GROUDON                  0x1119
 #define OBJ_EVENT_PAL_TAG_RS_GROUDON_REFLECTION       0x111A
 #define OBJ_EVENT_PAL_TAG_RS_SUBMARINE_SHADOW         0x111B
-#define OBJ_EVENT_PAL_TAG_NONE                        0x11FF
+
+#define OBJ_EVENT_PAL_TAG_BRENDAN			0x1124
+#define OBJ_EVENT_PAL_TAG_MAY				0x1125
+#define OBJ_EVENT_PAL_TAG_ETHAN				0x1126
+#define OBJ_EVENT_PAL_TAG_RS_BRENDAN		0x1127
+#define OBJ_EVENT_PAL_TAG_RS_MAY			0x1128
+#define OBJ_EVENT_PAL_TAG_RS_MAY_BLUE		0x1129
+#define OBJ_EVENT_PAL_TAG_DAWN				0x112A
+#define OBJ_EVENT_PAL_TAG_LUCAS				0x112B
+#define OBJ_EVENT_PAL_TAG_LYRA				0x112C
+#define OBJ_EVENT_PAL_TAG_PEACH				0x112D
+#define OBJ_EVENT_PAL_TAG_YUGI				0x112E
+#define OBJ_EVENT_PAL_TAG_EMERALD_NPC_1		0x1130
+#define OBJ_EVENT_PAL_TAG_EMERALD_NPC_2		0x1131
+#define OBJ_EVENT_PAL_TAG_EMERALD_NPC_4		0x1132
+#define OBJ_EVENT_PAL_TAG_EMERALD_ZIGZAG	0x1133
+
+#define OBJ_EVENT_PAL_TAG_NONE 				0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -508,6 +525,21 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Meteorite,               OBJ_EVENT_PAL_TAG_METEORITE},
     {gObjectEventPal_SSAnne,                  OBJ_EVENT_PAL_TAG_SS_ANNE},
     {gObjectEventPal_Seagallop,               OBJ_EVENT_PAL_TAG_SEAGALLOP},
+	{gObjectEventPal_Brendan,			OBJ_EVENT_PAL_TAG_BRENDAN},
+	{gObjectEventPal_May,				OBJ_EVENT_PAL_TAG_MAY},
+	{gObjectEventPal_Ethan,				OBJ_EVENT_PAL_TAG_ETHAN},
+	{gObjectEventPal_RS_Brendan,		OBJ_EVENT_PAL_TAG_RS_BRENDAN},
+	{gObjectEventPal_RS_May,			OBJ_EVENT_PAL_TAG_RS_MAY},
+	{gObjectEventPal_RS_May_Blue,		OBJ_EVENT_PAL_TAG_RS_MAY_BLUE},
+	{gObjectEventPal_Dawn,				OBJ_EVENT_PAL_TAG_DAWN},
+	{gObjectEventPal_Lucas,				OBJ_EVENT_PAL_TAG_LUCAS},
+	{gObjectEventPal_Lyra,				OBJ_EVENT_PAL_TAG_LYRA},
+	{gObjectEventPal_Peach,				OBJ_EVENT_PAL_TAG_PEACH},
+	{gObjectEventPal_Yugi,				OBJ_EVENT_PAL_TAG_YUGI},
+	{gObjectEventPal_Emerald_NPC1,		OBJ_EVENT_PAL_TAG_EMERALD_NPC_1},
+	{gObjectEventPal_Emerald_NPC2,		OBJ_EVENT_PAL_TAG_EMERALD_NPC_2},
+	{gObjectEventPal_Emerald_NPC4,		OBJ_EVENT_PAL_TAG_EMERALD_NPC_4},
+	{gObjectEventPal_Emerald_Zigzagoon,	OBJ_EVENT_PAL_TAG_EMERALD_ZIGZAG},
     {},
 };
 
@@ -566,6 +598,7 @@ static const u16 sRSMovingBoxReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_RS_MOVING_BOX,
     OBJ_EVENT_PAL_TAG_RS_MOVING_BOX,
 };
+
 
 static const u16 sMeteoriteReflectionPaletteTags[] = {
     OBJ_EVENT_PAL_TAG_METEORITE,
@@ -2081,7 +2114,7 @@ static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteI
 {
     gPlayerAvatar.objectEventId = objectEventId;
     gPlayerAvatar.spriteId = spriteId;
-    gPlayerAvatar.gender = GetPlayerAvatarGenderByGraphicsId(gObjectEvents[objectEventId].graphicsId);
+    gPlayerAvatar.avatar = getPlayerAvatarID();
     SetPlayerAvatarExtraStateTransition(gObjectEvents[objectEventId].graphicsId, PLAYER_AVATAR_FLAG_CONTROLLABLE);
 }
 
@@ -2175,8 +2208,13 @@ void PlayerObjectTurn(struct PlayerAvatar *playerAvatar, u8 direction)
 
 const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8 graphicsId)
 {
-    if (graphicsId >= OBJ_EVENT_GFX_VARS)
+
+	if (graphicsId >= OBJ_EVENT_GFX_VARS)
         graphicsId = VarGetObjectEventGraphicsId(graphicsId - OBJ_EVENT_GFX_VARS);
+
+	if(graphicsId >= OBJ_EVENT_GFX_AVATAR_NORMAL && graphicsId <=OBJ_EVENT_GFX_AVATAR_VS_SEEKER_BIKE){
+		return gAvatarGraphicsInfoPointers[((getPlayerAvatarID()-2)*7)+(graphicsId-OBJ_EVENT_GFX_AVATAR_NORMAL)];
+	}
     
     if (graphicsId >= NUM_OBJ_EVENT_GFX)
         graphicsId = OBJ_EVENT_GFX_LITTLE_BOY;
@@ -2269,7 +2307,7 @@ void FreeAndReserveObjectSpritePalettes(void)
     gReservedSpritePaletteCount = 12;
 }
 
-static void LoadObjectEventPalette(u16 paletteTag)
+void LoadObjectEventPalette(u16 paletteTag)
 {
     u16 i = FindObjectEventPaletteIndexByTag(paletteTag);
 
@@ -2339,7 +2377,15 @@ void LoadPlayerObjectReflectionPalette(u16 tag, u8 slot)
 {
     u8 i;
 
-    PatchObjectPalette(tag, slot);
+    //PatchObjectPalette(tag, slot);
+
+    //TODO maybe something for avatar reflections. Dynamic?
+    if(getPlayerAvatarID() > 1){
+    	PatchObjectPalette(tag, gReflectionEffectPaletteMap[slot]);
+    	return;
+    }
+
+
     for (i = 0; gPlayerReflectionPaletteSets[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
     {
         if (gPlayerReflectionPaletteSets[i].tag == tag)

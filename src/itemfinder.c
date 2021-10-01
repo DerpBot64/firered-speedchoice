@@ -11,6 +11,7 @@
 #include "field_specials.h"
 #include "fieldmap.h"
 #include "constants/songs.h"
+#include "event_object_movement.h"
 
 static void Task_NoResponse_CleanUp(u8 taskId);
 static void Task_ItemfinderResponseSoundsAndAnims(u8 taskId);
@@ -104,9 +105,11 @@ static const union AffineAnimCmd *const sArrowAndStarSpriteAffineAnimTable[] = {
     sAffineAnim_Up
 };
 
+#define OBJ_EVENT_PAL_TAG_PLAYER_RED  0x1100
+
 static const struct SpriteTemplate gUnknown_84647E4 = {
     .tileTag = ARROW_TILE_TAG,
-    .paletteTag = 0xFFFF,
+	.paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_RED,
     .oam = &sArrowAndStarSpriteOamData,
     .anims = sArrowAndStarSpriteAnimTable,
     .affineAnims = sArrowAndStarSpriteAffineAnimTable,
@@ -155,6 +158,8 @@ static void Task_NoResponse_CleanUp(u8 taskId)
     DestroyTask(taskId);
 }
 
+#define OBJ_EVENT_PAL_TAG_PLAYER_RED  0x1100
+
 static void Task_ItemfinderResponseSoundsAndAnims(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
@@ -170,6 +175,7 @@ static void Task_ItemfinderResponseSoundsAndAnims(u8 taskId)
         else
         {
             PlaySE(SE_ITEMFINDER);
+            LoadObjectEventPalette(OBJ_EVENT_PAL_TAG_PLAYER_RED);
             CreateArrowSprite(tDingNum, direction);
             tDingNum++;
             tNumDingsRemaining--;
@@ -191,6 +197,7 @@ static void Task_ItemfinderUnderfootSoundsAndAnims(u8 taskId)
         else
         {
             PlaySE(SE_ITEMFINDER);
+            LoadObjectEventPalette(OBJ_EVENT_PAL_TAG_PLAYER_RED);
             tStartSpriteId = CreateStarSprite();
             tDingNum++;
             tNumDingsRemaining--;
@@ -535,7 +542,6 @@ static void DestroyArrowAndStarTiles(void)
 static void CreateArrowSprite(u8 animNum, u8 direction)
 {
     u8 spriteId = CreateSprite(&gUnknown_84647E4, 120, 76, 0);
-    gSprites[spriteId].oam.paletteNum = 0;
     StartSpriteAnim(&gSprites[spriteId], animNum);
     gSprites[spriteId].spAnimNum = animNum;
     gSprites[spriteId].spData0 = 0;
@@ -615,7 +621,6 @@ static void SpriteCallback_DestroyArrow(struct Sprite * sprite)
 static u8 CreateStarSprite(void)
 {
     u8 spriteId = CreateSprite(&gUnknown_84647E4, 120, 76, 0);
-    gSprites[spriteId].oam.paletteNum = 0;
     gSprites[spriteId].callback = SpriteCallback_Star;
     StartSpriteAnim(&gSprites[spriteId], 4);
     gSprites[spriteId].spAnimNum = 0;

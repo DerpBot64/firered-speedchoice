@@ -3235,13 +3235,18 @@ static void UseFlyEffect_9(struct Task * task)
     }
 }
 
+#define OBJ_EVENT_PAL_TAG_PLAYER_RED  0x1100
+
 static u8 sub_8087168(void)
 {
     u8 spriteId;
     struct Sprite * sprite;
+
+    LoadObjectEventPalette(OBJ_EVENT_PAL_TAG_PLAYER_RED);
+
     spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0xff, 0xb4, 0x1);
+
     sprite = &gSprites[spriteId];
-    sprite->oam.paletteNum = 0;
     sprite->oam.priority = 1;
     sprite->callback = sub_8087220;
     return spriteId;

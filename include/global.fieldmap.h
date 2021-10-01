@@ -350,7 +350,7 @@ struct PlayerAvatar /* 0x202E858 */
     /*0x04*/ u8 spriteId;
     /*0x05*/ u8 objectEventId;
     /*0x06*/ bool8 preventStep;
-    /*0x07*/ u8 gender;
+    /*0x07*/ u8 avatar;
     // These are not used in FRLG
     u8 acroBikeState;
     u8 newDirBackup;

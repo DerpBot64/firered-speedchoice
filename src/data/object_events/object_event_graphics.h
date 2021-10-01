@@ -233,3 +233,156 @@ const u16 gFieldEffectObjectPic_Bubbles[] = INCBIN_U16("graphics/field_effects/p
 const u16 gFieldEffectObjectPic_SmallSparkle[] = INCBIN_U16("graphics/field_effects/pics/small_sparkle.4bpp");
 const u16 gFieldEffectPal_SmallSparkle[] = INCBIN_U16("graphics/field_effects/palettes/small_sparkle.gbapal");
 const u16 gFieldEffectObjectPic_Bird[] = INCBIN_U16("graphics/field_effects/pics/bird.4bpp");
+
+const u32 gObjectEventPic_BrendanNormal[] = INCBIN_U32("graphics/object_events/pics/people/brendan/walking.4bpp");
+const u32 gObjectEventPic_BrendanMachBike[] = INCBIN_U32("graphics/object_events/pics/people/brendan/mach_bike.4bpp");
+const u32 gObjectEventPic_BrendanFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/brendan/field_move.4bpp");
+const u32 gObjectEventPic_BrendanFishing[] = INCBIN_U32("graphics/object_events/pics/people/brendan/fishing.4bpp");
+const u32 gObjectEventPic_BrendanSurfing[] = INCBIN_U32("graphics/object_events/pics/people/brendan/surfing.4bpp");
+const u32 gObjectEventPic_BrendanRunning[] = INCBIN_U32("graphics/object_events/pics/people/brendan/running.4bpp");
+
+const u16 gObjectEventPal_Brendan[] = INCBIN_U16("graphics/object_events/palettes/brendan.gbapal");
+
+const u32 gObjectEventPic_MayNormal[] = INCBIN_U32("graphics/object_events/pics/people/may/walking.4bpp");
+const u32 gObjectEventPic_MayMachBike[] = INCBIN_U32("graphics/object_events/pics/people/may/mach_bike.4bpp");
+const u32 gObjectEventPic_MayFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/may/field_move.4bpp");
+const u32 gObjectEventPic_MayFishing[] = INCBIN_U32("graphics/object_events/pics/people/may/fishing.4bpp");
+const u32 gObjectEventPic_MaySurfing[] = INCBIN_U32("graphics/object_events/pics/people/may/surfing.4bpp");
+const u32 gObjectEventPic_MayRunning[] = INCBIN_U32("graphics/object_events/pics/people/may/running.4bpp");
+
+const u16 gObjectEventPal_May[] = INCBIN_U16("graphics/object_events/palettes/may.gbapal");
+
+const u32 gObjectEventPic_BlueNormal[] = INCBIN_U32("graphics/object_events/pics/people/blue/walking.4bpp");
+const u32 gObjectEventPic_BlueMachBike[] = INCBIN_U32("graphics/object_events/pics/people/blue/mach_bike.4bpp");
+const u32 gObjectEventPic_BlueFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/blue/field_move.4bpp");
+const u32 gObjectEventPic_BlueFishing[] = INCBIN_U32("graphics/object_events/pics/people/blue/fishing.4bpp");
+const u32 gObjectEventPic_BlueVsSeekerBike[] = INCBIN_U32("graphics/object_events/pics/people/blue/vs_seeker_bike.4bpp");
+
+
+const u32 gObjectEventPic_EthanNormal[] = INCBIN_U32("graphics/object_events/pics/people/ethan/walking.4bpp");
+const u32 gObjectEventPic_EthanRunning[] = INCBIN_U32("graphics/object_events/pics/people/ethan/running.4bpp");
+const u32 gObjectEventPic_EthanSurfing[] = INCBIN_U32("graphics/object_events/pics/people/ethan/surfing.4bpp");
+const u32 gObjectEventPic_EthanBike[] = INCBIN_U32("graphics/object_events/pics/people/ethan/bike.4bpp");
+const u32 gObjectEventPic_EthanFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/ethan/field_move.4bpp");
+const u32 gObjectEventPic_EthanFishing[] = INCBIN_U32("graphics/object_events/pics/people/ethan/fishing.4bpp");
+
+const u16 gObjectEventPal_Ethan[] = INCBIN_U16("graphics/object_events/palettes/ethan.gbapal");
+
+const u32 gObjectEventPic_RS_BrendanNormal[] = INCBIN_U32("graphics/object_events/pics/people/rs_brendan/normal.4bpp");
+const u32 gObjectEventPic_RS_BrendanMachBike[] = INCBIN_U32("graphics/object_events/pics/people/rs_brendan/mach_bike.4bpp");
+const u32 gObjectEventPic_RS_BrendanFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/rs_brendan/field_move.4bpp");
+const u32 gObjectEventPic_RS_BrendanFishing[] = INCBIN_U32("graphics/object_events/pics/people/rs_brendan/fishing.4bpp");
+const u32 gObjectEventPic_RS_BrendanSurfing[] = INCBIN_U32("graphics/object_events/pics/people/rs_brendan/surfing.4bpp");
+
+const u16 gObjectEventPal_RS_Brendan[] = INCBIN_U16("graphics/object_events/palettes/rs_brendan.gbapal");
+
+const u32 gObjectEventPic_RS_MayNormal[] = INCBIN_U32("graphics/object_events/pics/people/rs_may/normal.4bpp");
+const u32 gObjectEventPic_RS_MayMachBike[] = INCBIN_U32("graphics/object_events/pics/people/rs_may/mach_bike.4bpp");
+const u32 gObjectEventPic_RS_MayFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/rs_may/field_move.4bpp");
+const u32 gObjectEventPic_RS_MayFishing[] = INCBIN_U32("graphics/object_events/pics/people/rs_may/fishing.4bpp");
+const u32 gObjectEventPic_RS_MaySurfing[] = INCBIN_U32("graphics/object_events/pics/people/rs_may/surfing.4bpp");
+
+const u16 gObjectEventPal_RS_May[] = INCBIN_U16("graphics/object_events/palettes/rs_may.gbapal");
+
+const u16 gObjectEventPal_RS_May_Blue[] = INCBIN_U16("graphics/object_events/palettes/rs_may_blue.gbapal");
+
+
+const u32 gObjectEventPic_DawnNormal[] = INCBIN_U32("graphics/object_events/pics/people/dawn/walking.4bpp");
+const u32 gObjectEventPic_DawnRunning[] = INCBIN_U32("graphics/object_events/pics/people/dawn/running.4bpp");
+const u32 gObjectEventPic_DawnSurfing[] = INCBIN_U32("graphics/object_events/pics/people/dawn/surfing.4bpp");
+const u32 gObjectEventPic_DawnBike[] = INCBIN_U32("graphics/object_events/pics/people/dawn/bike.4bpp");
+const u32 gObjectEventPic_DawnFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/dawn/field_move.4bpp");
+const u32 gObjectEventPic_DawnFishing[] = INCBIN_U32("graphics/object_events/pics/people/dawn/fishing.4bpp");
+
+const u16 gObjectEventPal_Dawn[] = INCBIN_U16("graphics/object_events/palettes/dawn.gbapal");
+
+const u32 gObjectEventPic_LucasNormal[] = INCBIN_U32("graphics/object_events/pics/people/lucas/walking.4bpp");
+const u32 gObjectEventPic_LucasRunning[] = INCBIN_U32("graphics/object_events/pics/people/lucas/running.4bpp");
+const u32 gObjectEventPic_LucasSurfing[] = INCBIN_U32("graphics/object_events/pics/people/lucas/surfing.4bpp");
+const u32 gObjectEventPic_LucasBike[] = INCBIN_U32("graphics/object_events/pics/people/lucas/bike.4bpp");
+const u32 gObjectEventPic_LucasFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/lucas/field_move.4bpp");
+const u32 gObjectEventPic_LucasFishing[] = INCBIN_U32("graphics/object_events/pics/people/lucas/fishing.4bpp");
+
+const u16 gObjectEventPal_Lucas[] = INCBIN_U16("graphics/object_events/palettes/lucas.gbapal");
+
+const u32 gObjectEventPic_LyraNormal[] = INCBIN_U32("graphics/object_events/pics/people/lyra/walking.4bpp");
+const u32 gObjectEventPic_LyraRunning[] = INCBIN_U32("graphics/object_events/pics/people/lyra/running.4bpp");
+const u32 gObjectEventPic_LyraSurfing[] = INCBIN_U32("graphics/object_events/pics/people/lyra/surfing.4bpp");
+const u32 gObjectEventPic_LyraBike[] = INCBIN_U32("graphics/object_events/pics/people/lyra/bike.4bpp");
+const u32 gObjectEventPic_LyraFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/lyra/field_move.4bpp");
+const u32 gObjectEventPic_LyraFishing[] = INCBIN_U32("graphics/object_events/pics/people/lyra/fishing.4bpp");
+
+const u16 gObjectEventPal_Lyra[] = INCBIN_U16("graphics/object_events/palettes/lyra.gbapal");
+
+const u32 gObjectEventPic_PeachNormal[] = INCBIN_U32("graphics/object_events/pics/people/peach/walking.4bpp");
+const u32 gObjectEventPic_PeachRunning[] = INCBIN_U32("graphics/object_events/pics/people/peach/running.4bpp");
+const u32 gObjectEventPic_PeachSurfing[] = INCBIN_U32("graphics/object_events/pics/people/peach/surfing.4bpp");
+const u32 gObjectEventPic_PeachBike[] = INCBIN_U32("graphics/object_events/pics/people/peach/bike.4bpp");
+const u32 gObjectEventPic_PeachFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/peach/field_move.4bpp");
+const u32 gObjectEventPic_PeachFishing[] = INCBIN_U32("graphics/object_events/pics/people/peach/fishing.4bpp");
+
+const u16 gObjectEventPal_Peach[] = INCBIN_U16("graphics/object_events/palettes/peach.gbapal");
+
+const u32 gObjectEventPic_YugiNormal[] = INCBIN_U32("graphics/object_events/pics/people/yugi/walking.4bpp");
+const u32 gObjectEventPic_YugiRunning[] = INCBIN_U32("graphics/object_events/pics/people/yugi/running.4bpp");
+const u32 gObjectEventPic_YugiSurfing[] = INCBIN_U32("graphics/object_events/pics/people/yugi/surfing.4bpp");
+const u32 gObjectEventPic_YugiBike[] = INCBIN_U32("graphics/object_events/pics/people/yugi/bike.4bpp");
+const u32 gObjectEventPic_YugiFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/yugi/field_move.4bpp");
+const u32 gObjectEventPic_YugiFishing[] = INCBIN_U32("graphics/object_events/pics/people/yugi/fishing.4bpp");
+
+const u16 gObjectEventPal_Yugi[] = INCBIN_U16("graphics/object_events/palettes/yugi.gbapal");
+
+const u32 gObjectEventPic_RetroRedNormal[] = INCBIN_U32("graphics/object_events/pics/people/retrored/walking.4bpp");
+const u32 gObjectEventPic_RetroRedBike[] = INCBIN_U32("graphics/object_events/pics/people/retrored/bike.4bpp");
+const u32 gObjectEventPic_RetroRedFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/retrored/field_move.4bpp");
+const u32 gObjectEventPic_RetroRedFishing[] = INCBIN_U32("graphics/object_events/pics/people/retrored/fishing.4bpp");
+
+const u16 gObjectEventPal_Emerald_NPC1[] = INCBIN_U16("graphics/object_events/palettes/e_npc_1.gbapal");
+const u16 gObjectEventPal_Emerald_NPC2[] = INCBIN_U16("graphics/object_events/palettes/e_npc_2.gbapal");
+const u16 gObjectEventPal_Emerald_NPC4[] = INCBIN_U16("graphics/object_events/palettes/e_npc_4.gbapal");
+const u16 gObjectEventPal_Emerald_Zigzagoon[] = INCBIN_U16("graphics/object_events/palettes/enemy_zigzagoon.gbapal");
+
+const u32 gObjectEventPic_archieNormal[] = INCBIN_U32("graphics/object_events/pics/people/archie/walking.4bpp");
+const u32 gObjectEventPic_archieMachBike[] = INCBIN_U32("graphics/object_events/pics/people/archie/mach_bike.4bpp");
+const u32 gObjectEventPic_archieFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/archie/field_move.4bpp");
+const u32 gObjectEventPic_archieFishing[] = INCBIN_U32("graphics/object_events/pics/people/archie/fishing.4bpp");
+
+const u32 gObjectEventPic_dusclopsNormal[] = INCBIN_U32("graphics/object_events/pics/people/dusclops/walking.4bpp");
+const u32 gObjectEventPic_dusclopsMachBike[] = INCBIN_U32("graphics/object_events/pics/people/dusclops/mach_bike.4bpp");
+const u32 gObjectEventPic_dusclopsFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/dusclops/field_move.4bpp");
+const u32 gObjectEventPic_dusclopsFishing[] = INCBIN_U32("graphics/object_events/pics/people/dusclops/fishing.4bpp");
+
+const u32 gObjectEventPic_loreleiNormal[] = INCBIN_U32("graphics/object_events/pics/people/lorelei/walking.4bpp");
+const u32 gObjectEventPic_loreleiMachBike[] = INCBIN_U32("graphics/object_events/pics/people/lorelei/mach_bike.4bpp");
+const u32 gObjectEventPic_loreleiFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/lorelei/field_move.4bpp");
+const u32 gObjectEventPic_loreleiFishing[] = INCBIN_U32("graphics/object_events/pics/people/lorelei/fishing.4bpp");
+
+const u32 gObjectEventPic_maxieNormal[] = INCBIN_U32("graphics/object_events/pics/people/maxie/walking.4bpp");
+const u32 gObjectEventPic_maxieMachBike[] = INCBIN_U32("graphics/object_events/pics/people/maxie/mach_bike.4bpp");
+const u32 gObjectEventPic_maxieFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/maxie/field_move.4bpp");
+const u32 gObjectEventPic_maxieFishing[] = INCBIN_U32("graphics/object_events/pics/people/maxie/fishing.4bpp");
+
+const u32 gObjectEventPic_oakNormal[] = INCBIN_U32("graphics/object_events/pics/people/oak/walking.4bpp");
+const u32 gObjectEventPic_oakMachBike[] = INCBIN_U32("graphics/object_events/pics/people/oak/mach_bike.4bpp");
+const u32 gObjectEventPic_oakFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/oak/field_move.4bpp");
+const u32 gObjectEventPic_oakFishing[] = INCBIN_U32("graphics/object_events/pics/people/oak/fishing.4bpp");
+
+const u32 gObjectEventPic_stevenNormal[] = INCBIN_U32("graphics/object_events/pics/people/steven/walking.4bpp");
+const u32 gObjectEventPic_stevenMachBike[] = INCBIN_U32("graphics/object_events/pics/people/steven/mach_bike.4bpp");
+const u32 gObjectEventPic_stevenFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/steven/field_move.4bpp");
+const u32 gObjectEventPic_stevenFishing[] = INCBIN_U32("graphics/object_events/pics/people/steven/fishing.4bpp");
+
+const u32 gObjectEventPic_wallaceNormal[] = INCBIN_U32("graphics/object_events/pics/people/wallace/walking.4bpp");
+const u32 gObjectEventPic_wallaceMachBike[] = INCBIN_U32("graphics/object_events/pics/people/wallace/mach_bike.4bpp");
+const u32 gObjectEventPic_wallaceFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/wallace/field_move.4bpp");
+const u32 gObjectEventPic_wallaceFishing[] = INCBIN_U32("graphics/object_events/pics/people/wallace/fishing.4bpp");
+
+const u32 gObjectEventPic_wallyNormal[] = INCBIN_U32("graphics/object_events/pics/people/wally/walking.4bpp");
+const u32 gObjectEventPic_wallyMachBike[] = INCBIN_U32("graphics/object_events/pics/people/wally/mach_bike.4bpp");
+const u32 gObjectEventPic_wallyFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/wally/field_move.4bpp");
+const u32 gObjectEventPic_wallyFishing[] = INCBIN_U32("graphics/object_events/pics/people/wally/fishing.4bpp");
+
+const u32 gObjectEventPic_zigzagoonNormal[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/walking.4bpp");
+const u32 gObjectEventPic_zigzagoonMachBike[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/mach_bike.4bpp");
+const u32 gObjectEventPic_zigzagoonFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/field_move.4bpp");
+const u32 gObjectEventPic_zigzagoonFishing[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/fishing.4bpp");

@@ -1299,7 +1299,7 @@ static void NamingScreen_CreatePlayerIcon(void)
     u8 rivalGfxId;
     u8 spriteId;
 
-    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(0, sNamingScreenData->monSpecies);
+    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndAvatar(0, sNamingScreenData->monSpecies);
     spriteId = AddPseudoObjectEvent(rivalGfxId, SpriteCallbackDummy, 0x38, 0x25, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], 4);

@@ -816,7 +816,14 @@ static void SetPlayerCardData(struct TrainerCard *trainerCard, u8 cardType)
     trainerCard->rse.hasPokedex = FlagGet(FLAG_SYS_POKEDEX_GET);
     trainerCard->rse.caughtAllHoenn = HasAllHoennMons();
     trainerCard->rse.caughtMonsCount = GetCaughtMonsCount();
-
+	
+	#if DEVMODE
+    {
+    	//increment trainer ID portion to test avatars
+    	gSaveBlock2Ptr->playerTrainerId[0] = gSaveBlock2Ptr->playerTrainerId[0]+1;
+    }
+	#endif //DEVMODE
+	
     trainerCard->rse.trainerId = (gSaveBlock2Ptr->playerTrainerId[1] << 8) | gSaveBlock2Ptr->playerTrainerId[0];
 
     trainerCard->rse.linkBattleWins = GetCappedGameStat(GAME_STAT_LINK_BATTLE_WINS, 9999);
