@@ -870,6 +870,7 @@ static const u8 *const sMapNames[] = {
     [MAPSEC_POKEMON_TOWER       - MAPSECS_KANTO] = gMapSecName_PokemonTower,
     [MAPSEC_CERULEAN_CAVE       - MAPSECS_KANTO] = gMapSecName_CeruleanCave,
     [MAPSEC_POWER_PLANT         - MAPSECS_KANTO] = gMapSecName_PowerPlant,
+	[MAPSEC_ROUTE_21_SOUTH      - MAPSECS_KANTO] = gMapSecName_Route21_South,
     [MAPSEC_ONE_ISLAND          - MAPSECS_KANTO] = gMapSecName_OneIsland,
     [MAPSEC_TWO_ISLAND          - MAPSECS_KANTO] = gMapSecName_TwoIsland,
     [MAPSEC_THREE_ISLAND        - MAPSECS_KANTO] = gMapSecName_ThreeIsland,
@@ -965,6 +966,7 @@ static const u16 sMapSectionTopLeftCorners[MAPSEC_COUNT][2] = {
     [MAPSEC_ROUTE_23            - MAPSECS_KANTO] = { 2,  4},
     [MAPSEC_ROUTE_24            - MAPSECS_KANTO] = {14,  1},
     [MAPSEC_ROUTE_25            - MAPSECS_KANTO] = {15,  1},
+	[MAPSEC_ROUTE_21_SOUTH      - MAPSECS_KANTO] = { 4, 13},
     [MAPSEC_ONE_ISLAND          - MAPSECS_KANTO] = { 1,  8},
     [MAPSEC_TWO_ISLAND          - MAPSECS_KANTO] = { 9,  9},
     [MAPSEC_THREE_ISLAND        - MAPSECS_KANTO] = {18, 12},
@@ -1034,7 +1036,7 @@ static const u16 sMapSectionDimensions[MAPSEC_COUNT][2] = {
     [MAPSEC_ROUTE_18            - MAPSECS_KANTO] = {5, 1},
     [MAPSEC_ROUTE_19            - MAPSECS_KANTO] = {1, 2},
     [MAPSEC_ROUTE_20            - MAPSECS_KANTO] = {7, 1},
-    [MAPSEC_ROUTE_21            - MAPSECS_KANTO] = {1, 2},
+    [MAPSEC_ROUTE_21            - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_ROUTE_22            - MAPSECS_KANTO] = {2, 1},
     [MAPSEC_ROUTE_23            - MAPSECS_KANTO] = {1, 4},
     [MAPSEC_ROUTE_24            - MAPSECS_KANTO] = {1, 2},
@@ -1056,6 +1058,7 @@ static const u16 sMapSectionDimensions[MAPSEC_COUNT][2] = {
     [MAPSEC_POKEMON_TOWER       - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_CERULEAN_CAVE       - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_POWER_PLANT         - MAPSECS_KANTO] = {1, 1},
+	[MAPSEC_ROUTE_21_SOUTH      - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_ONE_ISLAND          - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_TWO_ISLAND          - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_THREE_ISLAND        - MAPSECS_KANTO] = {1, 1},
@@ -1108,7 +1111,7 @@ static const u16 sMapSectionDimensions[MAPSEC_COUNT][2] = {
     [MAPSEC_SCUFIB_CHAMBER      - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_RIXY_CHAMBER        - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_VIAPOIS_CHAMBER     - MAPSECS_KANTO] = {1, 1},
-    [MAPSEC_EMBER_SPA           - MAPSECS_KANTO] = {1, 1}
+    [MAPSEC_EMBER_SPA           - MAPSECS_KANTO] = {1, 1},
 };
 
 static const u8 sRegionMapSections_Kanto[LAYER_COUNT][MAP_HEIGHT][MAP_WIDTH] = {
@@ -1127,7 +1130,7 @@ static const u8 sRegionMapSections_Kanto[LAYER_COUNT][MAP_HEIGHT][MAP_WIDTH] = {
         {MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_1, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_17, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_12, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE},
         {MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_PALLET_TOWN, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_17, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_14, MAPSEC_ROUTE_13, MAPSEC_ROUTE_13, MAPSEC_ROUTE_12, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE},
         {MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_21, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_18, MAPSEC_ROUTE_18, MAPSEC_ROUTE_18, MAPSEC_ROUTE_18, MAPSEC_ROUTE_18, MAPSEC_FUCHSIA_CITY, MAPSEC_ROUTE_15, MAPSEC_ROUTE_15, MAPSEC_ROUTE_14, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE},
-        {MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_21, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_19, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE},
+        {MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_21_SOUTH, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_ROUTE_19, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE},
         {MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_CINNABAR_ISLAND, MAPSEC_ROUTE_20, MAPSEC_ROUTE_20, MAPSEC_ROUTE_20, MAPSEC_ROUTE_20, MAPSEC_ROUTE_20, MAPSEC_ROUTE_20, MAPSEC_ROUTE_20, MAPSEC_ROUTE_19, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE}
     }, 
     [LAYER_DUNGEON] =
@@ -1323,6 +1326,7 @@ static const u8 sMapFlyDestinations[][3] = {
     [MAPSEC_POKEMON_TOWER       - MAPSECS_KANTO] = {MAP(PALLET_TOWN),                           0},
     [MAPSEC_CERULEAN_CAVE       - MAPSECS_KANTO] = {MAP(PALLET_TOWN),                           0},
     [MAPSEC_POWER_PLANT         - MAPSECS_KANTO] = {MAP(PALLET_TOWN),                           0},
+	[MAPSEC_ROUTE_21_SOUTH      - MAPSECS_KANTO] = {MAP(ROUTE21_SOUTH),                         0},
     [MAPSEC_ONE_ISLAND          - MAPSECS_KANTO] = {MAP(ONE_ISLAND),                            SPAWN_ONE_ISLAND},
     [MAPSEC_TWO_ISLAND          - MAPSECS_KANTO] = {MAP(TWO_ISLAND),                            SPAWN_TWO_ISLAND},
     [MAPSEC_THREE_ISLAND        - MAPSECS_KANTO] = {MAP(THREE_ISLAND),                          SPAWN_THREE_ISLAND},
@@ -3730,17 +3734,13 @@ static void GetPlayerPositionOnRegionMap_HandleOverrides(void)
         }
         break;
     case MAPSEC_ROUTE_21:
-        if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE21_NORTH))
-        {
-            sMapCursor->x = 4;
-            sMapCursor->y = 12;
-        }
-        else if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE21_SOUTH))
-        {
-            sMapCursor->x = 4;
-            sMapCursor->y = 13;
-        }
+		sMapCursor->x = 4;
+		sMapCursor->y = 12;
         break;
+    case MAPSEC_ROUTE_21_SOUTH:
+		sMapCursor->x = 4;
+		sMapCursor->y = 13;
+		break;
     case MAPSEC_ROUTE_5:
         if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(VIRIDIAN_CITY))
         {
@@ -4402,6 +4402,13 @@ static void Task_FlyMap(u8 taskId)
                 case MAP_TYPE_INDOOR:
                     sFlyMap->selectedDestination = FALSE;
                     sFlyMap->state++;
+
+					#if DEVMODE
+						{
+                    		sFlyMap->selectedDestination = TRUE;
+						}
+					#endif //DEVMODE
+
                     break;
                 default:
                     PlaySE(SE_USE_ITEM);

@@ -246,8 +246,11 @@ static const u16 sWhiteOutMoneyLossBadgeFlagIDs[] = {
 
 static void DoWhiteOut(void)
 {
-    ScriptContext2_RunNewScript(EventScript_ResetEliteFourEnd);
-    RemoveMoney(&gSaveBlock1Ptr->money, ComputeWhiteOutMoneyLoss());
+	u32 losings;
+	ScriptContext2_RunNewScript(EventScript_ResetEliteFourEnd);
+    losings = ComputeWhiteOutMoneyLoss();
+    RemoveMoney(&gSaveBlock1Ptr->money, losings);
+    TryAddButtonStatBy(DB_MONEY_LOST, losings);
     HealPlayerParty();
     Overworld_ResetStateAfterWhitingOut();
     Overworld_SetWhiteoutRespawnPoint();
@@ -262,7 +265,6 @@ u32 ComputeWhiteOutMoneyLoss(void)
     u32 money = GetMoney(&gSaveBlock1Ptr->money);
     if (losings > money)
         losings = money;
-    TryAddButtonStatBy(DB_MONEY_LOST, losings);
     return losings;
 }
 
@@ -945,9 +947,9 @@ static u16 GetCenterScreenMetatileBehavior(void)
 
 bool32 Overworld_IsBikingAllowed(void)
 {
-    if (!gMapHeader.bikingAllowed)
+    /*if (!gMapHeader.bikingAllowed)
         return FALSE;
-    else
+    else*/
         return TRUE;
 }
 
@@ -1717,6 +1719,22 @@ void CB2_ContinueSavedGame(void)
         CB2_ReturnToField();
     }
     TryIncrementButtonStat(DB_RELOAD_COUNT);
+
+    // ---------------------
+	// SPEEDCHOICE CHANGE
+	// ---------------------
+	// Load the timers here. Note we don't overwrite them: we add the counts to the total
+	// timers since we want to include the intro counts it took to reach the load.
+
+	//game is loaded multiple times on boot, so do this here instead of the old location
+    //in LoadSerializedGame
+
+	gFrameTimers.frameCount += gSaveBlock2Ptr->doneButtonStats.frameCount;
+	gFrameTimers.owFrameCount += gSaveBlock2Ptr->doneButtonStats.owFrameCount;
+	gFrameTimers.battleFrameCount += gSaveBlock2Ptr->doneButtonStats.battleFrameCount;
+	gFrameTimers.menuFrameCount += gSaveBlock2Ptr->doneButtonStats.menuFrameCount;
+	gFrameTimers.introsFrameCount += gSaveBlock2Ptr->doneButtonStats.introsFrameCount;
+
 }
 
 static void FieldClearVBlankHBlankCallbacks(void)

@@ -4,6 +4,39 @@ This project is based on the disassembly of Pokémon FireRed and LeafGreen.
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
+### Version Derpbot 64.0.0
+
+Updates on top of previous changelog below.
+
+See [**Here**](https://github.com/DerpBot64/UPR-Speedchoice) for randomizer compatible with this fork.
+
+## Bugfixes:
+- False Swipe HM option works correctly.
+
+## Speedchoice menu options:
+- Added Rival Name option to speedchoice menu
+- Added Starting location option to speedchoice menu. Start at Pallet, Eevee Gift, Safari, or Dojo
+- Added Early Daycare option to speedchoice menu. Clones 4 Island Daycare Couple to the Route 5 Daycare. Also removes the lowest ledge at Route 5.
+- Added Fast Egg Hatch option.
+- Added Fast Egg Breeding option.
+- Meme Fishing option added to enable or disable Old and Good Rod getting high level pokemon.
+- Force Ditto is now an option to replace the Eevee Gift or use the randomized pokemon.
+
+## Always on changes:
+- Casino Pokemon prizes after randomizer properly show the correct pokemon name in the multichoice menu. Also updated to use Leafgreen version levels and coin costs (Why was Firered so much worse)
+- Allowed Bike use anywhere.
+- Moved Bike above Done Button at the start of the game.
+- Added a nickname skip option to ingame options menu. Only affects caught and hatched, no other gifts will have nickname prompts removed.
+- Set safari balls given at start to 99.
+- Improved dev mode at compile time for debugging.
+- False Swipe Tutor is infinitely reusable.
+- False Swipe HM05 and Tutor NPC text/item description improved.
+- Default Player Name choices include male and female presets.
+- Oak will ask if you're a boy or a girl at the start of the game again.
+
+## Known Bug:
+- After asking to reuse a repel, a few overworld tiles may become visually glitchy. Fixes itself when tiles are redrawn.
+
 ## Changelog
 ### 1.0.0a0
 - Ported the speedchoice menu from [Emerald](https://github.com/ProjectRevoTPP/pokeemerald-speedchoice)

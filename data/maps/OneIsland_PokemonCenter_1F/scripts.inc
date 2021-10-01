@@ -224,9 +224,7 @@ OneIsland_PokemonCenter_1F_EventScript_Celio:: @ 8170EC5
 	goto_if_set FLAG_GOT_RUBY, OneIsland_PokemonCenter_1F_EventScript_GiveCelioRuby
 	compare VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 4
 	goto_if_eq OneIsland_PokemonCenter_1F_EventScript_CelioWaitingForRuby
-	specialvar VAR_RESULT, IsNationalPokedexEnabled
-	compare VAR_RESULT, TRUE
-	goto_if_eq OneIsland_PokemonCenter_1F_EventScript_CelioRequestRuby
+	goto_if_set FLAG_SYS_PSEUDO_NATIONAL_DEX, OneIsland_PokemonCenter_1F_EventScript_CelioRequestRuby
 	compare VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 3
 	goto_if_eq OneIsland_PokemonCenter_1F_EventScript_CelioPlayerMissingNationalDex
 	msgbox OneIsland_PokemonCenter_1F_Text_SorryForBeingPoorHost
@@ -295,13 +293,24 @@ OneIsland_PokemonCenter_1F_EventScript_GiveCelioSapphire:: @ 8170FA5
 	msgbox OneIsland_PokemonCenter_1F_Text_LinkedUpWithLanette
 	applymovement LOCALID_CELIO, Movement_FacePlayer
 	waitmovement 0
+	specialvar VAR_RESULT, GetStarterSpecies
+	copyvar VAR_0x8004, VAR_RESULT
+	compare VAR_0x8004, SPECIES_BULBASAUR
+	call_if_eq CinnabarIsland_EventScript_Set_Entei
+	compare VAR_0x8004, SPECIES_CHARMANDER
+	call_if_eq CinnabarIsland_EventScript_Set_Suicune
+	compare VAR_0x8004, SPECIES_SQUIRTLE
+	call_if_eq CinnabarIsland_EventScript_Set_Raikou
 	msgbox OneIsland_PokemonCenter_1F_Text_ManagedToLinkWithHoennThankYou
+	drawmonpic VAR_TEMP_3, 10, 3
+	msgbox CinnabarIsland_Text_Roamer
+	waitbuttonpress
+	erasemonpic
 	special SetPostgameFlags
 	setflag FLAG_SYS_CAN_LINK_WITH_RS
 	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
 	setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 6
-	special InitRoamer
 	release
 	end
 

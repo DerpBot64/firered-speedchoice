@@ -32,6 +32,8 @@ EventScript_DoubleEdgeTaught:: @ 81C480C
 EventScript_ThunderWaveTutor:: @ 81C4816
 	lock
 	faceplayer
+	checkspeedchoice EASY_FALSE_SWIPE, EASY_FALSE_SWIPE_TUTOR
+	call_if_eq SpeedchoiceEasyFalseSwipe
 	goto_if_set FLAG_TUTOR_THUNDER_WAVE, EventScript_ThunderWaveTaught
 MtText_26::
 	msgbox Text_ThunderWaveTeach, MSGBOX_YESNO
@@ -48,6 +50,41 @@ MtText_27::
 	goto_if_eq EventScript_ThunderWaveDeclined
 	setflag FLAG_TUTOR_THUNDER_WAVE
 	goto EventScript_ThunderWaveTaught
+	end
+
+SpeedchoiceEasyFalseSwipe:: @ SPEEDCHOICE
+	msgbox Text_SPEEDCHOICE_FALSE_SWIPE, MSGBOX_YESNO
+	compare VAR_RESULT, 0
+	goto_if_eq EventScript_FalseSwipeDeclined
+	msgbox Text_SPEEDCHOICE_FALSE_SWIPE2, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVETUTOR_THUNDER_WAVE
+	call EventScript_ChooseMoveTutorMon
+	compare VAR_RESULT, FALSE
+	goto_if_eq EventScript_FalseSwipeDeclined
+	msgbox Text_SPEEDCHOICE_FALSE_SWIPE3, MSGBOX_DEFAULT
+	release
+	end
+
+Text_SPEEDCHOICE_FALSE_SWIPE: @ SPEEDCHOICE
+	.string "Want me to teach you FALSE SWIPE?$"
+
+Text_SPEEDCHOICE_FALSE_SWIPE2: @ SPEEDCHOICE
+	.string "All right, which POKéMON wants to\n"
+	.string "learn how to FALSE SWIPE?$"
+
+Text_SPEEDCHOICE_FALSE_SWIPE3: @ SPEECHOICE
+	.string "Time for some easy catching.$"
+
+EventScript_FalseSwipeDeclined:: @ 81C486A
+MtText_38::
+	msgbox Text_FalseSwipeDeclined
+	release
+	end
+
+EventScript_FalseSwipeTaught:: @ 81C4874
+MtText_39::
+	msgbox Text_FalseSwipeTaught
+	release
 	end
 
 EventScript_ThunderWaveDeclined:: @ 81C486A

@@ -172,7 +172,7 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
     // 60/40 for new wild encounter table
 
     // no fishing memes allowed
-    if (TRUE)
+    if (gSaveBlock2Ptr->speedchoiceConfig.memeFish == FISH_NO)
     {
         switch (rod)
         {
@@ -204,7 +204,33 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
             break;
         }
     }
-    else
+    else{//fishing memes allowed
+    	// COMMONS
+		// slot 1 (60%)
+		if(rand < 12)
+			return 0;
+		if(rand >= 12 && rand < 24)
+			return 2;
+		if(rand >= 24 && rand < 36)
+			return 4;
+		if(rand >= 36 && rand < 48)
+			return 6;
+		if(rand >= 48 && rand < 60)
+			return 8;
+
+		// UNCOMMONS
+		// slot 2 (40%)
+		if(rand >= 60 && rand < 70)
+			return 1;
+		if(rand >= 70 && rand < 80)
+			return 3;
+		if(rand >= 80 && rand < 90)
+			return 5;
+		if(rand >= 90 && rand < 95)
+			return 7;
+		return 9;
+    }
+    /*else//retail behavior
     {
         switch (rod)
         {
@@ -240,7 +266,7 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
                 wildMonIndex = 9;
             break;
         }
-    }
+    }*/
     return wildMonIndex;
 }
 

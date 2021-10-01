@@ -30,12 +30,21 @@ Route2_EastBuilding_EventScript_GiveHM::
 	goto_if_eq Aide_EventScript_NoRoomForItem
 	giveitem_msg Route2_EastBuilding_Text_ReceivedHM05FromAide, ITEM_HM05
 	setflag FLAG_GOT_HM05
+	checkspeedchoice EASY_FALSE_SWIPE, EASY_FALSE_SWIPE_HM05
+	goto_if_eq Route2_EastBuilding_EventScript_ExplainHM05FALSESWIPE
 	msgbox Route2_EastBuilding_Text_ExplainHM05
 	release
 	end
 
 Route2_EastBuilding_EventScript_AlreadyGotHM05:: @ 816F701
+	checkspeedchoice EASY_FALSE_SWIPE, EASY_FALSE_SWIPE_HM05
+	goto_if_eq Route2_EastBuilding_EventScript_ExplainHM05FALSESWIPE
 	msgbox Route2_EastBuilding_Text_ExplainHM05
+	release
+	end
+
+Route2_EastBuilding_EventScript_ExplainHM05FALSESWIPE:: @ 816F701
+	msgbox Route2_EastBuilding_Text_ExplainHM05FALSESWIPE
 	release
 	end
 

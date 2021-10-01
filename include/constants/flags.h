@@ -182,7 +182,7 @@
 #define FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS 0x0AE
 
 // Unused?
-#define FLAG_0x0AF               0x0AF
+#define FLAG_0x0AF               0x0AF//used for speedchoice daycare NPCS
 #define FLAG_0x0B0               0x0B0
 #define FLAG_0x0B1               0x0B1
 #define FLAG_0x0B2               0x0B2
@@ -1385,7 +1385,7 @@
 #define FLAG_SYS_SAW_HELP_SYSTEM_INTRO                              (SYS_FLAGS + 0x3C)
 #define FLAG_0x83D                                                  (SYS_FLAGS + 0x3D) // Unused
 #define FLAG_OPENED_START_MENU                                      (SYS_FLAGS + 0x3E)
-#define FLAG_0x83F                                                  (SYS_FLAGS + 0x3F) // Unused
+#define FLAG_SYS_PSEUDO_NATIONAL_DEX                                (SYS_FLAGS + 0x3F) // SPEEDCHOICE-> change unused flag to pseudoPokedex
 #define FLAG_SYS_NATIONAL_DEX                                       (SYS_FLAGS + 0x40)
 #define FLAG_SYS_PC_STORAGE_DISABLED                                (SYS_FLAGS + 0x41)
 #define FLAG_SYS_INFORMED_OF_LOCAL_WIRELESS_PLAYER                  (SYS_FLAGS + 0x42)

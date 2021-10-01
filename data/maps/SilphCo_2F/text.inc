@@ -56,6 +56,10 @@ Text_ThunderWaveDeclined:: @ 817579D
     .string "Oh…\n"
     .string "But THUNDER WAVE is convenient…$"
 
+Text_FalseSwipeDeclined:: @ 817579D
+	.string "Oh…\n"
+	.string "But False Swipe is convenient…$"
+
 Text_ThunderWaveWhichMon:: @ 81757C1
     .string "Which POKéMON should I teach\n"
     .string "THUNDER WAVE?$"
@@ -67,6 +71,10 @@ Text_ThunderWaveTaught:: @ 81757EC
     .string "to move in battle.\p"
     .string "It's an ELECTRIC-type move, so it\n"
     .string "won't work on some POKéMON.$"
+
+Text_FalseSwipeTaught:: @ 81757EC
+	.string "False Swipe won't KO the\n"
+	.string "target POKéMON.$"
 
 SilphCo_2F_Text_FloorSign:: @ 8175894
     .string "SILPH CO. HEAD OFFICE\n"

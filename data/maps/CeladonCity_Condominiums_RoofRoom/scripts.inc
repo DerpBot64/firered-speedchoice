@@ -8,6 +8,8 @@ CeladonCity_Condominiums_RoofRoom_EventScript_BlackBelt:: @ 816C464
 	end
 
 CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall:: @ 816C46D
+	checkspeedchoice FORCE_DITTO, DITTO_YES
+	call_if_eq CeladonCity_Condominiums_RoofRoom_EventScript_DittoBall
 	lock
 	faceplayer
 	setvar VAR_TEMP_1, SPECIES_EEVEE
@@ -43,6 +45,49 @@ CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveePC:: @ 816C4DA
 	waitmessage
 	waitfanfare
 	getspeciesname 0, SPECIES_EEVEE
+	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq CeladonCity_Condominiums_RoofRoom_EventScript_TransferEeveeToPC
+	call EventScript_NameReceivedBoxMon
+	goto CeladonCity_Condominiums_RoofRoom_EventScript_TransferEeveeToPC
+	end
+
+CeladonCity_Condominiums_RoofRoom_EventScript_DittoBall:: @ 816C46D
+	lock
+	faceplayer
+	setvar VAR_TEMP_1, SPECIES_DITTO
+	givemon SPECIES_DITTO, 25, ITEM_NONE
+	compare VAR_RESULT, 0
+	goto_if_eq CeladonCity_Condominiums_RoofRoom_EventScript_GetDittoParty
+	compare VAR_RESULT, 1
+	goto_if_eq CeladonCity_Condominiums_RoofRoom_EventScript_GetDittoPC
+	compare VAR_RESULT, 2
+	goto_if_eq EventScript_NoMoreRoomForPokemon
+	release
+	end
+
+CeladonCity_Condominiums_RoofRoom_EventScript_GetDittoParty:: @ 816C4A6
+	removeobject LOCALID_EEVEE_POKEBALL
+	playfanfare MUS_LEVEL_UP
+	message CeladonCity_Condominiums_RoofRoom_Text_ObtainedADitto
+	waitmessage
+	waitfanfare
+	getspeciesname 0, SPECIES_DITTO
+	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq CeladonCity_Condominiums_RoofRoom_EventScript_SetGotEevee
+	call EventScript_GetGiftMonPartySlot
+	call EventScript_ChangePokemonNickname
+	goto CeladonCity_Condominiums_RoofRoom_EventScript_SetGotEevee
+	end
+
+CeladonCity_Condominiums_RoofRoom_EventScript_GetDittoPC:: @ 816C4DA
+	removeobject LOCALID_EEVEE_POKEBALL
+	playfanfare MUS_LEVEL_UP
+	message CeladonCity_Condominiums_RoofRoom_Text_ObtainedADitto
+	waitmessage
+	waitfanfare
+	getspeciesname 0, SPECIES_DITTO
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq CeladonCity_Condominiums_RoofRoom_EventScript_TransferEeveeToPC

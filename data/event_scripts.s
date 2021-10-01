@@ -1070,6 +1070,7 @@ EventScript_ResetAllMapFlags:: @ 81A6481
 	setvar VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 500
     @ Speedchoice change: Set national dex flag
     special EnableNationalPokedex
+	clearflag FLAG_SYS_PSEUDO_NATIONAL_DEX
 	end
 
 	.include "data/scripts/hall_of_fame.inc"

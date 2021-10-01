@@ -4138,7 +4138,14 @@ static void DisplayCantUseSurfMessage(void)
 
 static bool8 SetUpFieldMove_Fly(void)
 {
-    if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
+	#if DEVMODE
+	{
+		return TRUE;
+
+	}
+	#endif //DEVMODE
+
+	if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
         return TRUE;
     else
         return FALSE;
@@ -4766,7 +4773,7 @@ void ItemUseCB_PPUp(u8 taskId, UNUSED TaskFunc func)
 
 static inline u16 GetTMHMMove(u16 tmNumber)
 {
-    if (tmNumber == NUM_TECHNICAL_MACHINES + 5 && gSaveBlock2Ptr->speedchoiceConfig.easyFalseSwipe == EASY_FALSE_SWIPE_HM05)
+    if (tmNumber == NUM_TECHNICAL_MACHINES + 4 && gSaveBlock2Ptr->speedchoiceConfig.easyFalseSwipe == EASY_FALSE_SWIPE_HM05)
         return MOVE_FALSE_SWIPE;
     return sTMHMMoves[tmNumber];
 }
@@ -4868,6 +4875,7 @@ static void Task_LearnedMove(u8 taskId)
     }
     GetMonNickname(mon, gStringVar1);
     StringCopy(gStringVar2, gMoveNames[move[0]]);
+    TryIncrementButtonStat(DB_MOVES_LEARNT);
     StringExpandPlaceholders(gStringVar4, gText_PkmnLearnedMove3);
     DisplayPartyMenuMessage(gStringVar4, TRUE);
     ScheduleBgCopyTilemapToVram(2);
@@ -4887,7 +4895,6 @@ static void Task_LearnNextMoveOrClosePartyMenu(u8 taskId)
 {
     if (IsFanfareTaskInactive() && ((gMain.newKeys & A_BUTTON) || (gMain.newKeys & B_BUTTON)))
     {
-        TryIncrementButtonStat(DB_MOVES_LEARNT);
         if (gPartyMenu.learnMoveState == 1)
             Task_TryLearningNextMove(taskId);
         else
@@ -5260,6 +5267,7 @@ static void DisplayMonLearnedMove(u8 taskId, u16 move)
 {
     GetMonNickname(&gPlayerParty[gPartyMenu.slotId], gStringVar1);
     StringCopy(gStringVar2, gMoveNames[move]);
+    TryIncrementButtonStat(DB_MOVES_LEARNT);
     StringExpandPlaceholders(gStringVar4, gText_PkmnLearnedMove3);
     DisplayPartyMenuMessage(gStringVar4, TRUE);
     ScheduleBgCopyTilemapToVram(2);

@@ -273,6 +273,7 @@ OneIsland_PokemonCenter_1F_Text_ManagedToLinkWithHoennThankYou:: @ 81A1D7D
     .string "Thanks to you, my dream came\n"
     .string "true…$"
 
+
 OneIsland_PokemonCenter_1F_Text_WishYouBestOfLuck:: @ 81A1E39
     .string "I…\n"
     .string "I'm not crying.\p"

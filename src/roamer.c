@@ -4,6 +4,7 @@
 #include "field_specials.h"
 #include "constants/maps.h"
 #include "constants/region_map_sections.h"
+#include "pokedex.h"
 
 EWRAM_DATA u8 sLocationHistory[3][2] = {};
 EWRAM_DATA u8 sRoamerLocation[2] = {};
@@ -58,6 +59,7 @@ void ClearRoamerData(void)
     }
 }
 
+/*
 static inline u16 GetRoamerSpecies(void)
 {
     switch (GetStarterSpecies())
@@ -69,14 +71,17 @@ static inline u16 GetRoamerSpecies(void)
     case SPECIES_CHARMANDER:
         return SPECIES_SUICUNE;
     }
-}
+}*/
 
-void CreateInitialRoamerMon(void)
+void CreateInitialRoamerMon(u16 species)
 {
     struct Pokemon * tmpMon = &gEnemyParty[0];
     u16 roamerMon;
 
-    CreateMon(tmpMon, (roamerMon = GetRoamerSpecies()), 50, 0x20, 0, 0, 0, 0);
+    CreateMon(tmpMon, (roamerMon = species), 50, 0x20, 0, 0, 0, 0);
+
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(species),FLAG_SET_SEEN);
+
     saveRoamer.species = roamerMon;
     saveRoamer.level = 50;
     saveRoamer.status = 0;
@@ -93,10 +98,10 @@ void CreateInitialRoamerMon(void)
     sRoamerLocation[MAP_NUM] = sRoamerLocations[Random() % (NELEMS(sRoamerLocations) - 1)][0];
 }
 
-void InitRoamer(void)
+void InitRoamer(u16 species)
 {
     ClearRoamerData();
-    CreateInitialRoamerMon();
+    CreateInitialRoamerMon(species);
 }
 
 void UpdateLocationHistoryForRoamer(void)

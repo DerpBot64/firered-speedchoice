@@ -273,9 +273,6 @@ else
 $(C_BUILDDIR)/%.o: c_asm_dep = $(shell [[ -f $(C_SUBDIR)/$*.s ]] && $(SCANINC) -I "" $(C_SUBDIR)/$*.s)
 endif
 
-# Force the build date/time to be rebuilt
-.PHONY: $(C_SUBDIR)/build_date.c
-
 $(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s $$(c_asm_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
 
@@ -343,7 +340,7 @@ $(ROM): $(ELF)
 	$(OBJCOPY) -O binary --gap-fill 0xFF --pad-to 0x9000000 $< $@
 
 $(INI): $(ROM)
-	$(INIGEN) $(ELF) $@ --name "Fire Red Speedchoice (U)" --code $(GAME_CODE)
+	$(INIGEN) $(ELF) $@ --name "Fire Red Speedchoice (U)" --code $(GAME_CODE)  --DEVMODE $(DEVMODE)
 	echo "MD5Hash="$(shell md5sum $< | cut -d' ' -f1) >> $@
 
 $(PATCH): $(ROM)
@@ -351,10 +348,11 @@ $(PATCH): $(ROM)
 
 rando: $(INI)
 ifeq ($(UPRDIR),)
-	$(error Missing value for UPRDIR)
-endif
+	echo "Missing value for UPRDIR"
+else
 	$(PYTHON) .github/workflows/update_config.py $(UPRDIR)/src/com/dabomstew/pkrandom/config/gen3_offsets.ini $<
 	$(ANT) -f $(UPRDIR)/.github/ant/build.xml
+endif
 
 speedchoice:     ; @$(MAKE)
 dev:             ; @$(MAKE) DEVMODE=1

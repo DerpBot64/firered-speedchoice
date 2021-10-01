@@ -36,6 +36,7 @@
 #include "fieldmap.h"
 #include "field_door.h"
 #include "constants/event_objects.h"
+#include "roamer.h"
 
 extern u16 (*const gSpecials[])(void);
 extern u16 (*const gSpecialsEnd[])(void);
@@ -2281,4 +2282,12 @@ bool8 ScrCmd_checkspeedchoice(struct ScriptContext * ctx)
     result = CheckSpeedchoiceOption(category);
     ctx->comparisonResult = compare_012(result, val);
     return FALSE;
+}
+
+bool8 ScrCmd_startroamer(struct ScriptContext * ctx)
+{
+    u16 species = VarGet(ScriptReadHalfword(ctx));
+
+    InitRoamer(species);
+    return TRUE;
 }

@@ -1150,8 +1150,16 @@ static bool8 TryProduceOrHatchEgg(struct DayCare *daycare)
     if (daycare->offspringPersonality == 0 && validEggs == DAYCARE_MON_COUNT && (daycare->mons[1].steps & 0xFF) == 0xFF)
     {
         u8 compatibility = GetDaycareCompatibilityScore(daycare);
-        if (compatibility > (Random() * 100u) / USHRT_MAX)
-            TriggerPendingDaycareEgg();
+        if(gSaveBlock2Ptr->speedchoiceConfig.fastBreed == BREED_YES){
+        	if (compatibility > 0)
+        	    TriggerPendingDaycareEgg();
+        }
+        else{
+        	if (compatibility > (Random() * 100u) / USHRT_MAX)
+        	    TriggerPendingDaycareEgg();
+        }
+
+
     }
 
     // Hatch Egg
@@ -1167,7 +1175,7 @@ static bool8 TryProduceOrHatchEgg(struct DayCare *daycare)
                 continue;
 
             eggCycles = GetMonData(&gPlayerParty[i], MON_DATA_FRIENDSHIP);
-            if (eggCycles != 0 && FALSE)
+            if (eggCycles != 0 && gSaveBlock2Ptr->speedchoiceConfig.fastHatch == HATCH_NO)
             {
                 eggCycles -= 1;
                 SetMonData(&gPlayerParty[i], MON_DATA_FRIENDSHIP, &eggCycles);
@@ -1945,8 +1953,17 @@ static void CB2_EggHatch_1(void)
             sEggHatchData->CB2_state++;
         break;
     case 7:
-        if (IsFanfareTaskInactive())
-            sEggHatchData->CB2_state++;
+    	if (IsFanfareTaskInactive()){
+			//if nickname setting is off, skip straight to end of nickname function
+			if (gSaveBlock2Ptr->optionsNickname == OPTIONS_NICKNAME_YES){
+				//nickname is enabled
+				sEggHatchData->CB2_state++;
+			}
+			else{
+				//nickname is disabled
+				sEggHatchData->CB2_state = 11;
+			}
+		}
         break;
     case 8:
         DayCare_GetMonNickname(&gPlayerParty[sEggHatchData->eggPartyID], gStringVar1);

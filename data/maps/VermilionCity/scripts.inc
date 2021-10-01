@@ -205,8 +205,8 @@ VermilionCity_EventScript_CheckTicket:: @ 8166BA0
 	applymovement LOCALID_FERRY_SAILOR, Movement_WalkInPlaceFastestLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Movement_WalkInPlaceFastestRight
 	waitmovement 0
-	compare VAR_MAP_SCENE_VERMILION_CITY, 3
-	goto_if_eq VermilionCity_EventScript_CheckSeagallopPresentTrigger
+@	compare VAR_MAP_SCENE_VERMILION_CITY, 3
+@	goto_if_eq VermilionCity_EventScript_CheckSeagallopPresentTrigger
 	msgbox VermilionCity_Text_DoYouHaveATicket
 	goto_if_unset FLAG_GOT_SS_TICKET, VermilionCity_EventScript_DontHaveSSTicket
 	msgbox VermilionCity_Text_FlashedSSTicket

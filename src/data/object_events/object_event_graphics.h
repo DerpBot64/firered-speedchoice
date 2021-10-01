@@ -110,6 +110,8 @@ const u16 gObjectEventPic_CableClubReceptionist[] = INCBIN_U16("graphics/object_
 const u16 gObjectEventPic_UnionRoomReceptionist[] = INCBIN_U16("graphics/object_events/pics/people/union_room_receptionist.4bpp");
 const u16 gObjectEventPic_UnusedMaleReceptionist[] = INCBIN_U16("graphics/object_events/pics/people/unused_male_receptionist.4bpp");
 const u16 gObjectEventPic_ItemBall[] = INCBIN_U16("graphics/object_events/pics/misc/item_ball.4bpp");
+const u32 gObjectEventPic_ItemBallHidden[] = INCBIN_U16("graphics/object_events/pics/misc/item_ball_hidden.4bpp");
+const u32 gObjectEventPic_ItemBallBuried[] = INCBIN_U16("graphics/object_events/pics/misc/item_ball_buried.4bpp");
 const u16 gObjectEventPic_MrFuji[] = INCBIN_U16("graphics/object_events/pics/people/mr_fuji.4bpp");
 const u16 gObjectEventPic_Bruno[] = INCBIN_U16("graphics/object_events/pics/people/bruno.4bpp");
 const u16 gObjectEventPic_Clerk[] = INCBIN_U16("graphics/object_events/pics/people/clerk.4bpp");
@@ -191,6 +193,7 @@ const u16 gFieldEffectObjectPic_ShadowMedium[] = INCBIN_U16("graphics/field_effe
 const u16 gFieldEffectObjectPic_ShadowLarge[] = INCBIN_U16("graphics/field_effects/pics/shadow_large.4bpp");
 const u16 gFieldEffectObjectPic_ShadowExtraLarge[] = INCBIN_U16("graphics/field_effects/pics/shadow_extra_large.4bpp");
 const u16 filler_8398188[0x90] = {};
+
 const u16 gUnknown_8398648[] = INCBIN_U16("graphics/field_effects/fldeff_cut.4bpp");
 const u16 gUnknown_8398668[] = INCBIN_U16("graphics/field_effects/fldeff_cut.4bpp");
 const u16 gUnknown_8398688[] = INCBIN_U16("graphics/field_effects/fldeff_cut.gbapal");

@@ -91,7 +91,7 @@ const struct
     uint16_t vanilla;
     struct StaticPokemon mons[4];
 } gStaticPokemon[] = {
-    {SPECIES_EEVEE, {{ "CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall" , 5}, {"CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall", 8}, {"CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveeParty", 15}, {"CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveePC", 15}}},
+    {SPECIES_EEVEE, {{ "CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall", 13}, {"CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall", 16}, {"CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveeParty", 15}, {"CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveePC", 15}}},
     {SPECIES_HITMONLEE, {{"SaffronCity_Dojo_EventScript_HitmonleeBall", 12}, {"SaffronCity_Dojo_EventScript_HitmonleeBall", 19}}},
     {SPECIES_HITMONCHAN, {{"SaffronCity_Dojo_EventScript_HitmonchanBall", 12}, {"SaffronCity_Dojo_EventScript_HitmonchanBall", 19}}},
     {SPECIES_ELECTRODE, {{"PowerPlant_EventScript_Electrode1", 17}, {"PowerPlant_EventScript_Electrode1", 24}}},
@@ -111,11 +111,14 @@ const struct
     {SPECIES_KABUTO, {{"CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_GiveKabuto", 3}, {"CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_GiveKabuto", 7}, {"CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_GiveKabuto", 18}, {"CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_ShowDomeFossil", 2}}},
     {SPECIES_LAPRAS, {{"SilphCo_7F_EventScript_LaprasGuy", 25}, {"SilphCo_7F_EventScript_ReceiveLaprasParty", 14}, {"SilphCo_7F_EventScript_ReceiveLaprasPC", 14}}},
     {SPECIES_MAGIKARP, {{"Route4_PokemonCenter_1F_EventScript_TryBuyMagikarp", 36}, {"Route4_PokemonCenter_1F_EventScript_PayForMagikarp", 22}}},
-    {SPECIES_ABRA, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_Abra", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 47}}},
-    {SPECIES_CLEFAIRY, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_Clefairy", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 58}}},
-    {SPECIES_DRATINI, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_DratiniPinsir", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 69}}},
-    {SPECIES_SCYTHER, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ScytherDratini", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 80}}},
-    {SPECIES_PORYGON, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_Porygon", 3}, {"CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon", 91}}},
+    {SPECIES_ABRA, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 3}}},
+    {SPECIES_CLEFAIRY, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 8}}},
+    {SPECIES_DRATINI, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 13}}},
+    {SPECIES_SCYTHER, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 18}}},
+    {SPECIES_PORYGON, {{"CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon_Dynamic", 23}}},
+	{SPECIES_RAIKOU, {{"CinnabarIsland_EventScript_Set_Raikou", 3}}},
+	{SPECIES_ENTEI, {{"CinnabarIsland_EventScript_Set_Entei", 3}}},
+	{SPECIES_SUICUNE, {{"CinnabarIsland_EventScript_Set_Suicune", 3}}},
 };
 
 const struct TMText gTMTexts[] = {
@@ -304,6 +307,9 @@ int main(int argc, char ** argv)
 {
     const char * romName = "Emerald (U)";
     const char * romCode = "BPEE";
+
+    int devMode = 0;
+
     FILE * elfFile = NULL;
     FILE * outFile = NULL;
 
@@ -322,7 +328,15 @@ int main(int argc, char ** argv)
                 FATAL_ERROR("missing argument to --code\n");
             }
             romCode = argv[i];
-        } else if (arg[0] == '-') {
+        } else if (strcmp(arg, "--DEVMODE") == 0) {
+            i++;
+            if (i == argc) {
+                FATAL_ERROR("missing argument to --DEVMODE\n");
+            }
+            if(strcmp(argv[i], "1") == 0){
+            	devMode = 1;
+            }
+        }else if (arg[0] == '-') {
             FATAL_ERROR("unrecognized option: \"%s\"\n", arg);
         } else if (elfFile == NULL) {
             elfFile = fopen(arg, "rb");
@@ -362,7 +376,13 @@ int main(int argc, char ** argv)
     sh_scripts = GetSectionHeaderByName("script_data");
 
     // Start writing the INI
-    print("[%s (%s)]\n", romName, SPEEDCHOICE_VERSION);
+    print("[%s (%s", romName, SPEEDCHOICE_VERSION);
+    	if (devMode)
+        {
+        	print(" DEV");
+        }
+        print(")]\n");
+
     print("Game=%s\n", romCode);
     print("Version=1\n");
     print("Type=FRLG\n");

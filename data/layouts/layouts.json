@@ -4392,6 +4392,18 @@
       "secondary_tileset": "gTileset_RockTunnel",
       "border_filepath": "data/layouts/SixIsland_AlteringCave_Room1/border.bin",
       "blockdata_filepath": "data/layouts/SixIsland_AlteringCave_Room1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE5_SPEEDCHOICE",
+      "name": "Route5_Layout_SPEEDCHOICE",
+      "width": 48,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CeruleanCity",
+      "border_filepath": "data/layouts/Route5_SPEEDCHOICE/border.bin",
+      "blockdata_filepath": "data/layouts/Route5_SPEEDCHOICE/map.bin"
     }
   ]
 }

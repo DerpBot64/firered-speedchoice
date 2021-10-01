@@ -59,3 +59,6 @@ porymap.project.cfg
 CMakeLists.txt
 *.mp4
 *.xdelta
+.project
+.cproject
+*.ips

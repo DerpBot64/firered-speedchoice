@@ -13,13 +13,6 @@ struct SeviiDexArea
     s32 count;
 };
 
-struct RoamerPair
-{
-    u16 roamer;
-    u16 starter;
-};
-
-static s32 GetRoamerIndex(u16 species);
 static s32 CountRoamerNests(u16 species, struct Subsprite * subsprites);
 static bool32 PokemonInAnyEncounterTableInMap(const struct WildPokemonHeader * data, s32 species);
 static bool32 PokemonInEncounterTable(const struct WildPokemonInfo * pokemon, s32 species, s32 count);
@@ -81,7 +74,8 @@ static const u16 sDexAreas_Kanto[][2] = {
     { MAPSEC_SEAFOAM_ISLANDS,     DEXMARKERAREA_SEAFOAM_ISLANDS },
     { MAPSEC_POKEMON_TOWER,       DEXMARKERAREA_POKEMON_TOWER },
     { MAPSEC_CERULEAN_CAVE,       DEXMARKERAREA_CERULEAN_CAVE },
-    { MAPSEC_POWER_PLANT,         DEXMARKERAREA_POWER_PLANT }
+    { MAPSEC_POWER_PLANT,         DEXMARKERAREA_POWER_PLANT },
+	{ MAPSEC_ROUTE_21_SOUTH,      DEXMARKERAREA_ROUTE_21_SOUTH },
 };
 
 static const u16 sDexAreas_Sevii1[][2] = {
@@ -153,18 +147,13 @@ static const struct SeviiDexArea sSeviiDexAreas[] = {
     { sDexAreas_Sevii7, NELEMS(sDexAreas_Sevii7) }
 };
 
-static const struct RoamerPair sRoamerPairs[] = {
-    { SPECIES_ENTEI,   SPECIES_BULBASAUR  },
-    { SPECIES_SUICUNE, SPECIES_CHARMANDER },
-    { SPECIES_RAIKOU,  SPECIES_SQUIRTLE   }
-};
-
 // Speedchoice change: Set up for dex sound
 EWRAM_DATA static bool8 sInSameMap = 0;
 
 s32 BuildPokedexAreaSubspriteBuffer(u16 species, struct Subsprite * subsprites)
 {
-    s32 areaCount = 0;
+	struct Roamer *roamer;
+	s32 areaCount = 0;
     s32 j;
     s32 mapSecId;
     u16 dexAreaSubspriteIdx;
@@ -176,7 +165,9 @@ s32 BuildPokedexAreaSubspriteBuffer(u16 species, struct Subsprite * subsprites)
 
     sInSameMap = FALSE;
 
-    if (GetRoamerIndex(species) >= 0)
+    roamer = &gSaveBlock1Ptr->roamer;
+
+    if (roamer->active && species == roamer->species)
     {
         areaCount = CountRoamerNests(species, subsprites);
     }
@@ -235,18 +226,6 @@ bool8 InSameMapAsWildMon(void)
     return sInSameMap;
 }
 
-static s32 GetRoamerIndex(u16 species)
-{
-    s32 i;
-    for (i = 0; i < NELEMS(sRoamerPairs); i++)
-    {
-        if (sRoamerPairs[i].roamer == species)
-            return i;
-    }
-
-    return -1;
-}
-
 static s32 CountRoamerNests(u16 species, struct Subsprite * subsprites)
 {
     u16 roamerLocation;
@@ -254,11 +233,6 @@ static s32 CountRoamerNests(u16 species, struct Subsprite * subsprites)
     u16 dexAreaSubspriteIdx;
     s32 dexAreaEntryLUTidx;
 
-    roamerIdx = GetRoamerIndex(species);
-    if (roamerIdx < 0)
-        return 0;
-    if (sRoamerPairs[roamerIdx].starter != GetStarterSpecies())
-        return 0;
     roamerLocation = GetRoamerLocationMapSectionId();
     dexAreaEntryLUTidx = 0;
     if (TryGetMapSecPokedexAreaEntry(roamerLocation, sDexAreas_Kanto, 55, &dexAreaEntryLUTidx, &dexAreaSubspriteIdx))

@@ -209,6 +209,7 @@ struct BerryCrush
 };
 
 #define PLAYER_NAME_LENGTH   7
+#define RIVAL_NAME_LENGTH   7
 
 #define LINK_B_RECORDS_COUNT 5
 
@@ -304,9 +305,46 @@ struct SpeedchoiceSaveOptions
     u32 hmBadgeChecks:1;
     u32 easySurgeCans:2;
     u32 nerfBrock:1;
+    u32 earlyDaycare:1;
+    u32 fastBreed:1;
+    u32 fastHatch:1;
+    u32 memeFish:1;
+    u32 forceDitto:1;
+    u32 startLoc:2;
+    u32 showHiddenItems:1;
 };
 
-struct DoneButtonStats
+struct DoneButtonStats1
+{
+    u16 critsTaken;
+    u16 OHKOsTaken;
+    u32 playerHPHealed;
+    u32 enemyHPHealed;
+    u16 playerPokemonFainted;
+    u16 enemyPokemonFainted;
+    u32 expGained;
+    u16 switchouts;
+    u16 battles;
+    u16 trainerBattles;
+    u16 wildBattles;
+    u16 battlesFled;
+    u16 failedRuns;
+    u32 moneyMade;
+    u32 moneySpent;
+    u32 moneyLost;
+    u16 itemsPickedUp;
+    u16 itemsBought;
+    u16 itemsSold;
+    u16 movesLearnt;
+    u16 ballsThrown;
+    u16 pokemonCaughtInBalls;
+    u16 evosAttempted;
+    u16 evosCompleted;
+    u16 evosCancelled;
+    u16 sweetScents;
+};
+
+struct DoneButtonStats2
 {
     u32 frameCount;
     u32 owFrameCount;
@@ -335,31 +373,6 @@ struct DoneButtonStats
     u16 enemyMovesNVE;
     u16 critsDealt;
     u16 OHKOsDealt;
-    u16 critsTaken;
-    u16 OHKOsTaken;
-    u32 playerHPHealed;
-    u32 enemyHPHealed;
-    u16 playerPokemonFainted;
-    u16 enemyPokemonFainted;
-    u32 expGained;
-    u16 switchouts;
-    u16 battles;
-    u16 trainerBattles;
-    u16 wildBattles;
-    u16 battlesFled;
-    u16 failedRuns;
-    u32 moneyMade;
-    u32 moneySpent;
-    u32 moneyLost;
-    u16 itemsPickedUp;
-    u16 itemsBought;
-    u16 itemsSold;
-    u16 movesLearnt;
-    u16 ballsThrown;
-    u16 pokemonCaughtInBalls;
-    u32 evosAttempted;
-    u32 evosCompleted;
-    u32 evosCancelled;
 };
 
 struct SaveBlock2
@@ -379,6 +392,7 @@ struct SaveBlock2
               u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
               u16 optionsBattleScene:1; // OPTIONS_BATTLE_SCENE_[ON/OFF]
               u16 regionMapZoom:1; // whether the map is zoomed in
+              u16 optionsNickname:1; // OPTIONS_NICKNAME
     /*0x018*/ struct Pokedex pokedex;
     /*0x090*/ u8 filler_90[0x8];
     /*0x098*/ struct Time localTimeOffset;
@@ -395,7 +409,7 @@ struct SaveBlock2
     /*0xB20*/ u8 filler_B20[0x400];
     /*0xF20*/ u32 encryptionKey;
     /*0xF24*/ struct SpeedchoiceSaveOptions speedchoiceConfig;
-    /*0xF28*/ struct DoneButtonStats doneButtonStats;
+    		struct DoneButtonStats2 doneButtonStats;
 }; // size: 0xFC4
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -929,6 +943,7 @@ struct SaveBlock1
     /*0x3D24*/ u8 filler3D24[0x10];
     /*0x3D34*/ u32 towerChallengeId;
     /*0x3D38*/ struct TrainerTower trainerTower[NUM_TOWER_CHALLENGE_TYPES];
+    struct DoneButtonStats1 doneButtonStats;
 }; // size: 0x3D68
 
 struct MapPosition

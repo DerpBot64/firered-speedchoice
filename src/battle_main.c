@@ -4165,6 +4165,7 @@ bool8 TryRunFromBattle(u8 battler)
     {
         gCurrentTurnActionNumber = gBattlersCount;
         gBattleOutcome = B_OUTCOME_RAN;
+		TryIncrementButtonStat(DB_BATTLES_FLED);
     }
     return effect;
 }
@@ -4306,6 +4307,7 @@ static void HandleAction_SafariZoneRun(void)
     PlaySE(SE_FLEE);
     gCurrentTurnActionNumber = gBattlersCount;
     gBattleOutcome = B_OUTCOME_RAN;
+	TryIncrementButtonStat(DB_BATTLES_FLED);
 }
 
 static void HandleAction_OldManBallThrow(void)
