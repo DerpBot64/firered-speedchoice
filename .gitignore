@@ -62,3 +62,6 @@ CMakeLists.txt
 .project
 .cproject
 *.ips
+*.lnk
+*.launch
+*.prefs
