@@ -312,6 +312,7 @@ struct SpeedchoiceSaveOptions
     u32 forceDitto:1;
     u32 startLoc:2;
     u32 showHiddenItems:1;
+    u32 boostShinyRate:2;
 };
 
 struct DoneButtonStats1

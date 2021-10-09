@@ -48,8 +48,9 @@
 
 #define EVO_EVERY_LEVEL     25
 #define SHOW_HIDDEN_ITEMS   26
+#define BOOST_SHINY_RATE	27
 
-#define CURRENT_OPTIONS_NUM 27
+#define CURRENT_OPTIONS_NUM 28
 // ----------------------
 // STATIC OPTIONS
 // ----------------------
@@ -262,6 +263,15 @@
 #define SHOW_HIDDEN_YES 0
 #define SHOW_HIDDEN_NO 1
 #define SHOW_HIDDEN_OPTION_COUNT 2
+
+// --------------------
+// BOOST SHINY RATE ENUM
+// --------------------
+#define BOOST_SHINY_HIGH 		0
+#define BOOST_SHINY_MED 		1
+#define BOOST_SHINY_LOW 		2
+#define BOOST_SHINY_OFF 		3
+#define BOOST_SHINY_RATE_COUNT	4
 
 // Enumeration for optionType in the Speedchoice struct below.
 

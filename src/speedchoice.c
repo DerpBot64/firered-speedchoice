@@ -187,6 +187,10 @@ const u8 gSpeedchoiceTextManual[] = _("MANUAL");
 const u8 gSpeedchoiceTextHoF[]    = _("HOF");
 const u8 gSpeedchoiceTextE4R2[]   = _("E4R2");
 
+const u8 gSpeedchoiceTextHigh[]   = _("HIGH");
+const u8 gSpeedchoiceTextMed[]    = _("MED");
+const u8 gSpeedchoiceTextLow[]    = _("LOW");
+
 /* ----------------------------------------------- */
 /* SPEEDCHOICE MENU TEXT (Option Names)            */
 /* ----------------------------------------------- */
@@ -218,6 +222,7 @@ const u8 gSpeedchoiceOptionMemeFishing[] = _("MEME FISHING");
 const u8 gSpeedchoiceOptionForceDitto[] = _("FORCE DITTO");
 const u8 gSpeedchoiceOptionStartLocation[] = _("START LOCATION");
 const u8 gSpeedchoiceOptionShowHiddenItems[] = _("SHOW HIDDEN ITEMS");
+const u8 gSpeedchoiceOptionBoostShinyRate[] = _("MORE SHINIES");
 
 // CONSTANT OPTIONS
 const u8 gSpeedchoiceOptionPage[] = _("PAGE");
@@ -262,6 +267,7 @@ const u8 gSpeedchoiceTooltipMemeFishing[] = _("Old and Good Rod can catch high\n
 const u8 gSpeedchoiceTooltipForceDitto[] = _("Eevee gift is always Ditto");
 const u8 gSpeedchoiceTooltipStartLocation[] = _("Starting Area.\nDOJO will force early Saffron.");
 const u8 gSpeedchoiceTooltipShowHiddenItems[] = _("Shows hidden items in the overworld.\nGold must be dug up with itemfinder.");
+const u8 gSpeedchoiceTooltipBoostShinyRate[] = _("Adds RNG calls to boost shiny rate.\nShiny animation sped up in any case.\pOff: 1 roll, 1/8192\nLow: 2 rolls, about 1/4096\pMed: 8 rolls, about 1/1024\nHigh: 32 rolls, about 1/256");
 
 // START GAME
 const u8 gSpeedchoiceStartGameText[] = _("CV: {STR_VAR_1}\nStart the game?");
@@ -333,6 +339,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[FORCE_DITTO]      = DITTO_NO,
 		[START_LOC]        = START_PALLET,
 		[SHOW_HIDDEN_ITEMS]= SHOW_HIDDEN_NO,
+		[BOOST_SHINY_RATE] = BOOST_SHINY_OFF,
     },
     [PRESET_BINGO]   = {
         [PRESET]           = PRESET_BINGO,
@@ -362,6 +369,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[FORCE_DITTO]      = DITTO_YES,
 		[START_LOC]        = START_PALLET,
 		[SHOW_HIDDEN_ITEMS]= SHOW_HIDDEN_YES,
+		[BOOST_SHINY_RATE] = BOOST_SHINY_MED,
     },
     [PRESET_CEA]     = {
         [PRESET]           = PRESET_CEA,
@@ -391,6 +399,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[FORCE_DITTO]      = DITTO_NO,
 		[START_LOC]        = START_PALLET,
 		[SHOW_HIDDEN_ITEMS]= SHOW_HIDDEN_YES,
+		[BOOST_SHINY_RATE] = BOOST_SHINY_LOW,
     },
     [PRESET_RACE]    = {
         [PRESET]           = PRESET_RACE,
@@ -420,6 +429,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
 		[FORCE_DITTO]      = DITTO_NO,
 		[START_LOC]        = START_PALLET,
 		[SHOW_HIDDEN_ITEMS]= SHOW_HIDDEN_YES,
+		[BOOST_SHINY_RATE] = BOOST_SHINY_MED,
     },
 };
 
@@ -494,6 +504,14 @@ const struct OptionChoiceConfig OptionChoiceConfigRaceGoal[] = {
     { 110, gSpeedchoiceTextManual },
     { 150, gSpeedchoiceTextHoF    },
     { 180, gSpeedchoiceTextE4R2   },
+};
+
+const struct OptionChoiceConfig OptionChoiceConfigHighMedLowOff[MAX_CHOICES] =
+{
+    { 85,  gSpeedchoiceTextHigh },
+    { 120, gSpeedchoiceTextMed },
+    { 150, gSpeedchoiceTextLow },
+    { 180, gSpeedchoiceTextOff },
 };
 
 
@@ -803,6 +821,17 @@ const struct SpeedchoiceOption SpeedchoiceOptions[CURRENT_OPTIONS_NUM + 1] = // 
 		.options = OptionChoiceConfigOnOff,
 		.tooltip = gSpeedchoiceTooltipShowHiddenItems,
 	},
+	// ----------------------------------
+	// Boost Shiny Rate OPTION
+	// ----------------------------------
+	[BOOST_SHINY_RATE] = {
+		.optionCount = BOOST_SHINY_RATE_COUNT,
+		.optionType = NORMAL,
+		.enabled = TRUE,
+		.string = gSpeedchoiceOptionBoostShinyRate,
+		.options = OptionChoiceConfigHighMedLowOff,
+		.tooltip = gSpeedchoiceTooltipBoostShinyRate,
+	},
     // ----------------------------------
     // PAGE STATIC OPTION
     // ----------------------------------
@@ -885,6 +914,7 @@ void SetByteArrayToSaveOptions(const u8 * options_arr)
     gSaveBlock2Ptr->speedchoiceConfig.forceDitto = options_arr[FORCE_DITTO];
     gSaveBlock2Ptr->speedchoiceConfig.startLoc = options_arr[START_LOC];
     gSaveBlock2Ptr->speedchoiceConfig.showHiddenItems = options_arr[SHOW_HIDDEN_ITEMS];
+    gSaveBlock2Ptr->speedchoiceConfig.boostShinyRate = options_arr[BOOST_SHINY_RATE];
 }
 
 /*
@@ -956,6 +986,8 @@ u8 CheckSpeedchoiceOption(u8 option)
         return gSaveBlock2Ptr->speedchoiceConfig.startLoc;
     case SHOW_HIDDEN_ITEMS:
         return gSaveBlock2Ptr->speedchoiceConfig.showHiddenItems;
+    case BOOST_SHINY_RATE:
+        return gSaveBlock2Ptr->speedchoiceConfig.boostShinyRate;
     default:
         return 0xFF;
     }

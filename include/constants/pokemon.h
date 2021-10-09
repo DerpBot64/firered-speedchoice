@@ -176,6 +176,13 @@
 // Shiny odds
 #define SHINY_ODDS 8 // Actual probability is SHINY_ODDS/65536
 
+//Will generate personality this many times and stop if it finds a shiny
+#define SHINY_ATTEMPTS_INSANE 8192		//bruh
+#define SHINY_ATTEMPTS_HIGH 32			//1/256
+#define SHINY_ATTEMPTS_MED 8			//1/1024
+#define SHINY_ATTEMPTS_LOW 2			//1/4096
+#define SHINY_ATTEMPTS_DEFAULT 1		//1/8192
+
 // Learning moves
 #define MON_ALREADY_KNOWS_MOVE 0xFFFE
 #define MON_HAS_MAX_MOVES      0xFFFF

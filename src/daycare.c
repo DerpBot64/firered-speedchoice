@@ -1118,8 +1118,18 @@ static void SetInitialEggData(struct Pokemon *mon, u16 species, struct DayCare *
     u16 ball;
     u8 metLevel;
     u8 language;
+    u16 counter;
+	u32 value;
+	counter = getShinyAttempts();
+	value = gSaveBlock2Ptr->playerTrainerId[0]
+		  | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
+		  | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
+		  | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
+	do
+	{
+		personality = daycare->offspringPersonality | (Random() << 16);
+	}while(!(1 > counter-- || IsShinyOtIdPersonality(value,personality)));
 
-    personality = daycare->offspringPersonality | (Random() << 16);
     CreateMon(mon, species, EGG_HATCH_LEVEL, 32, TRUE, personality, OT_ID_PLAYER_ID, 0);
     metLevel = 0;
     ball = ITEM_POKE_BALL;

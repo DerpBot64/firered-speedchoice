@@ -326,18 +326,8 @@ static u16 GetCurrentMapWildMonHeaderId(void)
 static void GenerateWildMon(u16 species, u8 level)
 {
     ZeroEnemyPartyMons();
-    if (species != SPECIES_UNOWN)
-    {
-        CreateMonWithNature(&gEnemyParty[0], species, level, 32, Random() % 25);
-    }
-    else
-    {
-        // Speedchoice change: Fix Unown crash
-        u16 rval = Random();
-        u8 nature = rval % 25;
-        u8 letter = (rval >> 5) % 28;
-        CreateMonWithGenderNatureLetter(&gEnemyParty[0], species, level, 32, MON_GENDERLESS, nature, letter + 1);
-    }
+
+    CreateMon(&gEnemyParty[0], species, level, 32, 0, 0, OT_ID_PLAYER_ID, 0);
 }
 
 u8 GetUnownLetterByPersonalityLoByte(u32 personality)

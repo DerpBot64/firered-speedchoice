@@ -2072,6 +2072,8 @@ void TryShinyAnimation(u8 battler, struct Pokemon *mon)
                 LoadCompressedSpritePaletteUsingHeap(&gBattleAnimPaletteTable[ANIM_TAG_GOLD_STARS - ANIM_SPRITES_START]);
             }
 
+            gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = 1;
+
             taskId1 = CreateTask(AnimTask_ShinySparkles, 10);
             taskId2 = CreateTask(AnimTask_ShinySparkles, 10);
             gTasks[taskId1].data[0] = battler;
@@ -2158,14 +2160,24 @@ static void AnimTask_ShinySparkles(u8 taskId)
 
 static void AnimTask_ShinySparkles_WaitSparkles(u8 taskId)
 {
-    u8 battler;
+    u8 i;
 
     if (gTasks[taskId].data[12] == FALSE)
     {
         if (gTasks[taskId].data[1] == TRUE)
         {
-            battler = gTasks[taskId].data[0];
-            gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = 1;
+        	for(i = 0; i < MAX_SPRITES; i++){
+				if(gSprites[i].template->tileTag == ANIM_TAG_GOLD_STARS && gSprites[i].data[0] != taskId && gTasks[gSprites[i].data[0]].data[1] == 1){
+					//another diagonal task exists for shiny stars
+					break;
+				}
+				if(i == MAX_SPRITES-1){
+					//zero other diagonal tasks exist for shiny animations, free sprites and palette
+					FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
+					FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
+				}
+			}
+
         }
 
         DestroyTask(taskId);
