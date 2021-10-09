@@ -386,3 +386,40 @@ const u32 gObjectEventPic_zigzagoonNormal[] = INCBIN_U32("graphics/object_events
 const u32 gObjectEventPic_zigzagoonMachBike[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/mach_bike.4bpp");
 const u32 gObjectEventPic_zigzagoonFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/field_move.4bpp");
 const u32 gObjectEventPic_zigzagoonFishing[] = INCBIN_U32("graphics/object_events/pics/people/zigzagoon/fishing.4bpp");
+
+const u32 gObjectEventPic_KRISNormal[] = INCBIN_U32("graphics/object_events/pics/people/kris/walking.4bpp");
+const u32 gObjectEventPic_KRISRunning[] = INCBIN_U32("graphics/object_events/pics/people/kris/running.4bpp");
+const u32 gObjectEventPic_KRISSurfing[] = INCBIN_U32("graphics/object_events/pics/people/kris/surfing.4bpp");
+const u32 gObjectEventPic_KRISMachBike[] = INCBIN_U32("graphics/object_events/pics/people/kris/mach_bike.4bpp");
+const u32 gObjectEventPic_KRISFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/kris/field_move.4bpp");
+const u32 gObjectEventPic_KRISFishing[] = INCBIN_U32("graphics/object_events/pics/people/kris/fishing.4bpp");
+
+const u16 gObjectEventPal_KRIS[] = INCBIN_U16("graphics/object_events/palettes/kris.gbapal");
+
+const u32 gObjectEventPic_BARRYNormal[] = INCBIN_U32("graphics/object_events/pics/people/barry/walking.4bpp");
+const u32 gObjectEventPic_BARRYMachBike[] = INCBIN_U32("graphics/object_events/pics/people/barry/mach_bike.4bpp");
+const u32 gObjectEventPic_BARRYFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/barry/field_move.4bpp");
+const u32 gObjectEventPic_BARRYFishing[] = INCBIN_U32("graphics/object_events/pics/people/barry/fishing.4bpp");
+
+const u16 gObjectEventPal_BARRY[] = INCBIN_U16("graphics/object_events/palettes/barry.gbapal");
+
+const u32 gObjectEventPic_CYNTHIANormal[] = INCBIN_U32("graphics/object_events/pics/people/cynthia/walking.4bpp");
+const u32 gObjectEventPic_CYNTHIAMachBike[] = INCBIN_U32("graphics/object_events/pics/people/cynthia/mach_bike.4bpp");
+const u32 gObjectEventPic_CYNTHIAFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/cynthia/field_move.4bpp");
+const u32 gObjectEventPic_CYNTHIAFishing[] = INCBIN_U32("graphics/object_events/pics/people/cynthia/fishing.4bpp");
+
+const u16 gObjectEventPal_CYNTHIA[] = INCBIN_U16("graphics/object_events/palettes/cynthia.gbapal");
+
+const u32 gObjectEventPic_SILVERNormal[] = INCBIN_U32("graphics/object_events/pics/people/silver/walking.4bpp");
+const u32 gObjectEventPic_SILVERMachBike[] = INCBIN_U32("graphics/object_events/pics/people/silver/mach_bike.4bpp");
+const u32 gObjectEventPic_SILVERFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/silver/field_move.4bpp");
+const u32 gObjectEventPic_SILVERFishing[] = INCBIN_U32("graphics/object_events/pics/people/silver/fishing.4bpp");
+
+const u16 gObjectEventPal_SILVER[] = INCBIN_U16("graphics/object_events/palettes/silver.gbapal");
+
+const u32 gObjectEventPic_LANCENormal[] = INCBIN_U32("graphics/object_events/pics/people/lance/walking.4bpp");
+const u32 gObjectEventPic_LANCEMachBike[] = INCBIN_U32("graphics/object_events/pics/people/lance/mach_bike.4bpp");
+const u32 gObjectEventPic_LANCEFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/lance/field_move.4bpp");
+const u32 gObjectEventPic_LANCEFishing[] = INCBIN_U32("graphics/object_events/pics/people/lance/fishing.4bpp");
+
+const u16 gObjectEventPal_LANCE[] = INCBIN_U16("graphics/object_events/palettes/lance.gbapal");

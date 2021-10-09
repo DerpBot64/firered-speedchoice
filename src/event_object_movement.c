@@ -495,6 +495,11 @@ static const u8 gInitialMovementTypeFacingDirections[MOVEMENT_TYPES_COUNT] = {
 #define OBJ_EVENT_PAL_TAG_EMERALD_NPC_2		0x1131
 #define OBJ_EVENT_PAL_TAG_EMERALD_NPC_4		0x1132
 #define OBJ_EVENT_PAL_TAG_EMERALD_ZIGZAG	0x1133
+#define OBJ_EVENT_PAL_TAG_KRIS				0x1134
+#define OBJ_EVENT_PAL_TAG_BARRY				0x1135
+#define OBJ_EVENT_PAL_TAG_CYNTHIA			0x1136
+#define OBJ_EVENT_PAL_TAG_LANCE				0x1137
+#define OBJ_EVENT_PAL_TAG_SILVER			0x1138
 
 #define OBJ_EVENT_PAL_TAG_NONE 				0x11FF
 
@@ -540,6 +545,11 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 	{gObjectEventPal_Emerald_NPC2,		OBJ_EVENT_PAL_TAG_EMERALD_NPC_2},
 	{gObjectEventPal_Emerald_NPC4,		OBJ_EVENT_PAL_TAG_EMERALD_NPC_4},
 	{gObjectEventPal_Emerald_Zigzagoon,	OBJ_EVENT_PAL_TAG_EMERALD_ZIGZAG},
+	{gObjectEventPal_KRIS,				OBJ_EVENT_PAL_TAG_KRIS},
+	{gObjectEventPal_BARRY,				OBJ_EVENT_PAL_TAG_BARRY},
+	{gObjectEventPal_CYNTHIA,			OBJ_EVENT_PAL_TAG_CYNTHIA},
+	{gObjectEventPal_LANCE,				OBJ_EVENT_PAL_TAG_LANCE},
+	{gObjectEventPal_SILVER,			OBJ_EVENT_PAL_TAG_SILVER},
     {},
 };
 

@@ -328,6 +328,46 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_zigzagoonFish;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_zigzagoonVSSeeker;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_zigzagoonVSSeekerBike;
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KRISNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KRISBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KRISSurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KRISFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KRISFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KRISVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KRISVSSeekerBike;
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BARRYNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BARRYBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BARRYSurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BARRYFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BARRYFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BARRYVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BARRYVSSeekerBike;
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CYNTHIANormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CYNTHIABike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CYNTHIASurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CYNTHIAFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CYNTHIAFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CYNTHIAVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CYNTHIAVSSeekerBike;
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LANCENormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LANCEBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LANCESurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LANCEFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LANCEFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LANCEVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LANCEVSSeekerBike;
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SILVERNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SILVERBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SILVERSurf;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SILVERFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SILVERFish;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SILVERVSSeeker;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SILVERVSSeekerBike;
+
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_RED_NORMAL]               = &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE]                 = &gObjectEventGraphicsInfo_RedBike,
@@ -640,4 +680,39 @@ const struct ObjectEventGraphicsInfo *const gAvatarGraphicsInfoPointers[NUM_AVAT
 	[OBJ_EVENT_GFX_ZIGZAG_FISHING] 					= &gObjectEventGraphicsInfo_zigzagoonFish,
 	[OBJ_EVENT_GFX_ZIGZAG_VS_SEEKER]				= &gObjectEventGraphicsInfo_zigzagoonVSSeeker,
 	[OBJ_EVENT_GFX_ZIGZAG_VS_SEEKER_BIKE]			= &gObjectEventGraphicsInfo_zigzagoonVSSeekerBike,
+	[OBJ_EVENT_GFX_KRIS_NORMAL] 					= &gObjectEventGraphicsInfo_KRISNormal,
+	[OBJ_EVENT_GFX_KRIS_MACH_BIKE] 					= &gObjectEventGraphicsInfo_KRISBike,
+	[OBJ_EVENT_GFX_KRIS_SURFING] 					= &gObjectEventGraphicsInfo_KRISSurf,
+	[OBJ_EVENT_GFX_KRIS_FIELD_MOVE] 				= &gObjectEventGraphicsInfo_KRISFieldMove,
+	[OBJ_EVENT_GFX_KRIS_FISHING] 					= &gObjectEventGraphicsInfo_KRISFish,
+	[OBJ_EVENT_GFX_KRIS_VS_SEEKER]					= &gObjectEventGraphicsInfo_KRISVSSeeker,
+	[OBJ_EVENT_GFX_KRIS_VS_SEEKER_BIKE]				= &gObjectEventGraphicsInfo_KRISVSSeekerBike,
+	[OBJ_EVENT_GFX_BARRY_NORMAL] 					= &gObjectEventGraphicsInfo_BARRYNormal,
+	[OBJ_EVENT_GFX_BARRY_MACH_BIKE] 				= &gObjectEventGraphicsInfo_BARRYBike,
+	[OBJ_EVENT_GFX_BARRY_SURFING] 					= &gObjectEventGraphicsInfo_BARRYSurf,
+	[OBJ_EVENT_GFX_BARRY_FIELD_MOVE] 				= &gObjectEventGraphicsInfo_BARRYFieldMove,
+	[OBJ_EVENT_GFX_BARRY_FISHING] 					= &gObjectEventGraphicsInfo_BARRYFish,
+	[OBJ_EVENT_GFX_BARRY_VS_SEEKER]					= &gObjectEventGraphicsInfo_BARRYVSSeeker,
+	[OBJ_EVENT_GFX_BARRY_VS_SEEKER_BIKE]			= &gObjectEventGraphicsInfo_BARRYVSSeekerBike,
+	[OBJ_EVENT_GFX_CYNTHIA_NORMAL] 					= &gObjectEventGraphicsInfo_CYNTHIANormal,
+	[OBJ_EVENT_GFX_CYNTHIA_MACH_BIKE] 				= &gObjectEventGraphicsInfo_CYNTHIABike,
+	[OBJ_EVENT_GFX_CYNTHIA_SURFING] 				= &gObjectEventGraphicsInfo_CYNTHIASurf,
+	[OBJ_EVENT_GFX_CYNTHIA_FIELD_MOVE] 				= &gObjectEventGraphicsInfo_CYNTHIAFieldMove,
+	[OBJ_EVENT_GFX_CYNTHIA_FISHING] 				= &gObjectEventGraphicsInfo_CYNTHIAFish,
+	[OBJ_EVENT_GFX_CYNTHIA_VS_SEEKER]				= &gObjectEventGraphicsInfo_CYNTHIAVSSeeker,
+	[OBJ_EVENT_GFX_CYNTHIA_VS_SEEKER_BIKE]			= &gObjectEventGraphicsInfo_CYNTHIAVSSeekerBike,
+	[OBJ_EVENT_GFX_LANCE_NORMAL] 					= &gObjectEventGraphicsInfo_LANCENormal,
+	[OBJ_EVENT_GFX_LANCE_MACH_BIKE] 				= &gObjectEventGraphicsInfo_LANCEBike,
+	[OBJ_EVENT_GFX_LANCE_SURFING] 					= &gObjectEventGraphicsInfo_LANCESurf,
+	[OBJ_EVENT_GFX_LANCE_FIELD_MOVE] 				= &gObjectEventGraphicsInfo_LANCEFieldMove,
+	[OBJ_EVENT_GFX_LANCE_FISHING] 					= &gObjectEventGraphicsInfo_LANCEFish,
+	[OBJ_EVENT_GFX_LANCE_VS_SEEKER]					= &gObjectEventGraphicsInfo_LANCEVSSeeker,
+	[OBJ_EVENT_GFX_LANCE_VS_SEEKER_BIKE]			= &gObjectEventGraphicsInfo_LANCEVSSeekerBike,
+	[OBJ_EVENT_GFX_SILVER_NORMAL] 					= &gObjectEventGraphicsInfo_SILVERNormal,
+	[OBJ_EVENT_GFX_SILVER_MACH_BIKE] 				= &gObjectEventGraphicsInfo_SILVERBike,
+	[OBJ_EVENT_GFX_SILVER_SURFING] 					= &gObjectEventGraphicsInfo_SILVERSurf,
+	[OBJ_EVENT_GFX_SILVER_FIELD_MOVE] 				= &gObjectEventGraphicsInfo_SILVERFieldMove,
+	[OBJ_EVENT_GFX_SILVER_FISHING] 					= &gObjectEventGraphicsInfo_SILVERFish,
+	[OBJ_EVENT_GFX_SILVER_VS_SEEKER]				= &gObjectEventGraphicsInfo_SILVERVSSeeker,
+	[OBJ_EVENT_GFX_SILVER_VS_SEEKER_BIKE]			= &gObjectEventGraphicsInfo_SILVERVSSeekerBike,
 };
