@@ -1270,7 +1270,7 @@ static void Task_DexScreen_NumericalOrder(u8 taskId)
 static void DexScreen_InitGfxForNumericalOrderList(void)
 {
     struct ListMenuTemplate template;
-    u8 i;
+    u16 i;
     FillBgTilemapBufferRect(3, 0x00E, 0, 0, 30, 20, 0x00);
     FillBgTilemapBufferRect(1, 0x000, 0, 0, 32, 32, 0x11);
     sPokedexScreenData->numericalOrderWindowId = AddWindow(&sWindowTemplate_OrderedListMenu);
@@ -1388,7 +1388,7 @@ static void Task_DexScreen_CharacteristicOrder(u8 taskId)
 static void DexScreen_CreateCharacteristicListMenu(void)
 {
     struct ListMenuTemplate template;
-    u8 i = 0;
+    u16 i = 0;
     FillBgTilemapBufferRect(3, 0x00E, 0, 0, 30, 20, 0x00);
     FillBgTilemapBufferRect(1, 0x000, 0, 0, 32, 32, 0x11);
     sPokedexScreenData->numericalOrderWindowId = AddWindow(&sWindowTemplate_OrderedListMenu);
