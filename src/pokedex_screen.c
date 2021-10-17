@@ -20,6 +20,9 @@
 #include "pokedex_area_markers.h"
 #include "wild_pokemon_area.h"
 #include "field_specials.h"
+#include "printf.h"
+#include "mgba.h"
+
 
 enum TextMode {
     TEXT_LEFT,
@@ -1278,7 +1281,21 @@ static void DexScreen_InitGfxForNumericalOrderList(void)
 
     if(sPokedexScreenData->dexOrderId == DEX_ORDER_NUMERICAL_NATIONAL && savedDexSpeciesName != gText_5Dashes){
 		sPokedexScreenData->nationalOrderMenuItemsAbove = sPokedexScreenData->nationalOrderMenuCursorPos = 0;
+
+		#if DEVMODE
+			{
+			mgba_printf(MGBA_LOG_DEBUG, "Ordered dex count %d",sPokedexScreenData->orderedDexCount);
+			}
+		#endif //DEVMODE
+
 		for(i = 0; i < sPokedexScreenData->orderedDexCount; i++){
+
+			#if DEVMODE
+				{
+					mgba_printf(MGBA_LOG_DEBUG, "%d %s",i, ConvertToAscii(sPokedexScreenData->listItems[i].label));
+				}
+			#endif //DEVMODE
+
 			if(sPokedexScreenData->listItems[i].label == savedDexSpeciesName){
 				break;
 			}
@@ -1381,7 +1398,22 @@ static void DexScreen_CreateCharacteristicListMenu(void)
     template.totalItems = sPokedexScreenData->orderedDexCount;
 
     sPokedexScreenData->characteristicOrderMenuItemsAbove = sPokedexScreenData->characteristicOrderMenuCursorPos = 0;
+
+#if DEVMODE
+	{
+    mgba_printf(MGBA_LOG_DEBUG, "Ordered dex count %d",sPokedexScreenData->orderedDexCount);
+	}
+#endif //DEVMODE
+
     for(i = 0; i < sPokedexScreenData->orderedDexCount; i++){
+
+
+#if DEVMODE
+	{
+    	mgba_printf(MGBA_LOG_DEBUG, "%d %s",i, ConvertToAscii(sPokedexScreenData->listItems[i].label));
+	}
+#endif //DEVMODE
+
 		if(sPokedexScreenData->listItems[i].label == savedDexSpeciesName){
 			break;
 		}

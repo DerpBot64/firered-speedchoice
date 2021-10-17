@@ -318,11 +318,21 @@ $(OBJ_DIR)/sym_bss.ld: sym_bss.txt
 $(OBJ_DIR)/sym_common.ld: sym_common.txt $(C_OBJS) $(wildcard common_syms/*.txt)
 	$(RAMSCRGEN) COMMON $< ENGLISH -c $(C_BUILDDIR),common_syms > $@
 
+ifeq ($(DEVMODE),0)
 $(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
 	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
+else
+$(OBJ_DIR)/sym_ewram.ld: sym_ewram_dev.txt
+	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
+endif
+	
+ifeq ($(DEVMODE),0)
+LD_SCRIPT := ld_script.txt
+else
+LD_SCRIPT := ld_script_dev.txt
+endif
 
 ifeq ($(MODERN),0)
-LD_SCRIPT := ld_script.txt
 LD_SCRIPT_DEPS := $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
 else
 LD_SCRIPT := ld_script_modern.txt

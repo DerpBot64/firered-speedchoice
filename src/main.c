@@ -19,6 +19,7 @@
 #include "flash_missing_screen.h"
 #include "emu_accuracy_tests.h"
 #include "done_button.h"
+#include "mgba.h"
 
 extern u32 intr_main[];
 
@@ -147,6 +148,11 @@ void AgbMain()
     InitMapMusic();
     ClearDma3Requests();
     ResetBgs();
+	#if DEVMODE
+		{
+    	mgba_open();
+	    }
+	#endif //DEVMODE
     InitHeap(gHeap, HEAP_SIZE);
     SetDefaultFontsPointer();
 
