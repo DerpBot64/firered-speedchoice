@@ -2745,6 +2745,24 @@ extern const u32 gTrainerPalette_RuinManiac[];
 extern const u32 gTrainerPalette_Lady[];
 extern const u32 gTrainerPalette_Painter[];
 
+extern const u32 gAvatarPalette_RETRORED[];
+extern const u32 gAvatarPalette_CYNTHIA[];
+extern const u32 gAvatarPalette_OAK[];
+extern const u32 gAvatarPalette_BLUE[];
+extern const u32 gAvatarPalette_BRENDAN[];
+extern const u32 gAvatarPalette_MAY[];
+extern const u32 gAvatarPalette_STEVEN[];
+extern const u32 gAvatarPalette_WALLY[];
+extern const u32 gAvatarPalette_KRIS[];
+extern const u32 gAvatarPalette_RS_MAY_BLUE[];
+extern const u32 gAvatarPalette_LUCAS[];
+extern const u32 gAvatarPalette_ETHAN[];
+extern const u32 gAvatarPalette_DAWN[];
+extern const u32 gAvatarPalette_LYRA[];
+extern const u32 gAvatarPalette_BARRY[];
+extern const u32 gAvatarPalette_LANCE[];
+extern const u32 gAvatarPalette_SILVER[];
+
 extern const u8 gFireRedMenuElements_Gfx[];
 extern const u16 gFireRedMenuElements1_Pal[];
 extern const u16 gFireRedMenuElements2_Pal[];
@@ -4366,6 +4384,31 @@ extern const u8 gTrainerBackPic_Pokedude[];
 extern const u8 gTrainerBackPic_OldMan[];
 extern const u8 gTrainerBackPic_RSBrendan[];
 extern const u8 gTrainerBackPic_RSMay[];
+
+extern const u8 gAvatarBackPic_BRENDAN[];
+extern const u8 gAvatarBackPic_MAY[];
+extern const u8 gAvatarBackPic_BLUE[];
+extern const u8 gAvatarBackPic_ETHAN[];
+extern const u8 gAvatarBackPic_DAWN[];
+extern const u8 gAvatarBackPic_LUCAS[];
+extern const u8 gAvatarBackPic_LYRA[];
+extern const u8 gAvatarBackPic_PEACH[];
+extern const u8 gAvatarBackPic_YUGI[];
+extern const u8 gAvatarBackPic_RETRORED[];
+extern const u8 gAvatarBackPic_ARCHIE[];
+extern const u8 gAvatarBackPic_DUSCLOPS[];
+extern const u8 gAvatarBackPic_LORELEI[];
+extern const u8 gAvatarBackPic_MAXIE[];
+extern const u8 gAvatarBackPic_OAK[];
+extern const u8 gAvatarBackPic_STEVEN[];
+extern const u8 gAvatarBackPic_WALLACE[];
+extern const u8 gAvatarBackPic_WALLY[];
+extern const u8 gAvatarBackPic_ZIGZAG[];
+extern const u8 gAvatarBackPic_KRIS[];
+extern const u8 gAvatarBackPic_BARRY[];
+extern const u8 gAvatarBackPic_CYNTHIA[];
+extern const u8 gAvatarBackPic_LANCE[];
+extern const u8 gAvatarBackPic_SILVER[];
 
 // mail
 extern const u16 gFile_graphics_mail_orange_palette_pal[];

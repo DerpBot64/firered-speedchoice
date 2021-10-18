@@ -61,4 +61,9 @@ extern const struct SpriteFrameImage gTrainerBackPicTable_OldMan[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_RSBrendan[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_RSMay[];
 
+extern const union AnimCmd *const *const gAvatarBackAnimsPtrTable[];
+extern const u16 gAvatarBackPicTable_Avatar5Frame[];
+extern const struct CompressedSpritePalette gAvatarBackPicPaletteTable[];
+extern const struct CompressedSpriteSheet gAvatarBackPicTable[];
+
 #endif // GUARD_DATA_H

@@ -2792,9 +2792,46 @@ void SetMultiuseSpriteTemplateToPokemon(u16 speciesTag, u8 battlerPosition)
     gMultiuseSpriteTemplate.anims = gSpriteAnimTable_82349BC;
 }
 
+static EWRAM_DATA struct SpriteFrameImage avatarBackImage5[5]  = {0};
+
 void SetMultiuseSpriteTemplateToTrainerBack(u16 trainerSpriteId, u8 battlerPosition)
 {
-    gMultiuseSpriteTemplate.paletteTag = trainerSpriteId;
+	u8 i = 0;
+
+	//handle avatar, otherwise use default behavior
+	if(trainerSpriteId == 0){
+
+		LoadCompressedPalette(gAvatarBackPicPaletteTable[getPlayerAvatarID()].data, (GetBattlerPosition(battlerPosition) + 16) * 16, 0x20);
+
+		//use red as a template, then update
+		gMultiuseSpriteTemplate = gSpriteTemplates_TrainerBackpics[trainerSpriteId];
+		gMultiuseSpriteTemplate.paletteTag = trainerSpriteId;
+
+		gMultiuseSpriteTemplate.anims = gAvatarBackAnimsPtrTable[getPlayerAvatarID()];
+
+		if(gMultiuseSpriteTemplate.anims == gAvatarBackAnimsPtrTable[0]){//5 frame
+
+			for(i = 0; i < 5; i++){
+				avatarBackImage5[i].data = (const u8 *) gAvatarBackPicTable[getPlayerAvatarID()].data + gAvatarBackPicTable_Avatar5Frame[i];
+				avatarBackImage5[i].size = 0x0800;
+			}
+			gMultiuseSpriteTemplate.images = avatarBackImage5;
+		}
+		else{// 4 frame
+
+			for(i = 0; i < 4; i++){
+				avatarBackImage5[i].data = (const u8 *) gAvatarBackPicTable[getPlayerAvatarID()].data + gAvatarBackPicTable_Avatar5Frame[i];
+				avatarBackImage5[i].size = 0x0800;
+			}
+			gMultiuseSpriteTemplate.images = avatarBackImage5;
+		}
+
+
+
+		return;
+    }
+
+	gMultiuseSpriteTemplate.paletteTag = trainerSpriteId;
     if (battlerPosition == B_POSITION_PLAYER_LEFT || battlerPosition == B_POSITION_PLAYER_RIGHT)
     {
         gMultiuseSpriteTemplate = gSpriteTemplates_TrainerBackpics[trainerSpriteId];
