@@ -33,9 +33,9 @@ To set up the repository:
 
     cd ./agbcc
     sh build.sh
-    sh install.sh ../pokefirered
+    sh install.sh ../firered-speedchoice
 
-    cd ../pokefirered
+    cd ../firered-speedchoice
 
 To build **pokefirered.gba**:
 

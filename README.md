@@ -4,7 +4,7 @@ This project is based on the disassembly of Pokémon FireRed and LeafGreen.
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
-### Version Derpbot 64.0.0
+### Version Derpbot 64.0.2
 
 Updates on top of previous changelog below.
 
